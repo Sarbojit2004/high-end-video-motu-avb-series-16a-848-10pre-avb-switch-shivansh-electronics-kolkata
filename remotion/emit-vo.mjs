@@ -6,7 +6,12 @@ import { fileURLToPath } from 'node:url';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const repo = join(here, '..');
-const part = process.argv[2] ?? '1';
+const arg = process.argv[2] ?? '1';
+const isLong = arg.startsWith('long');
+const part = isLong ? arg.slice(4) : arg;
+const TOTAL = isLong ? 8940 : 2640;
+const FMT = isLong ? 'Long-form video' : 'Reel';
+const DIMS = isLong ? '1920x1080 landscape 16:9' : '1080x1920 portrait 9:16';
 
 const META = {
   '1': {
@@ -26,7 +31,7 @@ const META = {
   },
 }[part];
 
-const src = readFileSync(join(here, 'src', `part${part}`, 'timeline.ts'), 'utf8');
+const src = readFileSync(join(here, ...(isLong ? ['src','long',`part${part}`,'timeline.ts'] : ['src',`part${part}`,'timeline.ts'])), 'utf8');
 const assets = JSON.parse(readFileSync(join(here, 'assets.json'), 'utf8'));
 const byIdx = Object.fromEntries(assets.map((a) => [String(a.idx), a]));
 
@@ -47,10 +52,10 @@ const tc = (f) => {
 };
 
 const L = [];
-L.push(`# MOTU AVB Series — Reel Part ${part} of 3`);
+L.push(`# MOTU AVB Series — ${FMT} Part ${part} of 3`);
 L.push(`## "${META.title}" · ${META.product}`);
 L.push('');
-L.push('**Runtime** 88.000 s (2,640 frames @ 30 fps) · **Format** 1080×1920 portrait 9:16  ');
+L.push(`**Runtime** ${(TOTAL/30).toFixed(3)} s (${TOTAL.toLocaleString()} frames @ 30 fps) · **Format** ${DIMS}  `);
 L.push(`**Language** English only · **Tone** ${META.tone}`);
 L.push('');
 L.push(
@@ -88,8 +93,8 @@ for (const s of segs) {
 }
 L.push('');
 L.push(
-  `**Total** 2,640 frames · 88.000 s · ${totalWords} words · ` +
-    `${(totalWords / 88).toFixed(2)} w/s overall`,
+  `**Total** ${TOTAL.toLocaleString()} frames · ${(TOTAL/30).toFixed(3)} s · ${totalWords} words · ` +
+    `${(totalWords / (TOTAL/30)).toFixed(2)} w/s overall`,
 );
 L.push('');
 L.push('---');
@@ -126,12 +131,12 @@ L.push(
   `- The reel ships with an original score and original synthesised sound design mixed low`,
 );
 L.push(
-  `  (\`audio/score_part${part}.py\`), so a recorded voiceover can be laid over`,
+  `  (\`audio/${isLong ? 'score_long' : 'score_part'}${part}.py\`), so a recorded voiceover can be laid over`,
 );
-L.push(`  \`audio/out/bed_part${part}.wav\` without re-balancing the bed.`);
+L.push(`  \`audio/out/${isLong ? 'bed_long' : 'bed_part'}${part}.wav\` without re-balancing the bed.`);
 L.push('');
 
 mkdirSync(join(repo, 'voiceover'), { recursive: true });
-const out = join(repo, 'voiceover', `VOICEOVER-PART${part}.md`);
+const out = join(repo, 'voiceover', isLong ? `VOICEOVER-LONG-PART${part}.md` : `VOICEOVER-PART${part}.md`);
 writeFileSync(out, L.join('\n'));
-console.log(`wrote voiceover/VOICEOVER-PART${part}.md  (${segs.length} segments, ${totalWords} words)`);
+console.log(`wrote voiceover/${isLong ? 'VOICEOVER-LONG-PART' : 'VOICEOVER-PART'}${part}.md  (${segs.length} segments, ${totalWords} words)`);

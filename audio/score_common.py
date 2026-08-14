@@ -23,8 +23,18 @@ import numpy as np
 import synth as S
 
 FPS = 30
+
+# Duration is set per format: 88 s for the reels, 298 s for the long-form parts.
+# Instruments read the module-level DUR/N, so callers set it once up front.
 DUR = 88.0
 N = S.secs(DUR)
+
+
+def set_duration(seconds: float) -> None:
+    """Reconfigure the engine for a different runtime before rendering."""
+    global DUR, N
+    DUR = float(seconds)
+    N = S.secs(DUR)
 
 # Shared harmony across the whole series: A natural minor, i - VI - III - VII.
 PROG = [

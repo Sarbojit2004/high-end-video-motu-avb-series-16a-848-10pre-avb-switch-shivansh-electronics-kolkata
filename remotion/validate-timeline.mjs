@@ -14,9 +14,15 @@ const re =
 let failed = false;
 
 for (const part of process.argv.slice(2)) {
+  const isLong = part.startsWith('long');
+  const n = isLong ? part.slice(4) : part;
+  const total = isLong ? 8940 : 2640;
+  const relPath = isLong
+    ? ['src', 'long', `part${n}`, 'timeline.ts']
+    : ['src', `part${n}`, 'timeline.ts'];
   let src;
   try {
-    src = readFileSync(join(here, 'src', `part${part}`, 'timeline.ts'), 'utf8');
+    src = readFileSync(join(here, ...relPath), 'utf8');
   } catch {
     console.log(`\npart ${part}: no timeline yet`);
     continue;
@@ -29,7 +35,7 @@ for (const part of process.argv.slice(2)) {
     assets: m[6].split(',').map((x) => x.trim()).filter(Boolean),
   }));
 
-  console.log(`\n=== PART ${part} ===`);
+  console.log(`\n=== ${isLong ? 'LONG PART ' + n : 'PART ' + n} (${total} frames) ===`);
   console.log('SEG  FRAMES        SECS  WORDS   W/S  ASSETS  S/ASSET  FLAGS');
 
   let prev = 0;
@@ -57,17 +63,17 @@ for (const part of process.argv.slice(2)) {
   }
 
   const expect = new Set(
-    assets.filter((a) => a.part === +part).map((a) => String(a.idx)),
+    assets.filter((a) => a.part === +n).map((a) => String(a.idx)),
   );
   const uniq = new Set(placed);
   const missing = [...expect].filter((x) => !uniq.has(x));
   const extra = [...uniq].filter((x) => !expect.has(x));
   const repeats = placed.filter((x, i) => placed.indexOf(x) !== i);
 
-  const okFrames = prev === 2640;
+  const okFrames = prev === total;
   console.log('---');
-  console.log(`frames      : ${prev} ${okFrames ? 'OK (88.000s)' : 'MISMATCH — must be 2640'}`);
-  console.log(`words       : ${words} → ${(words / 88).toFixed(2)} w/s overall`);
+  console.log(`frames      : ${prev} ${okFrames ? `OK (${(total/30).toFixed(3)}s)` : `MISMATCH — must be ${total}`}`);
+  console.log(`words       : ${words} → ${(words / (total/30)).toFixed(2)} w/s overall`);
   console.log(`assets      : ${placed.length} placed, ${uniq.size} unique of ${expect.size} catalogued`);
   console.log(`missing     : ${missing.join(',') || 'none'}`);
   console.log(`extra       : ${extra.join(',') || 'none'}`);
