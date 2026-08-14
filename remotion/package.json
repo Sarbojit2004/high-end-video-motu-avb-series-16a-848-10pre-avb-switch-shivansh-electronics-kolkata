@@ -1,0 +1,23 @@
+{
+  "name": "motu-avb-reels",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "studio": "remotion studio",
+    "render1": "remotion render Part1 out/motu-reel-part1-10pre.mp4",
+    "render2": "remotion render Part2 out/motu-reel-part2-16a.mp4",
+    "render3": "remotion render Part3 out/motu-reel-part3-848.mp4"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.410",
+    "@remotion/transitions": "4.0.410",
+    "@remotion/media-utils": "4.0.410",
+    "remotion": "4.0.410",
+    "react": "19.0.0",
+    "react-dom": "19.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "19.0.0",
+    "typescript": "5.7.3"
+  }
+}
