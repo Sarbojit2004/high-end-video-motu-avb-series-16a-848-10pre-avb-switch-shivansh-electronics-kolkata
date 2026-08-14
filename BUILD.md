@@ -1,16 +1,44 @@
-# MOTU AVB Series — Reel Series Build
+# MOTU AVB Series — Video Build
 
-Three portrait reels for the current-generation MOTU AVB Series (10pre, 16A, 848),
-for **Shivansh Electronics — MOTU's Authorized Distributor for East and North East India**.
+Two complete three-part series for the current-generation MOTU AVB Series
+(10pre, 16A, 848), for **Shivansh Electronics — MOTU's Authorized Distributor
+for East and North East India**.
 
-| Part | Title | Product | Runtime | Render |
-|------|-------|---------|---------|--------|
-| 1 | The Tracking Room | MOTU 10pre | 88.000 s | `renders/motu-reel-part1-10pre.mp4` |
-| 2 | The Patchbay | MOTU 16A | 88.000 s | `renders/motu-reel-part2-16a.mp4` |
-| 3 | The Control Room | MOTU 848 | 88.000 s | `renders/motu-reel-part3-848.mp4` |
+### Reels — portrait 1080×1920, 30 fps, 2,640 frames (88.000 s) per part
 
-**Format** 1080×1920 (9:16), 30 fps, 2,640 frames per part exactly.
+| Part | Title | Product | Render |
+|------|-------|---------|--------|
+| 1 | The Tracking Room | MOTU 10pre | `renders/motu-reel-part1-10pre.mp4` |
+| 2 | The Patchbay | MOTU 16A | `renders/motu-reel-part2-16a.mp4` |
+| 3 | The Control Room | MOTU 848 | `renders/motu-reel-part3-848.mp4` |
+
 Series total 264.000 s / 7,920 frames.
+
+### Long-form — landscape 1920×1080, 30 fps, 8,940 frames (298.000 s) per part
+
+| Part | Title | Product | Render |
+|------|-------|---------|--------|
+| 1 | The Tracking Room | MOTU 10pre | `renders/motu-longvideo-part1-10pre.mp4` |
+| 2 | The Patchbay | MOTU 16A | `renders/motu-longvideo-part2-16a.mp4` |
+| 3 | The Control Room | MOTU 848 | `renders/motu-longvideo-part3-848.mp4` |
+
+Series total 894.000 s / 26,820 frames (14.90 min).
+
+The two series share the asset catalogue, palette and type scale, and nothing
+else: the long-form has its own landscape layout system, its own scripts, its
+own scores, and its **own independent** 117/117 asset coverage.
+
+### What differs between the two formats
+
+| | Reels | Long-form |
+|---|---|---|
+| Canvas | 1080×1920 portrait | 1920×1080 landscape |
+| Per part | 88.000 s | 298.000 s |
+| s/asset | 1.5–9.5 | 5.7–24.1 |
+| Layout | stacked: headline over imagery | split: text beside hardware |
+| Safe zones | Instagram (y 250–1580) | none needed; 104/76 px margins |
+| Logos | **none** in reel bodies or thumbnails; Part 3 CTA only | Shivansh recurring throughout, MOTU occasional; both on thumbnails |
+| Thumbnails | 1080×1920, no logos | 1920×1080, both logos |
 
 ---
 
@@ -44,10 +72,14 @@ Showing all 99 unique images covers all 117 filenames, because each duplicate's
 pixels are on screen under its twin. This is machine-verified:
 
 ```bash
-cd remotion && node verify-coverage.mjs
+cd remotion && node verify-coverage.mjs           # reels
+cd remotion && node verify-coverage.mjs --long    # long-form
 #   FILENAMES COVERED : 117 / 117
 #   PASS
 ```
+
+Both series carry the requirement independently: all 99 unique images appear in
+the three reels, and all 99 appear again in the three long-form parts.
 
 The audit walks repo file → md5 → catalogue entry → timeline segment, so it
 fails if any image is dropped during editing. It caught a real defect during
@@ -67,17 +99,26 @@ remotion/                Remotion 4 workspace
   src/part{1,2,3}/
     timeline.ts          the single source of truth for that part
     Part{N}.tsx          scenes, one per voiceover segment
-  src/thumbnails/        one thumbnail composition per part
+  src/thumbnails/        reel thumbnails (portrait, no logos)
+  src/long/
+    layout.tsx           landscape stage, plates, typography, branding layers
+    SceneRenderer.tsx    declarative scene spec used by long parts 2 and 3
+    LongThumb.tsx        long-form thumbnails (landscape, both logos)
+    part{1,2,3}/
+      timeline.ts        18 segments, the source of truth for that part
+      LongPart{N}.tsx    scenes + branding layer
   assets.json            content-verified catalogue (source of src/assets.ts)
   sync-assets.mjs        copies repo images into public/img/, emits assets.ts
   validate-timeline.mjs  frame continuity, runtime, pacing, per-part coverage
+  retime.mjs             allocates frames in proportion to word count
   verify-coverage.mjs    mandatory 117/117 audit
   emit-vo.mjs            emits the voiceover deliverable for a part
 
 audio/
   synth.py               DSP primitives (oscillators, filters, reverb)
   score_common.py        shared scoring engine, parameterised per part
-  score_part{1,2,3}.py   per-part arrangement + sound design
+  score_part{1,2,3}.py   reel arrangement + sound design
+  score_long{1,2,3}.py   long-form arrangement + sound design (298 s)
   out/                   generated wavs (gitignored)
 
 voiceover/               frame-mapped voiceover scripts
@@ -102,15 +143,22 @@ pip install numpy scipy
 python3 score_part1.py           # ~95 s each; writes music / sfx / bed wavs
 python3 score_part2.py
 python3 score_part3.py
-cp out/bed_part*.wav ../remotion/public/audio/
+python3 score_long1.py           # ~5 min each (298 s of audio)
+python3 score_long2.py
+python3 score_long3.py
+cp out/bed_*.wav ../remotion/public/audio/
 
 cd ../remotion
-node validate-timeline.mjs 1 2 3 # must print ALL CHECKS PASSED
-node verify-coverage.mjs         # must print 117 / 117 … PASS
+node validate-timeline.mjs 1 2 3 long1 long2 long3   # ALL CHECKS PASSED
+node verify-coverage.mjs                             # 117 / 117 … PASS
+
 npx remotion render Part1 out/motu-reel-part1-10pre.mp4
 npx remotion render Part2 out/motu-reel-part2-16a.mp4
 npx remotion render Part3 out/motu-reel-part3-848.mp4
-npx remotion studio              # interactive preview
+npx remotion render LongPart1 out/motu-longvideo-part1-10pre.mp4
+npx remotion render LongPart2 out/motu-longvideo-part2-16a.mp4
+npx remotion render LongPart3 out/motu-longvideo-part3-848.mp4
+npx remotion studio                                  # interactive preview
 ```
 
 ---
@@ -131,11 +179,26 @@ construction** — there is no separate estimate to drift out of sync.
 
 Measured result:
 
+**Reels**
+
 | Part | Words | Overall w/s | Slowest beat | Fastest beat | Assets |
 |------|-------|-------------|--------------|--------------|--------|
 | 1 | 193 | 2.19 | 9.50 s/asset | 1.50 s/asset | 31 |
 | 2 | 206 | 2.34 | 8.00 s/asset | 1.66 s/asset | 37 |
 | 3 | 185 | 2.10 | 8.50 s/asset | 1.47 s/asset | 31 |
+
+**Long-form** — `retime.mjs` allocates each segment's frames in proportion to its
+word count, so the pace is uniform across all 18 segments by construction.
+
+| Part | Words | Overall w/s | Segments | Assets | s/asset |
+|------|-------|-------------|----------|--------|---------|
+| 1 | 750 | 2.52 | 18 | 31 | 9.61 avg |
+| 2 | 734 | 2.46 | 18 | 37 | 8.05 avg |
+| 3 | 721 | 2.42 | 18 | 31 | 9.61 avg |
+
+Part 2 is the quicker segment the brief asks for, but that comes from asset
+density rather than speech rate — speeding the narration would only sound
+rushed at this runtime.
 
 Part 2 is deliberately the quickest, per the brief's timing logic — 16A's
 value proposition is line-level density, which reads fast. Parts 1 and 3 take
@@ -153,9 +216,13 @@ longer over the preamp split and the 7.1.4 output mapping respectively.
   macro-to-scale reveal magnifies about a focal point and resolves to the
   complete, uncropped frame — the camera move never costs you product detail.
 - **Safe zones.** Content is confined to y = 250…1580 with 90 px side margins.
-- **No logo overlays in the reel bodies or on any thumbnail.** Marks already
-  baked into supplied photography are left exactly as provided. The only logo
-  usage in the project is the Part 3 CTA.
+- **Logo rules differ by format, deliberately.** The reels carry no logo overlay
+  anywhere in their bodies and none on their thumbnails — the only logo usage in
+  that series is the Part 3 CTA. The long-form inverts this: a persistent
+  Shivansh mark plus six recurring lower-thirds per part (each carrying a
+  different contact detail from a rotation), with MOTU reserved for the
+  shared-engine passage, hero reveals and the CTA. Marks already baked into
+  supplied photography are left exactly as provided in both.
 
 ---
 
@@ -172,6 +239,10 @@ shared palette) with the arrangement re-weighted per part:
 | 1 | 120 | driving, drum-forward | 0.578 | 45 % |
 | 2 | 126 | tightly sequenced 16th arpeggio | 0.544 | 52 % |
 | 3 | 112 | expansive, wide, reverb-heavy | 0.662 | 31 % |
+
+The long-form scores use the same three voicings re-tuned for a five-minute
+runtime (more pad, sparser drums, intensity keyed to 18 segments instead of 10).
+`score_common.set_duration()` switches the engine between 88 s and 298 s.
 
 Arrangement intensity is keyed to each part's voiceover segments, so the music
 lifts and settles with the picture (full sections measure ~1.6–1.9× the intro).
