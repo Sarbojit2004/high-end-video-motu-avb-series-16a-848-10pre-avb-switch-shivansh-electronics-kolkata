@@ -14,6 +14,13 @@ export type Asset = {
   /** product actually depicted, or 'shared' */
   prod: '10pre' | '16A' | '848' | 'shared';
   part: 1 | 2 | 3;
+  /** modal border colour, so a contained image dissolves into its plate */
+  edge: string;
+  /** border luminance 0..1; <0.45 means the source is a dark-field image */
+  lum: number;
+  /** native pixel dimensions */
+  w: number;
+  h: number;
 };
 
 export const ASSETS: Asset[] = [
@@ -24,7 +31,11 @@ export const ASSETS: Asset[] = [
   "desc": "Mic snake cabling into 10pre rear panel (black bg)",
   "cls": "context",
   "prod": "10pre",
-  "part": 1
+  "part": 1,
+  "edge": "#000000",
+  "lum": 0,
+  "w": 4000,
+  "h": 2374
  },
  {
   "idx": 1,
@@ -33,7 +44,11 @@ export const ASSETS: Asset[] = [
   "desc": "CueMix Pro routing/grid matrix window",
   "cls": "software",
   "prod": "10pre",
-  "part": 1
+  "part": 1,
+  "edge": "#c0c0c0",
+  "lum": 0.753,
+  "w": 2516,
+  "h": 1415
  },
  {
   "idx": 2,
@@ -42,7 +57,11 @@ export const ASSETS: Asset[] = [
   "desc": "Rear macro: NETWORK + OPTICAL + Thunderbolt + LINE OUT 3-8",
   "cls": "macro",
   "prod": "10pre",
-  "part": 1
+  "part": 1,
+  "edge": "#202020",
+  "lum": 0.125,
+  "w": 2000,
+  "h": 1083
  },
  {
   "idx": 3,
@@ -51,7 +70,11 @@ export const ASSETS: Asset[] = [
   "desc": "CueMix Pro channel strip - GATE + COMPRESSOR",
   "cls": "software",
   "prod": "10pre",
-  "part": 1
+  "part": 1,
+  "edge": "#101010",
+  "lum": 0.063,
+  "w": 2880,
+  "h": 1842
  },
  {
   "idx": 4,
@@ -60,7 +83,11 @@ export const ASSETS: Asset[] = [
   "desc": "CueMix Pro 4-band parametric EQ curve",
   "cls": "software",
   "prod": "10pre",
-  "part": 1
+  "part": 1,
+  "edge": "#101010",
+  "lum": 0.063,
+  "w": 2880,
+  "h": 1842
  },
  {
   "idx": 5,
@@ -69,7 +96,11 @@ export const ASSETS: Asset[] = [
   "desc": "10pre FRONT PANEL hero, light bg",
   "cls": "hero",
   "prod": "10pre",
-  "part": 1
+  "part": 1,
+  "edge": "#202020",
+  "lum": 0.125,
+  "w": 3000,
+  "h": 466
  },
  {
   "idx": 6,
@@ -78,7 +109,11 @@ export const ASSETS: Asset[] = [
   "desc": "CueMix Pro Discovery - 10pre/848/16A on network",
   "cls": "software",
   "prod": "shared",
-  "part": 1
+  "part": 1,
+  "edge": "#101010",
+  "lum": 0.063,
+  "w": 2132,
+  "h": 1615
  },
  {
   "idx": 7,
@@ -87,7 +122,11 @@ export const ASSETS: Asset[] = [
   "desc": "CueMix Pro outputs: monitor, phones 1+2, presets, talkback",
   "cls": "software",
   "prod": "10pre",
-  "part": 1
+  "part": 1,
+  "edge": "#101010",
+  "lum": 0.063,
+  "w": 2660,
+  "h": 3024
  },
  {
   "idx": 8,
@@ -96,7 +135,11 @@ export const ASSETS: Asset[] = [
   "desc": "CueMix Pro MIC INPUTS 1-10 (ten preamps, 48V/PAD)",
   "cls": "software",
   "prod": "10pre",
-  "part": 1
+  "part": 1,
+  "edge": "#101010",
+  "lum": 0.063,
+  "w": 2660,
+  "h": 2305
  },
  {
   "idx": 9,
@@ -105,7 +148,11 @@ export const ASSETS: Asset[] = [
   "desc": "CueMix Pro mix settings / fader bank",
   "cls": "software",
   "prod": "10pre",
-  "part": 1
+  "part": 1,
+  "edge": "#101010",
+  "lum": 0.063,
+  "w": 2870,
+  "h": 1826
  },
  {
   "idx": 10,
@@ -114,7 +161,11 @@ export const ASSETS: Asset[] = [
   "desc": "10pre REAR PANEL full array, light bg",
   "cls": "hero",
   "prod": "10pre",
-  "part": 1
+  "part": 1,
+  "edge": "#303030",
+  "lum": 0.188,
+  "w": 3000,
+  "h": 505
  },
  {
   "idx": 11,
@@ -123,7 +174,11 @@ export const ASSETS: Asset[] = [
   "desc": "CueMix Pro outputs page - monitor/phones/line outs",
   "cls": "software",
   "prod": "10pre",
-  "part": 1
+  "part": 1,
+  "edge": "#101010",
+  "lum": 0.063,
+  "w": 2660,
+  "h": 2751
  },
  {
   "idx": 12,
@@ -132,7 +187,11 @@ export const ASSETS: Asset[] = [
   "desc": "CueMix Pro PATCHBAY sources->destinations",
   "cls": "software",
   "prod": "10pre",
-  "part": 1
+  "part": 1,
+  "edge": "#101010",
+  "lum": 0.063,
+  "w": 2906,
+  "h": 1842
  },
  {
   "idx": 13,
@@ -141,7 +200,11 @@ export const ASSETS: Asset[] = [
   "desc": "10pre front-panel labelled line diagram",
   "cls": "diagram",
   "prod": "10pre",
-  "part": 1
+  "part": 1,
+  "edge": "#101010",
+  "lum": 0.063,
+  "w": 1773,
+  "h": 531
  },
  {
   "idx": 14,
@@ -150,7 +213,11 @@ export const ASSETS: Asset[] = [
   "desc": "MACRO: 2 front combo XLR + INSERTS SND/RET ch1-2",
   "cls": "macro",
   "prod": "10pre",
-  "part": 1
+  "part": 1,
+  "edge": "#102020",
+  "lum": 0.112,
+  "w": 1038,
+  "h": 629
  },
  {
   "idx": 15,
@@ -159,7 +226,11 @@ export const ASSETS: Asset[] = [
   "desc": "10pre full system connection diagram",
   "cls": "diagram",
   "prod": "10pre",
-  "part": 1
+  "part": 1,
+  "edge": "#101010",
+  "lum": 0.063,
+  "w": 1833,
+  "h": 803
  },
  {
   "idx": 16,
@@ -168,7 +239,11 @@ export const ASSETS: Asset[] = [
   "desc": "10pre TFT display macro - PHONES/IN/OUT/MONITOR",
   "cls": "macro",
   "prod": "10pre",
-  "part": 1
+  "part": 1,
+  "edge": "#303030",
+  "lum": 0.188,
+  "w": 1522,
+  "h": 485
  },
  {
   "idx": 17,
@@ -177,7 +252,11 @@ export const ASSETS: Asset[] = [
   "desc": "Round-trip latency diagram ~1.8ms",
   "cls": "diagram",
   "prod": "shared",
-  "part": 1
+  "part": 1,
+  "edge": "#202020",
+  "lum": 0.125,
+  "w": 399,
+  "h": 627
  },
  {
   "idx": 18,
@@ -186,7 +265,11 @@ export const ASSETS: Asset[] = [
   "desc": "MACRO: rear combo XLR MIC/LINE/INSTRUMENT IN ch3-6",
   "cls": "macro",
   "prod": "10pre",
-  "part": 1
+  "part": 1,
+  "edge": "#101010",
+  "lum": 0.063,
+  "w": 1038,
+  "h": 629
  },
  {
   "idx": 19,
@@ -195,7 +278,11 @@ export const ASSETS: Asset[] = [
   "desc": "MOTU 40Gbps 240W Thunderbolt cable",
   "cls": "context",
   "prod": "shared",
-  "part": 1
+  "part": 1,
+  "edge": "#102020",
+  "lum": 0.112,
+  "w": 756,
+  "h": 703
  },
  {
   "idx": 20,
@@ -204,7 +291,11 @@ export const ASSETS: Asset[] = [
   "desc": "CueMix Pro on desktop display",
   "cls": "software",
   "prod": "10pre",
-  "part": 1
+  "part": 1,
+  "edge": "#000000",
+  "lum": 0,
+  "w": 4000,
+  "h": 2676
  },
  {
   "idx": 21,
@@ -213,7 +304,11 @@ export const ASSETS: Asset[] = [
   "desc": "CueMix Pro for iOS on iPad above 10pre",
   "cls": "software",
   "prod": "10pre",
-  "part": 1
+  "part": 1,
+  "edge": "#404040",
+  "lum": 0.251,
+  "w": 945,
+  "h": 560
  },
  {
   "idx": 22,
@@ -222,7 +317,11 @@ export const ASSETS: Asset[] = [
   "desc": "MONITOR GROUP button row 1-8 macro",
   "cls": "macro",
   "prod": "10pre",
-  "part": 1
+  "part": 1,
+  "edge": "#102020",
+  "lum": 0.112,
+  "w": 2000,
+  "h": 714
  },
  {
   "idx": 23,
@@ -231,7 +330,11 @@ export const ASSETS: Asset[] = [
   "desc": "Studio control room context (desk, monitors, console)",
   "cls": "context",
   "prod": "shared",
-  "part": 1
+  "part": 1,
+  "edge": "#303030",
+  "lum": 0.188,
+  "w": 1000,
+  "h": 519
  },
  {
   "idx": 24,
@@ -240,7 +343,11 @@ export const ASSETS: Asset[] = [
   "desc": "10pre TFT display macro, angled",
   "cls": "macro",
   "prod": "10pre",
-  "part": 1
+  "part": 1,
+  "edge": "#303030",
+  "lum": 0.188,
+  "w": 2000,
+  "h": 1083
  },
  {
   "idx": 25,
@@ -249,7 +356,11 @@ export const ASSETS: Asset[] = [
   "desc": "MACRO: LINE OUT 1-8 TRS jacks",
   "cls": "macro",
   "prod": "10pre",
-  "part": 1
+  "part": 1,
+  "edge": "#202020",
+  "lum": 0.125,
+  "w": 2000,
+  "h": 1188
  },
  {
   "idx": 26,
@@ -258,7 +369,11 @@ export const ASSETS: Asset[] = [
   "desc": "10pre full front panel on black",
   "cls": "hero",
   "prod": "10pre",
-  "part": 1
+  "part": 1,
+  "edge": "#000000",
+  "lum": 0,
+  "w": 3839,
+  "h": 1749
  },
  {
   "idx": 36,
@@ -267,7 +382,11 @@ export const ASSETS: Asset[] = [
   "desc": "MACRO: dual headphone outputs 1+2 with level knobs",
   "cls": "macro",
   "prod": "10pre",
-  "part": 1
+  "part": 1,
+  "edge": "#101010",
+  "lum": 0.063,
+  "w": 992,
+  "h": 606
  },
  {
   "idx": 31,
@@ -276,7 +395,11 @@ export const ASSETS: Asset[] = [
   "desc": "CueMix Pro on iPad, angled (shared asset x3)",
   "cls": "software",
   "prod": "shared",
-  "part": 1
+  "part": 1,
+  "edge": "#000010",
+  "lum": 0.005,
+  "w": 1371,
+  "h": 1001
  },
  {
   "idx": 33,
@@ -285,7 +408,11 @@ export const ASSETS: Asset[] = [
   "desc": "ESS Technology logo",
   "cls": "logo",
   "prod": "shared",
-  "part": 1
+  "part": 1,
+  "edge": "#102020",
+  "lum": 0.112,
+  "w": 1787,
+  "h": 941
  },
  {
   "idx": 35,
@@ -294,7 +421,11 @@ export const ASSETS: Asset[] = [
   "desc": "Thunderbolt logo",
   "cls": "logo",
   "prod": "shared",
-  "part": 1
+  "part": 1,
+  "edge": "#202020",
+  "lum": 0.125,
+  "w": 1353,
+  "h": 941
  },
  {
   "idx": 30,
@@ -303,7 +434,11 @@ export const ASSETS: Asset[] = [
   "desc": "Moog modular synthesizer (DC-coupled CV use case)",
   "cls": "context",
   "prod": "shared",
-  "part": 2
+  "part": 2,
+  "edge": "#102020",
+  "lum": 0.112,
+  "w": 2000,
+  "h": 1532
  },
  {
   "idx": 34,
@@ -312,7 +447,11 @@ export const ASSETS: Asset[] = [
   "desc": "CueMix Pro Reverb plug-in UI",
   "cls": "software",
   "prod": "shared",
-  "part": 2
+  "part": 2,
+  "edge": "#101010",
+  "lum": 0.063,
+  "w": 2070,
+  "h": 994
  },
  {
   "idx": 37,
@@ -321,7 +460,11 @@ export const ASSETS: Asset[] = [
   "desc": "16A on desk, dual displays lit, mic in frame",
   "cls": "hero",
   "prod": "16A",
-  "part": 2
+  "part": 2,
+  "edge": "#101010",
+  "lum": 0.063,
+  "w": 4000,
+  "h": 1845
  },
  {
   "idx": 38,
@@ -330,7 +473,11 @@ export const ASSETS: Asset[] = [
   "desc": "CueMix Pro application icon",
   "cls": "logo",
   "prod": "shared",
-  "part": 2
+  "part": 2,
+  "edge": "#f0f0f0",
+  "lum": 0.941,
+  "w": 1024,
+  "h": 1024
  },
  {
   "idx": 39,
@@ -339,7 +486,11 @@ export const ASSETS: Asset[] = [
   "desc": "16A TFT display macro PHONES/INPUTS/OUTPUTS/MONITOR",
   "cls": "macro",
   "prod": "16A",
-  "part": 2
+  "part": 2,
+  "edge": "#303030",
+  "lum": 0.188,
+  "w": 2000,
+  "h": 900
  },
  {
   "idx": 40,
@@ -348,7 +499,11 @@ export const ASSETS: Asset[] = [
   "desc": "DAW session - clip/scene grid",
   "cls": "software",
   "prod": "shared",
-  "part": 2
+  "part": 2,
+  "edge": "#202030",
+  "lum": 0.13,
+  "w": 2562,
+  "h": 1513
  },
  {
   "idx": 41,
@@ -357,16 +512,24 @@ export const ASSETS: Asset[] = [
   "desc": "DAW session - arrangement timeline",
   "cls": "software",
   "prod": "shared",
-  "part": 2
+  "part": 2,
+  "edge": "#303030",
+  "lum": 0.188,
+  "w": 2880,
+  "h": 1711
  },
  {
   "idx": 42,
-  "src": "MOTU 16A (4).jpg",
-  "slug": "16a-04.jpg",
+  "src": "MOTU 16A (4).png",
+  "slug": "16a-04p.png",
   "desc": "16A front-panel labelled line diagram",
   "cls": "diagram",
   "prod": "16A",
-  "part": 2
+  "part": 2,
+  "edge": "#101010",
+  "lum": 0.063,
+  "w": 1691,
+  "h": 315
  },
  {
   "idx": 43,
@@ -375,7 +538,11 @@ export const ASSETS: Asset[] = [
   "desc": "AVB topology diagram - 16A daisy-chain + AVB switch",
   "cls": "diagram",
   "prod": "shared",
-  "part": 2
+  "part": 2,
+  "edge": "#000000",
+  "lum": 0,
+  "w": 9021,
+  "h": 7260
  },
  {
   "idx": 44,
@@ -384,7 +551,11 @@ export const ASSETS: Asset[] = [
   "desc": "16A full system connection diagram",
   "cls": "diagram",
   "prod": "16A",
-  "part": 2
+  "part": 2,
+  "edge": "#101010",
+  "lum": 0.063,
+  "w": 1751,
+  "h": 768
  },
  {
   "idx": 45,
@@ -393,7 +564,11 @@ export const ASSETS: Asset[] = [
   "desc": "CueMix Discovery - 16A, 16A#2, 16A#3, 16A#4 stacked",
   "cls": "software",
   "prod": "16A",
-  "part": 2
+  "part": 2,
+  "edge": "#101010",
+  "lum": 0.063,
+  "w": 2132,
+  "h": 1615
  },
  {
   "idx": 46,
@@ -402,7 +577,11 @@ export const ASSETS: Asset[] = [
   "desc": "Round-trip latency diagram 16A ~1.8ms",
   "cls": "diagram",
   "prod": "16A",
-  "part": 2
+  "part": 2,
+  "edge": "#202020",
+  "lum": 0.125,
+  "w": 572,
+  "h": 617
  },
  {
   "idx": 47,
@@ -411,7 +590,11 @@ export const ASSETS: Asset[] = [
   "desc": "CueMix channel strip Line In 5 - gate + compressor",
   "cls": "software",
   "prod": "16A",
-  "part": 2
+  "part": 2,
+  "edge": "#101010",
+  "lum": 0.063,
+  "w": 2870,
+  "h": 1836
  },
  {
   "idx": 48,
@@ -420,16 +603,24 @@ export const ASSETS: Asset[] = [
   "desc": "CueMix Pro for iOS with 16A",
   "cls": "software",
   "prod": "16A",
-  "part": 2
+  "part": 2,
+  "edge": "#202020",
+  "lum": 0.125,
+  "w": 945,
+  "h": 792
  },
  {
   "idx": 49,
-  "src": "MOTU 16A (8).jpg",
-  "slug": "16a-08.jpg",
+  "src": "MOTU 16A (8).png",
+  "slug": "16a-08p.png",
   "desc": "Rear macro: WORD CLOCK BNC + NETWORK + OPTICAL + TB",
   "cls": "macro",
   "prod": "16A",
-  "part": 2
+  "part": 2,
+  "edge": "#f0f0f0",
+  "lum": 0.941,
+  "w": 2204,
+  "h": 644
  },
  {
   "idx": 50,
@@ -438,7 +629,11 @@ export const ASSETS: Asset[] = [
   "desc": "CueMix HOME - monitor, headphones, monitor group, talkback",
   "cls": "software",
   "prod": "16A",
-  "part": 2
+  "part": 2,
+  "edge": "#101010",
+  "lum": 0.063,
+  "w": 2870,
+  "h": 2144
  },
  {
   "idx": 51,
@@ -447,7 +642,11 @@ export const ASSETS: Asset[] = [
   "desc": "16A FRONT PANEL hero - DUAL TFT displays, light bg",
   "cls": "hero",
   "prod": "16A",
-  "part": 2
+  "part": 2,
+  "edge": "#202020",
+  "lum": 0.125,
+  "w": 3000,
+  "h": 466
  },
  {
   "idx": 52,
@@ -456,7 +655,11 @@ export const ASSETS: Asset[] = [
   "desc": "CueMix INPUT TRIM - Line In 1-16",
   "cls": "software",
   "prod": "16A",
-  "part": 2
+  "part": 2,
+  "edge": "#101010",
+  "lum": 0.063,
+  "w": 2870,
+  "h": 1836
  },
  {
   "idx": 53,
@@ -465,7 +668,11 @@ export const ASSETS: Asset[] = [
   "desc": "16A front panel wide strip (dual displays)",
   "cls": "hero",
   "prod": "16A",
-  "part": 2
+  "part": 2,
+  "edge": "#c0c0c0",
+  "lum": 0.753,
+  "w": 7268,
+  "h": 720
  },
  {
   "idx": 54,
@@ -474,7 +681,11 @@ export const ASSETS: Asset[] = [
   "desc": "CueMix channel strip MIX SENDS - aux buses",
   "cls": "software",
   "prod": "16A",
-  "part": 2
+  "part": 2,
+  "edge": "#101010",
+  "lum": 0.063,
+  "w": 2870,
+  "h": 1836
  },
  {
   "idx": 55,
@@ -483,7 +694,11 @@ export const ASSETS: Asset[] = [
   "desc": "16A front panel wide strip variant",
   "cls": "hero",
   "prod": "16A",
-  "part": 2
+  "part": 2,
+  "edge": "#c0c0c0",
+  "lum": 0.753,
+  "w": 7268,
+  "h": 720
  },
  {
   "idx": 56,
@@ -492,7 +707,11 @@ export const ASSETS: Asset[] = [
   "desc": "CueMix Pro on desktop display",
   "cls": "software",
   "prod": "16A",
-  "part": 2
+  "part": 2,
+  "edge": "#000000",
+  "lum": 0,
+  "w": 4000,
+  "h": 2676
  },
  {
   "idx": 57,
@@ -501,7 +720,11 @@ export const ASSETS: Asset[] = [
   "desc": "16A front panel wide strip variant",
   "cls": "hero",
   "prod": "16A",
-  "part": 2
+  "part": 2,
+  "edge": "#c0c0c0",
+  "lum": 0.753,
+  "w": 7268,
+  "h": 720
  },
  {
   "idx": 58,
@@ -510,7 +733,11 @@ export const ASSETS: Asset[] = [
   "desc": "CueMix mix settings / fader bank 16A",
   "cls": "software",
   "prod": "16A",
-  "part": 2
+  "part": 2,
+  "edge": "#101010",
+  "lum": 0.063,
+  "w": 2870,
+  "h": 1836
  },
  {
   "idx": 59,
@@ -519,7 +746,11 @@ export const ASSETS: Asset[] = [
   "desc": "16A REAR PANEL - 16 LINE OUT + 16 LINE IN, light bg",
   "cls": "hero",
   "prod": "16A",
-  "part": 2
+  "part": 2,
+  "edge": "#101010",
+  "lum": 0.063,
+  "w": 3000,
+  "h": 508
  },
  {
   "idx": 60,
@@ -528,7 +759,11 @@ export const ASSETS: Asset[] = [
   "desc": "CueMix OUTPUT TRIM - Line Out 1-16",
   "cls": "software",
   "prod": "16A",
-  "part": 2
+  "part": 2,
+  "edge": "#101010",
+  "lum": 0.063,
+  "w": 2956,
+  "h": 2134
  },
  {
   "idx": 61,
@@ -537,7 +772,11 @@ export const ASSETS: Asset[] = [
   "desc": "CueMix 4-band parametric EQ 16A",
   "cls": "software",
   "prod": "16A",
-  "part": 2
+  "part": 2,
+  "edge": "#101010",
+  "lum": 0.063,
+  "w": 2870,
+  "h": 1836
  },
  {
   "idx": 62,
@@ -546,7 +785,11 @@ export const ASSETS: Asset[] = [
   "desc": "CueMix PATCH BAY - Line Inputs 1-16 routed to destinations",
   "cls": "software",
   "prod": "16A",
-  "part": 2
+  "part": 2,
+  "edge": "#102020",
+  "lum": 0.112,
+  "w": 2413,
+  "h": 2263
  },
  {
   "idx": 63,
@@ -555,7 +798,11 @@ export const ASSETS: Asset[] = [
   "desc": "CueMix PATCH BAY variant - line inputs to host",
   "cls": "software",
   "prod": "16A",
-  "part": 2
+  "part": 2,
+  "edge": "#101010",
+  "lum": 0.063,
+  "w": 2974,
+  "h": 1836
  },
  {
   "idx": 64,
@@ -564,7 +811,11 @@ export const ASSETS: Asset[] = [
   "desc": "16A with laptop on top, displays glowing (hero/lifestyle)",
   "cls": "hero",
   "prod": "16A",
-  "part": 2
+  "part": 2,
+  "edge": "#202020",
+  "lum": 0.125,
+  "w": 2509,
+  "h": 2166
  },
  {
   "idx": 65,
@@ -573,7 +824,11 @@ export const ASSETS: Asset[] = [
   "desc": "DAW plug-in collage (bundled software)",
   "cls": "software",
   "prod": "shared",
-  "part": 2
+  "part": 2,
+  "edge": "#102020",
+  "lum": 0.112,
+  "w": 2880,
+  "h": 834
  },
  {
   "idx": 66,
@@ -582,7 +837,11 @@ export const ASSETS: Asset[] = [
   "desc": "MACRO: rear OPTICAL + LINE OUT dense TRS rows",
   "cls": "macro",
   "prod": "16A",
-  "part": 2
+  "part": 2,
+  "edge": "#202020",
+  "lum": 0.125,
+  "w": 2000,
+  "h": 900
  },
  {
   "idx": 67,
@@ -591,7 +850,11 @@ export const ASSETS: Asset[] = [
   "desc": "MOTU 40Gbps Thunderbolt cable",
   "cls": "context",
   "prod": "shared",
-  "part": 2
+  "part": 2,
+  "edge": "#102020",
+  "lum": 0.112,
+  "w": 2000,
+  "h": 1472
  },
  {
   "idx": 68,
@@ -600,7 +863,11 @@ export const ASSETS: Asset[] = [
   "desc": "MACRO: LINE OUT TRS jacks 5-14",
   "cls": "macro",
   "prod": "16A",
-  "part": 2
+  "part": 2,
+  "edge": "#202020",
+  "lum": 0.125,
+  "w": 2000,
+  "h": 1188
  },
  {
   "idx": 69,
@@ -609,7 +876,11 @@ export const ASSETS: Asset[] = [
   "desc": "16A rear fully patched, top-down with cable fan",
   "cls": "context",
   "prod": "16A",
-  "part": 2
+  "part": 2,
+  "edge": "#000000",
+  "lum": 0,
+  "w": 4000,
+  "h": 2793
  },
  {
   "idx": 70,
@@ -618,7 +889,11 @@ export const ASSETS: Asset[] = [
   "desc": "CueMix routing matrix grid",
   "cls": "software",
   "prod": "16A",
-  "part": 2
+  "part": 2,
+  "edge": "#c0c0c0",
+  "lum": 0.753,
+  "w": 2520,
+  "h": 1415
  },
  {
   "idx": 71,
@@ -627,7 +902,11 @@ export const ASSETS: Asset[] = [
   "desc": "MACRO: NETWORK RJ45 + OPTICAL + Thunderbolt",
   "cls": "macro",
   "prod": "16A",
-  "part": 2
+  "part": 2,
+  "edge": "#101010",
+  "lum": 0.063,
+  "w": 2000,
+  "h": 1188
  },
  {
   "idx": 27,
@@ -636,7 +915,11 @@ export const ASSETS: Asset[] = [
   "desc": "MACRO: A / B / C + MUTE / MONO / TALK monitor buttons",
   "cls": "macro",
   "prod": "848",
-  "part": 3
+  "part": 3,
+  "edge": "#303030",
+  "lum": 0.188,
+  "w": 423,
+  "h": 481
  },
  {
   "idx": 28,
@@ -645,7 +928,11 @@ export const ASSETS: Asset[] = [
   "desc": "CueMix PATCHBAY - Proxy Device: 848 host outputs",
   "cls": "software",
   "prod": "848",
-  "part": 3
+  "part": 3,
+  "edge": "#202020",
+  "lum": 0.125,
+  "w": 2000,
+  "h": 1052
  },
  {
   "idx": 29,
@@ -654,7 +941,11 @@ export const ASSETS: Asset[] = [
   "desc": "MACRO: NETWORK + OPTICAL + Thunderbolt rear cluster",
   "cls": "macro",
   "prod": "848",
-  "part": 3
+  "part": 3,
+  "edge": "#101010",
+  "lum": 0.063,
+  "w": 2000,
+  "h": 1188
  },
  {
   "idx": 32,
@@ -663,7 +954,11 @@ export const ASSETS: Asset[] = [
   "desc": "AVB topology - 10pre/848/16A daisy-chain + AVB switch",
   "cls": "diagram",
   "prod": "shared",
-  "part": 3
+  "part": 3,
+  "edge": "#000000",
+  "lum": 0,
+  "w": 9021,
+  "h": 7260
  },
  {
   "idx": 72,
@@ -672,7 +967,11 @@ export const ASSETS: Asset[] = [
   "desc": "Studio control room with monitor array + console",
   "cls": "context",
   "prod": "shared",
-  "part": 3
+  "part": 3,
+  "edge": "#303030",
+  "lum": 0.188,
+  "w": 1000,
+  "h": 519
  },
  {
   "idx": 73,
@@ -681,7 +980,11 @@ export const ASSETS: Asset[] = [
   "desc": "CueMix Pro application icon",
   "cls": "logo",
   "prod": "shared",
-  "part": 3
+  "part": 3,
+  "edge": "#f0f0f0",
+  "lum": 0.941,
+  "w": 1024,
+  "h": 1024
  },
  {
   "idx": 74,
@@ -690,7 +993,11 @@ export const ASSETS: Asset[] = [
   "desc": "848 full front panel on black",
   "cls": "hero",
   "prod": "848",
-  "part": 3
+  "part": 3,
+  "edge": "#000000",
+  "lum": 0,
+  "w": 3839,
+  "h": 1749
  },
  {
   "idx": 75,
@@ -699,7 +1006,11 @@ export const ASSETS: Asset[] = [
   "desc": "MOTU Instruments soundbank collage",
   "cls": "context",
   "prod": "shared",
-  "part": 3
+  "part": 3,
+  "edge": "#101010",
+  "lum": 0.063,
+  "w": 1678,
+  "h": 948
  },
  {
   "idx": 76,
@@ -708,7 +1019,11 @@ export const ASSETS: Asset[] = [
   "desc": "CueMix routing matrix grid 848",
   "cls": "software",
   "prod": "848",
-  "part": 3
+  "part": 3,
+  "edge": "#c0c0c0",
+  "lum": 0.753,
+  "w": 2516,
+  "h": 1415
  },
  {
   "idx": 77,
@@ -717,7 +1032,11 @@ export const ASSETS: Asset[] = [
   "desc": "Milan (Avnu) certification logo",
   "cls": "logo",
   "prod": "shared",
-  "part": 3
+  "part": 3,
+  "edge": "#f0f0f0",
+  "lum": 0.941,
+  "w": 1652,
+  "h": 1064
  },
  {
   "idx": 78,
@@ -726,52 +1045,76 @@ export const ASSETS: Asset[] = [
   "desc": "848 TFT display macro PHONES/IN/OUT/MONITOR",
   "cls": "macro",
   "prod": "848",
-  "part": 3
+  "part": 3,
+  "edge": "#303030",
+  "lum": 0.188,
+  "w": 2000,
+  "h": 1083
  },
  {
   "idx": 79,
-  "src": "MOTU 848 (5).png",
-  "slug": "848-05p.png",
+  "src": "MOTU 848 (5).jpg",
+  "slug": "848-05.jpg",
   "desc": "Big Fish Audio content-bundle logo",
   "cls": "logo",
   "prod": "shared",
-  "part": 3
+  "part": 3,
+  "edge": "#202020",
+  "lum": 0.125,
+  "w": 1149,
+  "h": 1186
  },
  {
   "idx": 80,
-  "src": "MOTU 848 (6).jpg",
-  "slug": "848-06.jpg",
+  "src": "MOTU 848 (6).png",
+  "slug": "848-06p.png",
   "desc": "848 front-panel labelled line diagram",
   "cls": "diagram",
   "prod": "848",
-  "part": 3
+  "part": 3,
+  "edge": "#101010",
+  "lum": 0.063,
+  "w": 1691,
+  "h": 290
  },
  {
   "idx": 81,
-  "src": "MOTU 848 (7).jpg",
-  "slug": "848-07.jpg",
+  "src": "MOTU 848 (7).png",
+  "slug": "848-07p.png",
   "desc": "848 full system connection diagram",
   "cls": "diagram",
   "prod": "848",
-  "part": 3
+  "part": 3,
+  "edge": "#101010",
+  "lum": 0.063,
+  "w": 1761,
+  "h": 773
  },
  {
   "idx": 82,
-  "src": "MOTU 848 (8).jpg",
-  "slug": "848-08.jpg",
+  "src": "MOTU 848 (8).png",
+  "slug": "848-08p.png",
   "desc": "Round-trip latency diagram 848 ~1.8ms",
   "cls": "diagram",
   "prod": "848",
-  "part": 3
+  "part": 3,
+  "edge": "#202020",
+  "lum": 0.125,
+  "w": 326,
+  "h": 581
  },
  {
   "idx": 83,
-  "src": "MOTU 848 (9).jpg",
-  "slug": "848-09.jpg",
+  "src": "MOTU 848 (9).png",
+  "slug": "848-09p.png",
   "desc": "CueMix Pro for iOS with 848 (gain knobs, combos)",
   "cls": "software",
   "prod": "848",
-  "part": 3
+  "part": 3,
+  "edge": "#202020",
+  "lum": 0.125,
+  "w": 950,
+  "h": 783
  },
  {
   "idx": 84,
@@ -780,7 +1123,11 @@ export const ASSETS: Asset[] = [
   "desc": "Loopmasters content-bundle logo",
   "cls": "logo",
   "prod": "shared",
-  "part": 3
+  "part": 3,
+  "edge": "#202020",
+  "lum": 0.125,
+  "w": 1149,
+  "h": 1186
  },
  {
   "idx": 85,
@@ -789,7 +1136,11 @@ export const ASSETS: Asset[] = [
   "desc": "Lucid Samples content-bundle logo",
   "cls": "logo",
   "prod": "shared",
-  "part": 3
+  "part": 3,
+  "edge": "#202020",
+  "lum": 0.125,
+  "w": 1149,
+  "h": 1186
  },
  {
   "idx": 86,
@@ -798,16 +1149,24 @@ export const ASSETS: Asset[] = [
   "desc": "848 FRONT PANEL hero, light bg",
   "cls": "hero",
   "prod": "848",
-  "part": 3
+  "part": 3,
+  "edge": "#202020",
+  "lum": 0.125,
+  "w": 3000,
+  "h": 466
  },
  {
   "idx": 87,
-  "src": "MOTU 848 (12).jpg",
-  "slug": "848-12.jpg",
+  "src": "MOTU 848 (12).png",
+  "slug": "848-12p.png",
   "desc": "848 REAR PANEL full array, light bg",
   "cls": "hero",
   "prod": "848",
-  "part": 3
+  "part": 3,
+  "edge": "#202020",
+  "lum": 0.125,
+  "w": 3000,
+  "h": 504
  },
  {
   "idx": 88,
@@ -816,7 +1175,11 @@ export const ASSETS: Asset[] = [
   "desc": "Thunderbolt logo",
   "cls": "logo",
   "prod": "shared",
-  "part": 3
+  "part": 3,
+  "edge": "#202020",
+  "lum": 0.125,
+  "w": 1353,
+  "h": 941
  },
  {
   "idx": 89,
@@ -825,7 +1188,11 @@ export const ASSETS: Asset[] = [
   "desc": "MACRO: dual headphone outputs 1+2 with knobs",
   "cls": "macro",
   "prod": "848",
-  "part": 3
+  "part": 3,
+  "edge": "#101010",
+  "lum": 0.063,
+  "w": 1000,
+  "h": 611
  },
  {
   "idx": 90,
@@ -834,7 +1201,11 @@ export const ASSETS: Asset[] = [
   "desc": "MACRO: LINE OUT TRS jacks 3-12 (Atmos array)",
   "cls": "macro",
   "prod": "848",
-  "part": 3
+  "part": 3,
+  "edge": "#202020",
+  "lum": 0.125,
+  "w": 2000,
+  "h": 1188
  },
  {
   "idx": 91,
@@ -843,7 +1214,11 @@ export const ASSETS: Asset[] = [
   "desc": "Cable snake into 848 rear panel (black bg)",
   "cls": "context",
   "prod": "848",
-  "part": 3
+  "part": 3,
+  "edge": "#000000",
+  "lum": 0,
+  "w": 4000,
+  "h": 2374
  },
  {
   "idx": 92,
@@ -852,7 +1227,11 @@ export const ASSETS: Asset[] = [
   "desc": "MACRO: NETWORK + OPTICAL + LINE OUT 7-12",
   "cls": "macro",
   "prod": "848",
-  "part": 3
+  "part": 3,
+  "edge": "#202020",
+  "lum": 0.125,
+  "w": 2000,
+  "h": 1083
  },
  {
   "idx": 93,
@@ -861,7 +1240,11 @@ export const ASSETS: Asset[] = [
   "desc": "MACRO: INSERTS SND/RET ch3-4 + MIC/LINE/INST combos",
   "cls": "macro",
   "prod": "848",
-  "part": 3
+  "part": 3,
+  "edge": "#102020",
+  "lum": 0.112,
+  "w": 1038,
+  "h": 629
  },
  {
   "idx": 94,
@@ -870,7 +1253,11 @@ export const ASSETS: Asset[] = [
   "desc": "848 TFT display macro, wide",
   "cls": "macro",
   "prod": "848",
-  "part": 3
+  "part": 3,
+  "edge": "#303030",
+  "lum": 0.188,
+  "w": 1522,
+  "h": 485
  },
  {
   "idx": 95,
@@ -879,7 +1266,11 @@ export const ASSETS: Asset[] = [
   "desc": "MACRO: MIC/LINE/INSTRUMENT IN combos 1-4",
   "cls": "macro",
   "prod": "848",
-  "part": 3
+  "part": 3,
+  "edge": "#101010",
+  "lum": 0.063,
+  "w": 1038,
+  "h": 629
  },
  {
   "idx": 96,
@@ -888,7 +1279,11 @@ export const ASSETS: Asset[] = [
   "desc": "CueMix Pro on desktop display",
   "cls": "software",
   "prod": "848",
-  "part": 3
+  "part": 3,
+  "edge": "#000000",
+  "lum": 0,
+  "w": 4000,
+  "h": 2676
  },
  {
   "idx": 97,
@@ -897,7 +1292,11 @@ export const ASSETS: Asset[] = [
   "desc": "MONITOR GROUP button row 1-12 macro",
   "cls": "macro",
   "prod": "848",
-  "part": 3
+  "part": 3,
+  "edge": "#102020",
+  "lum": 0.112,
+  "w": 2000,
+  "h": 714
  },
  {
   "idx": 98,
@@ -906,7 +1305,11 @@ export const ASSETS: Asset[] = [
   "desc": "CueMix PATCHBAY mic+line inputs to host",
   "cls": "software",
   "prod": "848",
-  "part": 3
+  "part": 3,
+  "edge": "#102020",
+  "lum": 0.112,
+  "w": 4000,
+  "h": 2436
  }
 ];
 
