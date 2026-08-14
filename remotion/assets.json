@@ -6,7 +6,11 @@
   "desc": "Mic snake cabling into 10pre rear panel (black bg)",
   "cls": "context",
   "prod": "10pre",
-  "part": 1
+  "part": 1,
+  "edge": "#000000",
+  "lum": 0.0,
+  "w": 4000,
+  "h": 2374
  },
  {
   "idx": 1,
@@ -15,7 +19,11 @@
   "desc": "CueMix Pro routing/grid matrix window",
   "cls": "software",
   "prod": "10pre",
-  "part": 1
+  "part": 1,
+  "edge": "#c0c0c0",
+  "lum": 0.753,
+  "w": 2516,
+  "h": 1415
  },
  {
   "idx": 2,
@@ -24,7 +32,11 @@
   "desc": "Rear macro: NETWORK + OPTICAL + Thunderbolt + LINE OUT 3-8",
   "cls": "macro",
   "prod": "10pre",
-  "part": 1
+  "part": 1,
+  "edge": "#202020",
+  "lum": 0.125,
+  "w": 2000,
+  "h": 1083
  },
  {
   "idx": 3,
@@ -33,7 +45,11 @@
   "desc": "CueMix Pro channel strip - GATE + COMPRESSOR",
   "cls": "software",
   "prod": "10pre",
-  "part": 1
+  "part": 1,
+  "edge": "#101010",
+  "lum": 0.063,
+  "w": 2880,
+  "h": 1842
  },
  {
   "idx": 4,
@@ -42,7 +58,11 @@
   "desc": "CueMix Pro 4-band parametric EQ curve",
   "cls": "software",
   "prod": "10pre",
-  "part": 1
+  "part": 1,
+  "edge": "#101010",
+  "lum": 0.063,
+  "w": 2880,
+  "h": 1842
  },
  {
   "idx": 5,
@@ -51,7 +71,11 @@
   "desc": "10pre FRONT PANEL hero, light bg",
   "cls": "hero",
   "prod": "10pre",
-  "part": 1
+  "part": 1,
+  "edge": "#202020",
+  "lum": 0.125,
+  "w": 3000,
+  "h": 466
  },
  {
   "idx": 6,
@@ -60,7 +84,11 @@
   "desc": "CueMix Pro Discovery - 10pre/848/16A on network",
   "cls": "software",
   "prod": "shared",
-  "part": 1
+  "part": 1,
+  "edge": "#101010",
+  "lum": 0.063,
+  "w": 2132,
+  "h": 1615
  },
  {
   "idx": 7,
@@ -69,7 +97,11 @@
   "desc": "CueMix Pro outputs: monitor, phones 1+2, presets, talkback",
   "cls": "software",
   "prod": "10pre",
-  "part": 1
+  "part": 1,
+  "edge": "#101010",
+  "lum": 0.063,
+  "w": 2660,
+  "h": 3024
  },
  {
   "idx": 8,
@@ -78,7 +110,11 @@
   "desc": "CueMix Pro MIC INPUTS 1-10 (ten preamps, 48V/PAD)",
   "cls": "software",
   "prod": "10pre",
-  "part": 1
+  "part": 1,
+  "edge": "#101010",
+  "lum": 0.063,
+  "w": 2660,
+  "h": 2305
  },
  {
   "idx": 9,
@@ -87,7 +123,11 @@
   "desc": "CueMix Pro mix settings / fader bank",
   "cls": "software",
   "prod": "10pre",
-  "part": 1
+  "part": 1,
+  "edge": "#101010",
+  "lum": 0.063,
+  "w": 2870,
+  "h": 1826
  },
  {
   "idx": 10,
@@ -96,7 +136,11 @@
   "desc": "10pre REAR PANEL full array, light bg",
   "cls": "hero",
   "prod": "10pre",
-  "part": 1
+  "part": 1,
+  "edge": "#303030",
+  "lum": 0.188,
+  "w": 3000,
+  "h": 505
  },
  {
   "idx": 11,
@@ -105,7 +149,11 @@
   "desc": "CueMix Pro outputs page - monitor/phones/line outs",
   "cls": "software",
   "prod": "10pre",
-  "part": 1
+  "part": 1,
+  "edge": "#101010",
+  "lum": 0.063,
+  "w": 2660,
+  "h": 2751
  },
  {
   "idx": 12,
@@ -114,7 +162,11 @@
   "desc": "CueMix Pro PATCHBAY sources->destinations",
   "cls": "software",
   "prod": "10pre",
-  "part": 1
+  "part": 1,
+  "edge": "#101010",
+  "lum": 0.063,
+  "w": 2906,
+  "h": 1842
  },
  {
   "idx": 13,
@@ -123,7 +175,11 @@
   "desc": "10pre front-panel labelled line diagram",
   "cls": "diagram",
   "prod": "10pre",
-  "part": 1
+  "part": 1,
+  "edge": "#101010",
+  "lum": 0.063,
+  "w": 1773,
+  "h": 531
  },
  {
   "idx": 14,
@@ -132,7 +188,11 @@
   "desc": "MACRO: 2 front combo XLR + INSERTS SND/RET ch1-2",
   "cls": "macro",
   "prod": "10pre",
-  "part": 1
+  "part": 1,
+  "edge": "#102020",
+  "lum": 0.112,
+  "w": 1038,
+  "h": 629
  },
  {
   "idx": 15,
@@ -141,7 +201,11 @@
   "desc": "10pre full system connection diagram",
   "cls": "diagram",
   "prod": "10pre",
-  "part": 1
+  "part": 1,
+  "edge": "#101010",
+  "lum": 0.063,
+  "w": 1833,
+  "h": 803
  },
  {
   "idx": 16,
@@ -150,7 +214,11 @@
   "desc": "10pre TFT display macro - PHONES/IN/OUT/MONITOR",
   "cls": "macro",
   "prod": "10pre",
-  "part": 1
+  "part": 1,
+  "edge": "#303030",
+  "lum": 0.188,
+  "w": 1522,
+  "h": 485
  },
  {
   "idx": 17,
@@ -159,7 +227,11 @@
   "desc": "Round-trip latency diagram ~1.8ms",
   "cls": "diagram",
   "prod": "shared",
-  "part": 1
+  "part": 1,
+  "edge": "#202020",
+  "lum": 0.125,
+  "w": 399,
+  "h": 627
  },
  {
   "idx": 18,
@@ -168,7 +240,11 @@
   "desc": "MACRO: rear combo XLR MIC/LINE/INSTRUMENT IN ch3-6",
   "cls": "macro",
   "prod": "10pre",
-  "part": 1
+  "part": 1,
+  "edge": "#101010",
+  "lum": 0.063,
+  "w": 1038,
+  "h": 629
  },
  {
   "idx": 19,
@@ -177,7 +253,11 @@
   "desc": "MOTU 40Gbps 240W Thunderbolt cable",
   "cls": "context",
   "prod": "shared",
-  "part": 1
+  "part": 1,
+  "edge": "#102020",
+  "lum": 0.112,
+  "w": 756,
+  "h": 703
  },
  {
   "idx": 20,
@@ -186,7 +266,11 @@
   "desc": "CueMix Pro on desktop display",
   "cls": "software",
   "prod": "10pre",
-  "part": 1
+  "part": 1,
+  "edge": "#000000",
+  "lum": 0.0,
+  "w": 4000,
+  "h": 2676
  },
  {
   "idx": 21,
@@ -195,7 +279,11 @@
   "desc": "CueMix Pro for iOS on iPad above 10pre",
   "cls": "software",
   "prod": "10pre",
-  "part": 1
+  "part": 1,
+  "edge": "#404040",
+  "lum": 0.251,
+  "w": 945,
+  "h": 560
  },
  {
   "idx": 22,
@@ -204,7 +292,11 @@
   "desc": "MONITOR GROUP button row 1-8 macro",
   "cls": "macro",
   "prod": "10pre",
-  "part": 1
+  "part": 1,
+  "edge": "#102020",
+  "lum": 0.112,
+  "w": 2000,
+  "h": 714
  },
  {
   "idx": 23,
@@ -213,7 +305,11 @@
   "desc": "Studio control room context (desk, monitors, console)",
   "cls": "context",
   "prod": "shared",
-  "part": 1
+  "part": 1,
+  "edge": "#303030",
+  "lum": 0.188,
+  "w": 1000,
+  "h": 519
  },
  {
   "idx": 24,
@@ -222,7 +318,11 @@
   "desc": "10pre TFT display macro, angled",
   "cls": "macro",
   "prod": "10pre",
-  "part": 1
+  "part": 1,
+  "edge": "#303030",
+  "lum": 0.188,
+  "w": 2000,
+  "h": 1083
  },
  {
   "idx": 25,
@@ -231,7 +331,11 @@
   "desc": "MACRO: LINE OUT 1-8 TRS jacks",
   "cls": "macro",
   "prod": "10pre",
-  "part": 1
+  "part": 1,
+  "edge": "#202020",
+  "lum": 0.125,
+  "w": 2000,
+  "h": 1188
  },
  {
   "idx": 26,
@@ -240,7 +344,11 @@
   "desc": "10pre full front panel on black",
   "cls": "hero",
   "prod": "10pre",
-  "part": 1
+  "part": 1,
+  "edge": "#000000",
+  "lum": 0.0,
+  "w": 3839,
+  "h": 1749
  },
  {
   "idx": 36,
@@ -249,7 +357,11 @@
   "desc": "MACRO: dual headphone outputs 1+2 with level knobs",
   "cls": "macro",
   "prod": "10pre",
-  "part": 1
+  "part": 1,
+  "edge": "#101010",
+  "lum": 0.063,
+  "w": 992,
+  "h": 606
  },
  {
   "idx": 31,
@@ -258,7 +370,11 @@
   "desc": "CueMix Pro on iPad, angled (shared asset x3)",
   "cls": "software",
   "prod": "shared",
-  "part": 1
+  "part": 1,
+  "edge": "#000010",
+  "lum": 0.005,
+  "w": 1371,
+  "h": 1001
  },
  {
   "idx": 33,
@@ -267,7 +383,11 @@
   "desc": "ESS Technology logo",
   "cls": "logo",
   "prod": "shared",
-  "part": 1
+  "part": 1,
+  "edge": "#102020",
+  "lum": 0.112,
+  "w": 1787,
+  "h": 941
  },
  {
   "idx": 35,
@@ -276,7 +396,11 @@
   "desc": "Thunderbolt logo",
   "cls": "logo",
   "prod": "shared",
-  "part": 1
+  "part": 1,
+  "edge": "#202020",
+  "lum": 0.125,
+  "w": 1353,
+  "h": 941
  },
  {
   "idx": 30,
@@ -285,7 +409,11 @@
   "desc": "Moog modular synthesizer (DC-coupled CV use case)",
   "cls": "context",
   "prod": "shared",
-  "part": 2
+  "part": 2,
+  "edge": "#102020",
+  "lum": 0.112,
+  "w": 2000,
+  "h": 1532
  },
  {
   "idx": 34,
@@ -294,7 +422,11 @@
   "desc": "CueMix Pro Reverb plug-in UI",
   "cls": "software",
   "prod": "shared",
-  "part": 2
+  "part": 2,
+  "edge": "#101010",
+  "lum": 0.063,
+  "w": 2070,
+  "h": 994
  },
  {
   "idx": 37,
@@ -303,7 +435,11 @@
   "desc": "16A on desk, dual displays lit, mic in frame",
   "cls": "hero",
   "prod": "16A",
-  "part": 2
+  "part": 2,
+  "edge": "#101010",
+  "lum": 0.063,
+  "w": 4000,
+  "h": 1845
  },
  {
   "idx": 38,
@@ -312,7 +448,11 @@
   "desc": "CueMix Pro application icon",
   "cls": "logo",
   "prod": "shared",
-  "part": 2
+  "part": 2,
+  "edge": "#f0f0f0",
+  "lum": 0.941,
+  "w": 1024,
+  "h": 1024
  },
  {
   "idx": 39,
@@ -321,7 +461,11 @@
   "desc": "16A TFT display macro PHONES/INPUTS/OUTPUTS/MONITOR",
   "cls": "macro",
   "prod": "16A",
-  "part": 2
+  "part": 2,
+  "edge": "#303030",
+  "lum": 0.188,
+  "w": 2000,
+  "h": 900
  },
  {
   "idx": 40,
@@ -330,7 +474,11 @@
   "desc": "DAW session - clip/scene grid",
   "cls": "software",
   "prod": "shared",
-  "part": 2
+  "part": 2,
+  "edge": "#202030",
+  "lum": 0.13,
+  "w": 2562,
+  "h": 1513
  },
  {
   "idx": 41,
@@ -339,7 +487,11 @@
   "desc": "DAW session - arrangement timeline",
   "cls": "software",
   "prod": "shared",
-  "part": 2
+  "part": 2,
+  "edge": "#303030",
+  "lum": 0.188,
+  "w": 2880,
+  "h": 1711
  },
  {
   "idx": 42,
@@ -348,7 +500,11 @@
   "desc": "16A front-panel labelled line diagram",
   "cls": "diagram",
   "prod": "16A",
-  "part": 2
+  "part": 2,
+  "edge": "#000010",
+  "lum": 0.005,
+  "w": 1371,
+  "h": 1001
  },
  {
   "idx": 43,
@@ -357,7 +513,11 @@
   "desc": "AVB topology diagram - 16A daisy-chain + AVB switch",
   "cls": "diagram",
   "prod": "shared",
-  "part": 2
+  "part": 2,
+  "edge": "#000000",
+  "lum": 0.0,
+  "w": 9021,
+  "h": 7260
  },
  {
   "idx": 44,
@@ -366,7 +526,11 @@
   "desc": "16A full system connection diagram",
   "cls": "diagram",
   "prod": "16A",
-  "part": 2
+  "part": 2,
+  "edge": "#101010",
+  "lum": 0.063,
+  "w": 1751,
+  "h": 768
  },
  {
   "idx": 45,
@@ -375,7 +539,11 @@
   "desc": "CueMix Discovery - 16A, 16A#2, 16A#3, 16A#4 stacked",
   "cls": "software",
   "prod": "16A",
-  "part": 2
+  "part": 2,
+  "edge": "#101010",
+  "lum": 0.063,
+  "w": 2132,
+  "h": 1615
  },
  {
   "idx": 46,
@@ -384,7 +552,11 @@
   "desc": "Round-trip latency diagram 16A ~1.8ms",
   "cls": "diagram",
   "prod": "16A",
-  "part": 2
+  "part": 2,
+  "edge": "#202020",
+  "lum": 0.125,
+  "w": 572,
+  "h": 617
  },
  {
   "idx": 47,
@@ -393,7 +565,11 @@
   "desc": "CueMix channel strip Line In 5 - gate + compressor",
   "cls": "software",
   "prod": "16A",
-  "part": 2
+  "part": 2,
+  "edge": "#101010",
+  "lum": 0.063,
+  "w": 2870,
+  "h": 1836
  },
  {
   "idx": 48,
@@ -402,7 +578,11 @@
   "desc": "CueMix Pro for iOS with 16A",
   "cls": "software",
   "prod": "16A",
-  "part": 2
+  "part": 2,
+  "edge": "#202020",
+  "lum": 0.125,
+  "w": 945,
+  "h": 792
  },
  {
   "idx": 49,
@@ -411,7 +591,11 @@
   "desc": "Rear macro: WORD CLOCK BNC + NETWORK + OPTICAL + TB",
   "cls": "macro",
   "prod": "16A",
-  "part": 2
+  "part": 2,
+  "edge": "#102020",
+  "lum": 0.112,
+  "w": 1787,
+  "h": 941
  },
  {
   "idx": 50,
@@ -420,7 +604,11 @@
   "desc": "CueMix HOME - monitor, headphones, monitor group, talkback",
   "cls": "software",
   "prod": "16A",
-  "part": 2
+  "part": 2,
+  "edge": "#101010",
+  "lum": 0.063,
+  "w": 2870,
+  "h": 2144
  },
  {
   "idx": 51,
@@ -429,7 +617,11 @@
   "desc": "16A FRONT PANEL hero - DUAL TFT displays, light bg",
   "cls": "hero",
   "prod": "16A",
-  "part": 2
+  "part": 2,
+  "edge": "#202020",
+  "lum": 0.125,
+  "w": 3000,
+  "h": 466
  },
  {
   "idx": 52,
@@ -438,7 +630,11 @@
   "desc": "CueMix INPUT TRIM - Line In 1-16",
   "cls": "software",
   "prod": "16A",
-  "part": 2
+  "part": 2,
+  "edge": "#101010",
+  "lum": 0.063,
+  "w": 2870,
+  "h": 1836
  },
  {
   "idx": 53,
@@ -447,7 +643,11 @@
   "desc": "16A front panel wide strip (dual displays)",
   "cls": "hero",
   "prod": "16A",
-  "part": 2
+  "part": 2,
+  "edge": "#c0c0c0",
+  "lum": 0.753,
+  "w": 7268,
+  "h": 720
  },
  {
   "idx": 54,
@@ -456,7 +656,11 @@
   "desc": "CueMix channel strip MIX SENDS - aux buses",
   "cls": "software",
   "prod": "16A",
-  "part": 2
+  "part": 2,
+  "edge": "#101010",
+  "lum": 0.063,
+  "w": 2870,
+  "h": 1836
  },
  {
   "idx": 55,
@@ -465,7 +669,11 @@
   "desc": "16A front panel wide strip variant",
   "cls": "hero",
   "prod": "16A",
-  "part": 2
+  "part": 2,
+  "edge": "#c0c0c0",
+  "lum": 0.753,
+  "w": 7268,
+  "h": 720
  },
  {
   "idx": 56,
@@ -474,7 +682,11 @@
   "desc": "CueMix Pro on desktop display",
   "cls": "software",
   "prod": "16A",
-  "part": 2
+  "part": 2,
+  "edge": "#000000",
+  "lum": 0.0,
+  "w": 4000,
+  "h": 2676
  },
  {
   "idx": 57,
@@ -483,7 +695,11 @@
   "desc": "16A front panel wide strip variant",
   "cls": "hero",
   "prod": "16A",
-  "part": 2
+  "part": 2,
+  "edge": "#c0c0c0",
+  "lum": 0.753,
+  "w": 7268,
+  "h": 720
  },
  {
   "idx": 58,
@@ -492,7 +708,11 @@
   "desc": "CueMix mix settings / fader bank 16A",
   "cls": "software",
   "prod": "16A",
-  "part": 2
+  "part": 2,
+  "edge": "#101010",
+  "lum": 0.063,
+  "w": 2870,
+  "h": 1836
  },
  {
   "idx": 59,
@@ -501,7 +721,11 @@
   "desc": "16A REAR PANEL - 16 LINE OUT + 16 LINE IN, light bg",
   "cls": "hero",
   "prod": "16A",
-  "part": 2
+  "part": 2,
+  "edge": "#101010",
+  "lum": 0.063,
+  "w": 3000,
+  "h": 508
  },
  {
   "idx": 60,
@@ -510,7 +734,11 @@
   "desc": "CueMix OUTPUT TRIM - Line Out 1-16",
   "cls": "software",
   "prod": "16A",
-  "part": 2
+  "part": 2,
+  "edge": "#101010",
+  "lum": 0.063,
+  "w": 2956,
+  "h": 2134
  },
  {
   "idx": 61,
@@ -519,7 +747,11 @@
   "desc": "CueMix 4-band parametric EQ 16A",
   "cls": "software",
   "prod": "16A",
-  "part": 2
+  "part": 2,
+  "edge": "#101010",
+  "lum": 0.063,
+  "w": 2870,
+  "h": 1836
  },
  {
   "idx": 62,
@@ -528,7 +760,11 @@
   "desc": "CueMix PATCH BAY - Line Inputs 1-16 routed to destinations",
   "cls": "software",
   "prod": "16A",
-  "part": 2
+  "part": 2,
+  "edge": "#102020",
+  "lum": 0.112,
+  "w": 2413,
+  "h": 2263
  },
  {
   "idx": 63,
@@ -537,7 +773,11 @@
   "desc": "CueMix PATCH BAY variant - line inputs to host",
   "cls": "software",
   "prod": "16A",
-  "part": 2
+  "part": 2,
+  "edge": "#101010",
+  "lum": 0.063,
+  "w": 2974,
+  "h": 1836
  },
  {
   "idx": 64,
@@ -546,7 +786,11 @@
   "desc": "16A with laptop on top, displays glowing (hero/lifestyle)",
   "cls": "hero",
   "prod": "16A",
-  "part": 2
+  "part": 2,
+  "edge": "#202020",
+  "lum": 0.125,
+  "w": 2509,
+  "h": 2166
  },
  {
   "idx": 65,
@@ -555,7 +799,11 @@
   "desc": "DAW plug-in collage (bundled software)",
   "cls": "software",
   "prod": "shared",
-  "part": 2
+  "part": 2,
+  "edge": "#102020",
+  "lum": 0.112,
+  "w": 2880,
+  "h": 834
  },
  {
   "idx": 66,
@@ -564,7 +812,11 @@
   "desc": "MACRO: rear OPTICAL + LINE OUT dense TRS rows",
   "cls": "macro",
   "prod": "16A",
-  "part": 2
+  "part": 2,
+  "edge": "#202020",
+  "lum": 0.125,
+  "w": 2000,
+  "h": 900
  },
  {
   "idx": 67,
@@ -573,7 +825,11 @@
   "desc": "MOTU 40Gbps Thunderbolt cable",
   "cls": "context",
   "prod": "shared",
-  "part": 2
+  "part": 2,
+  "edge": "#102020",
+  "lum": 0.112,
+  "w": 2000,
+  "h": 1472
  },
  {
   "idx": 68,
@@ -582,7 +838,11 @@
   "desc": "MACRO: LINE OUT TRS jacks 5-14",
   "cls": "macro",
   "prod": "16A",
-  "part": 2
+  "part": 2,
+  "edge": "#202020",
+  "lum": 0.125,
+  "w": 2000,
+  "h": 1188
  },
  {
   "idx": 69,
@@ -591,7 +851,11 @@
   "desc": "16A rear fully patched, top-down with cable fan",
   "cls": "context",
   "prod": "16A",
-  "part": 2
+  "part": 2,
+  "edge": "#000000",
+  "lum": 0.0,
+  "w": 4000,
+  "h": 2793
  },
  {
   "idx": 70,
@@ -600,7 +864,11 @@
   "desc": "CueMix routing matrix grid",
   "cls": "software",
   "prod": "16A",
-  "part": 2
+  "part": 2,
+  "edge": "#c0c0c0",
+  "lum": 0.753,
+  "w": 2520,
+  "h": 1415
  },
  {
   "idx": 71,
@@ -609,7 +877,11 @@
   "desc": "MACRO: NETWORK RJ45 + OPTICAL + Thunderbolt",
   "cls": "macro",
   "prod": "16A",
-  "part": 2
+  "part": 2,
+  "edge": "#101010",
+  "lum": 0.063,
+  "w": 2000,
+  "h": 1188
  },
  {
   "idx": 27,
@@ -618,7 +890,11 @@
   "desc": "MACRO: A / B / C + MUTE / MONO / TALK monitor buttons",
   "cls": "macro",
   "prod": "848",
-  "part": 3
+  "part": 3,
+  "edge": "#303030",
+  "lum": 0.188,
+  "w": 423,
+  "h": 481
  },
  {
   "idx": 28,
@@ -627,7 +903,11 @@
   "desc": "CueMix PATCHBAY - Proxy Device: 848 host outputs",
   "cls": "software",
   "prod": "848",
-  "part": 3
+  "part": 3,
+  "edge": "#202020",
+  "lum": 0.125,
+  "w": 2000,
+  "h": 1052
  },
  {
   "idx": 29,
@@ -636,7 +916,11 @@
   "desc": "MACRO: NETWORK + OPTICAL + Thunderbolt rear cluster",
   "cls": "macro",
   "prod": "848",
-  "part": 3
+  "part": 3,
+  "edge": "#101010",
+  "lum": 0.063,
+  "w": 2000,
+  "h": 1188
  },
  {
   "idx": 32,
@@ -645,7 +929,11 @@
   "desc": "AVB topology - 10pre/848/16A daisy-chain + AVB switch",
   "cls": "diagram",
   "prod": "shared",
-  "part": 3
+  "part": 3,
+  "edge": "#000000",
+  "lum": 0.0,
+  "w": 9021,
+  "h": 7260
  },
  {
   "idx": 72,
@@ -654,7 +942,11 @@
   "desc": "Studio control room with monitor array + console",
   "cls": "context",
   "prod": "shared",
-  "part": 3
+  "part": 3,
+  "edge": "#303030",
+  "lum": 0.188,
+  "w": 1000,
+  "h": 519
  },
  {
   "idx": 73,
@@ -663,7 +955,11 @@
   "desc": "CueMix Pro application icon",
   "cls": "logo",
   "prod": "shared",
-  "part": 3
+  "part": 3,
+  "edge": "#f0f0f0",
+  "lum": 0.941,
+  "w": 1024,
+  "h": 1024
  },
  {
   "idx": 74,
@@ -672,7 +968,11 @@
   "desc": "848 full front panel on black",
   "cls": "hero",
   "prod": "848",
-  "part": 3
+  "part": 3,
+  "edge": "#000000",
+  "lum": 0.0,
+  "w": 3839,
+  "h": 1749
  },
  {
   "idx": 75,
@@ -681,7 +981,11 @@
   "desc": "MOTU Instruments soundbank collage",
   "cls": "context",
   "prod": "shared",
-  "part": 3
+  "part": 3,
+  "edge": "#101010",
+  "lum": 0.063,
+  "w": 1678,
+  "h": 948
  },
  {
   "idx": 76,
@@ -690,7 +994,11 @@
   "desc": "CueMix routing matrix grid 848",
   "cls": "software",
   "prod": "848",
-  "part": 3
+  "part": 3,
+  "edge": "#c0c0c0",
+  "lum": 0.753,
+  "w": 2516,
+  "h": 1415
  },
  {
   "idx": 77,
@@ -699,7 +1007,11 @@
   "desc": "Milan (Avnu) certification logo",
   "cls": "logo",
   "prod": "shared",
-  "part": 3
+  "part": 3,
+  "edge": "#f0f0f0",
+  "lum": 0.941,
+  "w": 1652,
+  "h": 1064
  },
  {
   "idx": 78,
@@ -708,7 +1020,11 @@
   "desc": "848 TFT display macro PHONES/IN/OUT/MONITOR",
   "cls": "macro",
   "prod": "848",
-  "part": 3
+  "part": 3,
+  "edge": "#303030",
+  "lum": 0.188,
+  "w": 2000,
+  "h": 1083
  },
  {
   "idx": 79,
@@ -717,7 +1033,11 @@
   "desc": "Big Fish Audio content-bundle logo",
   "cls": "logo",
   "prod": "shared",
-  "part": 3
+  "part": 3,
+  "edge": "#303030",
+  "lum": 0.188,
+  "w": 2880,
+  "h": 1711
  },
  {
   "idx": 80,
@@ -726,7 +1046,11 @@
   "desc": "848 front-panel labelled line diagram",
   "cls": "diagram",
   "prod": "848",
-  "part": 3
+  "part": 3,
+  "edge": "#102020",
+  "lum": 0.112,
+  "w": 2000,
+  "h": 1532
  },
  {
   "idx": 81,
@@ -735,7 +1059,11 @@
   "desc": "848 full system connection diagram",
   "cls": "diagram",
   "prod": "848",
-  "part": 3
+  "part": 3,
+  "edge": "#000010",
+  "lum": 0.005,
+  "w": 1371,
+  "h": 1001
  },
  {
   "idx": 82,
@@ -744,7 +1072,11 @@
   "desc": "Round-trip latency diagram 848 ~1.8ms",
   "cls": "diagram",
   "prod": "848",
-  "part": 3
+  "part": 3,
+  "edge": "#000000",
+  "lum": 0.0,
+  "w": 9021,
+  "h": 7260
  },
  {
   "idx": 83,
@@ -753,7 +1085,11 @@
   "desc": "CueMix Pro for iOS with 848 (gain knobs, combos)",
   "cls": "software",
   "prod": "848",
-  "part": 3
+  "part": 3,
+  "edge": "#102020",
+  "lum": 0.112,
+  "w": 1787,
+  "h": 941
  },
  {
   "idx": 84,
@@ -762,7 +1098,11 @@
   "desc": "Loopmasters content-bundle logo",
   "cls": "logo",
   "prod": "shared",
-  "part": 3
+  "part": 3,
+  "edge": "#202020",
+  "lum": 0.125,
+  "w": 1149,
+  "h": 1186
  },
  {
   "idx": 85,
@@ -771,7 +1111,11 @@
   "desc": "Lucid Samples content-bundle logo",
   "cls": "logo",
   "prod": "shared",
-  "part": 3
+  "part": 3,
+  "edge": "#202020",
+  "lum": 0.125,
+  "w": 1149,
+  "h": 1186
  },
  {
   "idx": 86,
@@ -780,7 +1124,11 @@
   "desc": "848 FRONT PANEL hero, light bg",
   "cls": "hero",
   "prod": "848",
-  "part": 3
+  "part": 3,
+  "edge": "#202020",
+  "lum": 0.125,
+  "w": 3000,
+  "h": 466
  },
  {
   "idx": 87,
@@ -789,7 +1137,11 @@
   "desc": "848 REAR PANEL full array, light bg",
   "cls": "hero",
   "prod": "848",
-  "part": 3
+  "part": 3,
+  "edge": "#102020",
+  "lum": 0.112,
+  "w": 2880,
+  "h": 834
  },
  {
   "idx": 88,
@@ -798,7 +1150,11 @@
   "desc": "Thunderbolt logo",
   "cls": "logo",
   "prod": "shared",
-  "part": 3
+  "part": 3,
+  "edge": "#202020",
+  "lum": 0.125,
+  "w": 1353,
+  "h": 941
  },
  {
   "idx": 89,
@@ -807,7 +1163,11 @@
   "desc": "MACRO: dual headphone outputs 1+2 with knobs",
   "cls": "macro",
   "prod": "848",
-  "part": 3
+  "part": 3,
+  "edge": "#101010",
+  "lum": 0.063,
+  "w": 1000,
+  "h": 611
  },
  {
   "idx": 90,
@@ -816,7 +1176,11 @@
   "desc": "MACRO: LINE OUT TRS jacks 3-12 (Atmos array)",
   "cls": "macro",
   "prod": "848",
-  "part": 3
+  "part": 3,
+  "edge": "#202020",
+  "lum": 0.125,
+  "w": 2000,
+  "h": 1188
  },
  {
   "idx": 91,
@@ -825,7 +1189,11 @@
   "desc": "Cable snake into 848 rear panel (black bg)",
   "cls": "context",
   "prod": "848",
-  "part": 3
+  "part": 3,
+  "edge": "#000000",
+  "lum": 0.0,
+  "w": 4000,
+  "h": 2374
  },
  {
   "idx": 92,
@@ -834,7 +1202,11 @@
   "desc": "MACRO: NETWORK + OPTICAL + LINE OUT 7-12",
   "cls": "macro",
   "prod": "848",
-  "part": 3
+  "part": 3,
+  "edge": "#202020",
+  "lum": 0.125,
+  "w": 2000,
+  "h": 1083
  },
  {
   "idx": 93,
@@ -843,7 +1215,11 @@
   "desc": "MACRO: INSERTS SND/RET ch3-4 + MIC/LINE/INST combos",
   "cls": "macro",
   "prod": "848",
-  "part": 3
+  "part": 3,
+  "edge": "#102020",
+  "lum": 0.112,
+  "w": 1038,
+  "h": 629
  },
  {
   "idx": 94,
@@ -852,7 +1228,11 @@
   "desc": "848 TFT display macro, wide",
   "cls": "macro",
   "prod": "848",
-  "part": 3
+  "part": 3,
+  "edge": "#303030",
+  "lum": 0.188,
+  "w": 1522,
+  "h": 485
  },
  {
   "idx": 95,
@@ -861,7 +1241,11 @@
   "desc": "MACRO: MIC/LINE/INSTRUMENT IN combos 1-4",
   "cls": "macro",
   "prod": "848",
-  "part": 3
+  "part": 3,
+  "edge": "#101010",
+  "lum": 0.063,
+  "w": 1038,
+  "h": 629
  },
  {
   "idx": 96,
@@ -870,7 +1254,11 @@
   "desc": "CueMix Pro on desktop display",
   "cls": "software",
   "prod": "848",
-  "part": 3
+  "part": 3,
+  "edge": "#000000",
+  "lum": 0.0,
+  "w": 4000,
+  "h": 2676
  },
  {
   "idx": 97,
@@ -879,7 +1267,11 @@
   "desc": "MONITOR GROUP button row 1-12 macro",
   "cls": "macro",
   "prod": "848",
-  "part": 3
+  "part": 3,
+  "edge": "#102020",
+  "lum": 0.112,
+  "w": 2000,
+  "h": 714
  },
  {
   "idx": 98,
@@ -888,6 +1280,10 @@
   "desc": "CueMix PATCHBAY mic+line inputs to host",
   "cls": "software",
   "prod": "848",
-  "part": 3
+  "part": 3,
+  "edge": "#102020",
+  "lum": 0.112,
+  "w": 4000,
+  "h": 2436
  }
 ]

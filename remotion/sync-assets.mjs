@@ -51,6 +51,13 @@ export type Asset = {
   /** product actually depicted, or 'shared' */
   prod: '10pre' | '16A' | '848' | 'shared';
   part: 1 | 2 | 3;
+  /** modal border colour, so a contained image dissolves into its plate */
+  edge: string;
+  /** border luminance 0..1; <0.45 means the source is a dark-field image */
+  lum: number;
+  /** native pixel dimensions */
+  w: number;
+  h: number;
 };
 
 export const ASSETS: Asset[] = ${JSON.stringify(assets, null, 1)};
