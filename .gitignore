@@ -1,0 +1,6 @@
+node_modules/
+build/
+qa/
+public/images/
+public/fonts/
+*.log

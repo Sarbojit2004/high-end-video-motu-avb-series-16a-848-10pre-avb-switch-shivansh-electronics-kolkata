@@ -1,0 +1,926 @@
+{
+  "fps": 30,
+  "durationInFrames": 5340,
+  "musicSource": "ES_Mindscape - Lennon Hutton",
+  "musicPath": "Path A \u2014 Ecosystem Unification (one core track, per-chapter stem layering)",
+  "parts": {
+    "1": {
+      "id": "part1",
+      "chapter": "THE SOURCE",
+      "product": "10pre",
+      "outfile": "motu-avb-reel-part1-10pre.mp4",
+      "scenes": [
+        {
+          "id": "S01",
+          "name": "Hook",
+          "from": 0,
+          "dur": 300
+        },
+        {
+          "id": "S02",
+          "name": "IdenticalEngine",
+          "from": 300,
+          "dur": 390
+        },
+        {
+          "id": "S03",
+          "name": "EngineSpecs",
+          "from": 690,
+          "dur": 390
+        },
+        {
+          "id": "S04",
+          "name": "ChapterCard",
+          "from": 1080,
+          "dur": 150
+        },
+        {
+          "id": "S05",
+          "name": "TenPreReveal",
+          "from": 1230,
+          "dur": 390
+        },
+        {
+          "id": "S06",
+          "name": "Preamps",
+          "from": 1620,
+          "dur": 450
+        },
+        {
+          "id": "S07",
+          "name": "EightTwoSplit",
+          "from": 2070,
+          "dur": 390
+        },
+        {
+          "id": "S08",
+          "name": "FrontPanel",
+          "from": 2460,
+          "dur": 360
+        },
+        {
+          "id": "S09",
+          "name": "CueMix",
+          "from": 2820,
+          "dur": 480
+        },
+        {
+          "id": "S10",
+          "name": "OpticalExpansion",
+          "from": 3300,
+          "dur": 390
+        },
+        {
+          "id": "S11",
+          "name": "Monitoring",
+          "from": 3690,
+          "dur": 330
+        },
+        {
+          "id": "S12",
+          "name": "AvbSeed",
+          "from": 4020,
+          "dur": 450
+        },
+        {
+          "id": "S13",
+          "name": "StudioContext",
+          "from": 4470,
+          "dur": 360
+        },
+        {
+          "id": "S14",
+          "name": "IdentityBadges",
+          "from": 4830,
+          "dur": 210
+        },
+        {
+          "id": "S15",
+          "name": "CtaTease",
+          "from": 5040,
+          "dur": 300
+        }
+      ],
+      "sfx": [
+        {
+          "at": 300,
+          "cue": "encoder-click",
+          "gain": 0.55,
+          "rate": 1.0
+        },
+        {
+          "at": 690,
+          "cue": "encoder-click",
+          "gain": 0.5,
+          "rate": 1.06
+        },
+        {
+          "at": 1080,
+          "cue": "rj45-snap",
+          "gain": 0.6,
+          "rate": 1.0
+        },
+        {
+          "at": 1230,
+          "cue": "avb-ping",
+          "gain": 0.42,
+          "rate": 1.0
+        },
+        {
+          "at": 1620,
+          "cue": "encoder-click",
+          "gain": 0.55,
+          "rate": 0.96
+        },
+        {
+          "at": 1700,
+          "cue": "encoder-click",
+          "gain": 0.36,
+          "rate": 1.12
+        },
+        {
+          "at": 2070,
+          "cue": "encoder-click",
+          "gain": 0.5,
+          "rate": 1.0
+        },
+        {
+          "at": 2460,
+          "cue": "encoder-click",
+          "gain": 0.5,
+          "rate": 1.04
+        },
+        {
+          "at": 2820,
+          "cue": "encoder-click",
+          "gain": 0.58,
+          "rate": 0.92
+        },
+        {
+          "at": 3300,
+          "cue": "rj45-snap",
+          "gain": 0.5,
+          "rate": 1.05
+        },
+        {
+          "at": 3420,
+          "cue": "avb-ping",
+          "gain": 0.34,
+          "rate": 1.18
+        },
+        {
+          "at": 3690,
+          "cue": "encoder-click",
+          "gain": 0.48,
+          "rate": 1.0
+        },
+        {
+          "at": 4020,
+          "cue": "rj45-snap",
+          "gain": 0.62,
+          "rate": 0.98
+        },
+        {
+          "at": 4140,
+          "cue": "avb-ping",
+          "gain": 0.46,
+          "rate": 1.0
+        },
+        {
+          "at": 4290,
+          "cue": "avb-ping",
+          "gain": 0.3,
+          "rate": 1.335
+        },
+        {
+          "at": 4470,
+          "cue": "encoder-click",
+          "gain": 0.46,
+          "rate": 1.0
+        },
+        {
+          "at": 4830,
+          "cue": "encoder-click",
+          "gain": 0.5,
+          "rate": 1.08
+        },
+        {
+          "at": 5040,
+          "cue": "avb-ping",
+          "gain": 0.4,
+          "rate": 0.94
+        }
+      ],
+      "ambient": [
+        {
+          "cue": "data-stream",
+          "from": 4020,
+          "to": 4470,
+          "gain": 0.22
+        },
+        {
+          "cue": "data-stream",
+          "from": 300,
+          "to": 690,
+          "gain": 0.12
+        }
+      ],
+      "stems": {
+        "INSTRUMENTS": [
+          [
+            0,
+            0.0
+          ],
+          [
+            2,
+            0.85
+          ],
+          [
+            40,
+            0.9
+          ],
+          [
+            95,
+            1.0
+          ],
+          [
+            150,
+            0.95
+          ],
+          [
+            178,
+            0.6
+          ]
+        ],
+        "BASS": [
+          [
+            0,
+            0.0
+          ],
+          [
+            12,
+            0.0
+          ],
+          [
+            16,
+            0.8
+          ],
+          [
+            95,
+            0.9
+          ],
+          [
+            135,
+            0.75
+          ],
+          [
+            178,
+            0.5
+          ]
+        ],
+        "MELODY": [
+          [
+            0,
+            0.0
+          ],
+          [
+            36,
+            0.0
+          ],
+          [
+            42,
+            0.7
+          ],
+          [
+            92,
+            0.85
+          ],
+          [
+            98,
+            0.25
+          ],
+          [
+            132,
+            0.25
+          ],
+          [
+            140,
+            0.8
+          ],
+          [
+            178,
+            0.7
+          ]
+        ]
+      }
+    },
+    "2": {
+      "id": "part2",
+      "chapter": "THE MATRIX",
+      "product": "16A",
+      "outfile": "motu-avb-reel-part2-16a.mp4",
+      "scenes": [
+        {
+          "id": "S01",
+          "name": "RecapHook",
+          "from": 0,
+          "dur": 300
+        },
+        {
+          "id": "S02",
+          "name": "ChapterCard",
+          "from": 300,
+          "dur": 150
+        },
+        {
+          "id": "S03",
+          "name": "SixteenAReveal",
+          "from": 450,
+          "dur": 420
+        },
+        {
+          "id": "S04",
+          "name": "ZeroPreamps",
+          "from": 870,
+          "dur": 390
+        },
+        {
+          "id": "S05",
+          "name": "SixteenIn",
+          "from": 1260,
+          "dur": 420
+        },
+        {
+          "id": "S06",
+          "name": "SixteenOut",
+          "from": 1680,
+          "dur": 390
+        },
+        {
+          "id": "S07",
+          "name": "DualDisplays",
+          "from": 2070,
+          "dur": 330
+        },
+        {
+          "id": "S08",
+          "name": "PatchMatrix",
+          "from": 2400,
+          "dur": 480
+        },
+        {
+          "id": "S09",
+          "name": "AdatOptical",
+          "from": 2880,
+          "dur": 390
+        },
+        {
+          "id": "S10",
+          "name": "EngineCallback",
+          "from": 3270,
+          "dur": 390
+        },
+        {
+          "id": "S11",
+          "name": "DawIntegration",
+          "from": 3660,
+          "dur": 420
+        },
+        {
+          "id": "S12",
+          "name": "AvbChain",
+          "from": 4080,
+          "dur": 450
+        },
+        {
+          "id": "S13",
+          "name": "MultiDevice",
+          "from": 4530,
+          "dur": 330
+        },
+        {
+          "id": "S14",
+          "name": "IdentityBadges",
+          "from": 4860,
+          "dur": 210
+        },
+        {
+          "id": "S15",
+          "name": "CtaTease",
+          "from": 5070,
+          "dur": 270
+        }
+      ],
+      "sfx": [
+        {
+          "at": 300,
+          "cue": "rj45-snap",
+          "gain": 0.6,
+          "rate": 1.0
+        },
+        {
+          "at": 450,
+          "cue": "avb-ping",
+          "gain": 0.44,
+          "rate": 1.0
+        },
+        {
+          "at": 870,
+          "cue": "encoder-click",
+          "gain": 0.55,
+          "rate": 0.97
+        },
+        {
+          "at": 1260,
+          "cue": "encoder-click",
+          "gain": 0.5,
+          "rate": 1.05
+        },
+        {
+          "at": 1340,
+          "cue": "encoder-click",
+          "gain": 0.34,
+          "rate": 1.14
+        },
+        {
+          "at": 1680,
+          "cue": "encoder-click",
+          "gain": 0.52,
+          "rate": 1.0
+        },
+        {
+          "at": 2070,
+          "cue": "encoder-click",
+          "gain": 0.5,
+          "rate": 0.94
+        },
+        {
+          "at": 2400,
+          "cue": "encoder-click",
+          "gain": 0.56,
+          "rate": 1.02
+        },
+        {
+          "at": 2880,
+          "cue": "rj45-snap",
+          "gain": 0.52,
+          "rate": 1.06
+        },
+        {
+          "at": 3270,
+          "cue": "encoder-click",
+          "gain": 0.48,
+          "rate": 1.0
+        },
+        {
+          "at": 3660,
+          "cue": "avb-ping",
+          "gain": 0.4,
+          "rate": 0.96
+        },
+        {
+          "at": 4080,
+          "cue": "rj45-snap",
+          "gain": 0.62,
+          "rate": 0.99
+        },
+        {
+          "at": 4200,
+          "cue": "avb-ping",
+          "gain": 0.46,
+          "rate": 1.0
+        },
+        {
+          "at": 4350,
+          "cue": "avb-ping",
+          "gain": 0.32,
+          "rate": 1.335
+        },
+        {
+          "at": 4530,
+          "cue": "encoder-click",
+          "gain": 0.46,
+          "rate": 1.08
+        },
+        {
+          "at": 4860,
+          "cue": "encoder-click",
+          "gain": 0.5,
+          "rate": 1.0
+        },
+        {
+          "at": 5070,
+          "cue": "avb-ping",
+          "gain": 0.4,
+          "rate": 0.94
+        }
+      ],
+      "ambient": [
+        {
+          "cue": "data-stream",
+          "from": 4080,
+          "to": 4530,
+          "gain": 0.24
+        },
+        {
+          "cue": "data-stream",
+          "from": 2400,
+          "to": 2880,
+          "gain": 0.14
+        }
+      ],
+      "stems": {
+        "INSTRUMENTS": [
+          [
+            0,
+            0.0
+          ],
+          [
+            2,
+            0.9
+          ],
+          [
+            60,
+            1.0
+          ],
+          [
+            120,
+            0.95
+          ],
+          [
+            178,
+            0.62
+          ]
+        ],
+        "BASS": [
+          [
+            0,
+            0.0
+          ],
+          [
+            6,
+            0.7
+          ],
+          [
+            48,
+            0.95
+          ],
+          [
+            130,
+            0.9
+          ],
+          [
+            178,
+            0.55
+          ]
+        ],
+        "MELODY": [
+          [
+            0,
+            0.0
+          ],
+          [
+            28,
+            0.0
+          ],
+          [
+            34,
+            0.55
+          ],
+          [
+            86,
+            0.7
+          ],
+          [
+            92,
+            0.2
+          ],
+          [
+            140,
+            0.2
+          ],
+          [
+            148,
+            0.75
+          ],
+          [
+            178,
+            0.68
+          ]
+        ]
+      }
+    },
+    "3": {
+      "id": "part3",
+      "chapter": "THE COMMAND CENTER & THE NETWORK",
+      "product": "848 + AVB Switch",
+      "outfile": "motu-avb-reel-part3-848-avbswitch.mp4",
+      "scenes": [
+        {
+          "id": "S01",
+          "name": "RecapHook",
+          "from": 0,
+          "dur": 300
+        },
+        {
+          "id": "S02",
+          "name": "ChapterCard",
+          "from": 300,
+          "dur": 150
+        },
+        {
+          "id": "S03",
+          "name": "EightFortyEightReveal",
+          "from": 450,
+          "dur": 360
+        },
+        {
+          "id": "S04",
+          "name": "FourPreamps",
+          "from": 810,
+          "dur": 360
+        },
+        {
+          "id": "S05",
+          "name": "ControlRoom",
+          "from": 1170,
+          "dur": 360
+        },
+        {
+          "id": "S06",
+          "name": "AtmosMonitoring",
+          "from": 1530,
+          "dur": 360
+        },
+        {
+          "id": "S07",
+          "name": "HeadphonesInserts",
+          "from": 1890,
+          "dur": 300
+        },
+        {
+          "id": "S08",
+          "name": "PatchAndMix",
+          "from": 2190,
+          "dur": 360
+        },
+        {
+          "id": "S09",
+          "name": "EngineCallback",
+          "from": 2550,
+          "dur": 300
+        },
+        {
+          "id": "S10",
+          "name": "AvbSwitchReveal",
+          "from": 2850,
+          "dur": 390
+        },
+        {
+          "id": "S11",
+          "name": "SwitchSpecs",
+          "from": 3240,
+          "dur": 330
+        },
+        {
+          "id": "S12",
+          "name": "FullNetwork",
+          "from": 3570,
+          "dur": 480
+        },
+        {
+          "id": "S13",
+          "name": "ScaleNumbers",
+          "from": 4050,
+          "dur": 300
+        },
+        {
+          "id": "S14",
+          "name": "IdentityBadges",
+          "from": 4350,
+          "dur": 210
+        },
+        {
+          "id": "S15",
+          "name": "SeriesOutro",
+          "from": 4560,
+          "dur": 780
+        }
+      ],
+      "sfx": [
+        {
+          "at": 300,
+          "cue": "rj45-snap",
+          "gain": 0.58,
+          "rate": 1.0
+        },
+        {
+          "at": 450,
+          "cue": "avb-ping",
+          "gain": 0.44,
+          "rate": 1.0
+        },
+        {
+          "at": 810,
+          "cue": "encoder-click",
+          "gain": 0.54,
+          "rate": 0.98
+        },
+        {
+          "at": 1170,
+          "cue": "encoder-click",
+          "gain": 0.5,
+          "rate": 1.05
+        },
+        {
+          "at": 1530,
+          "cue": "talkback-click",
+          "gain": 0.74,
+          "rate": 1.0
+        },
+        {
+          "at": 1610,
+          "cue": "talkback-click",
+          "gain": 0.42,
+          "rate": 1.08
+        },
+        {
+          "at": 1890,
+          "cue": "encoder-click",
+          "gain": 0.52,
+          "rate": 0.95
+        },
+        {
+          "at": 2190,
+          "cue": "encoder-click",
+          "gain": 0.48,
+          "rate": 1.06
+        },
+        {
+          "at": 2550,
+          "cue": "encoder-click",
+          "gain": 0.56,
+          "rate": 0.92
+        },
+        {
+          "at": 2850,
+          "cue": "encoder-click",
+          "gain": 0.46,
+          "rate": 1.1
+        },
+        {
+          "at": 3240,
+          "cue": "rj45-snap",
+          "gain": 0.68,
+          "rate": 1.0
+        },
+        {
+          "at": 3350,
+          "cue": "avb-ping",
+          "gain": 0.46,
+          "rate": 1.0
+        },
+        {
+          "at": 3570,
+          "cue": "rj45-snap",
+          "gain": 0.54,
+          "rate": 1.04
+        },
+        {
+          "at": 4050,
+          "cue": "rj45-snap",
+          "gain": 0.66,
+          "rate": 0.98
+        },
+        {
+          "at": 4120,
+          "cue": "avb-ping",
+          "gain": 0.48,
+          "rate": 1.0
+        },
+        {
+          "at": 4190,
+          "cue": "avb-ping",
+          "gain": 0.38,
+          "rate": 1.2
+        },
+        {
+          "at": 4260,
+          "cue": "avb-ping",
+          "gain": 0.3,
+          "rate": 1.335
+        },
+        {
+          "at": 4350,
+          "cue": "encoder-click",
+          "gain": 0.48,
+          "rate": 1.0
+        },
+        {
+          "at": 4560,
+          "cue": "avb-ping",
+          "gain": 0.44,
+          "rate": 0.94
+        }
+      ],
+      "ambient": [
+        {
+          "cue": "data-stream",
+          "from": 4050,
+          "to": 4560,
+          "gain": 0.26
+        },
+        {
+          "cue": "data-stream",
+          "from": 3240,
+          "to": 3570,
+          "gain": 0.16
+        }
+      ],
+      "stems": {
+        "INSTRUMENTS": [
+          [
+            0,
+            0.0
+          ],
+          [
+            2,
+            0.88
+          ],
+          [
+            70,
+            1.0
+          ],
+          [
+            150,
+            1.0
+          ],
+          [
+            178,
+            0.5
+          ]
+        ],
+        "BASS": [
+          [
+            0,
+            0.0
+          ],
+          [
+            8,
+            0.72
+          ],
+          [
+            70,
+            0.95
+          ],
+          [
+            144,
+            1.0
+          ],
+          [
+            178,
+            0.45
+          ]
+        ],
+        "MELODY": [
+          [
+            0,
+            0.0
+          ],
+          [
+            24,
+            0.0
+          ],
+          [
+            30,
+            0.6
+          ],
+          [
+            100,
+            0.8
+          ],
+          [
+            106,
+            0.3
+          ],
+          [
+            138,
+            0.35
+          ],
+          [
+            146,
+            0.9
+          ],
+          [
+            172,
+            0.9
+          ],
+          [
+            178,
+            0.55
+          ]
+        ]
+      }
+    }
+  }
+}
