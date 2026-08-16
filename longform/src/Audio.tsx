@@ -172,19 +172,29 @@ export const SfxTimeline: React.FC<{ gain?: number }> = ({ gain = 1 }) => (
   </>
 );
 
-/** Placeholder narration slot — silent until the recorded VO is dropped in. */
-export const Voiceover: React.FC = () => {
-  const [ok, setOk] = React.useState(false);
-  React.useEffect(() => {
-    fetch(VO(), { method: "HEAD" }).then((r) => setOk(r.ok)).catch(() => setOk(false));
-  }, []);
-  return ok ? <Audio src={VO()} volume={1} /> : null;
-};
+/**
+ * PLACEHOLDER NARRATION SLOT (Section 10).
+ *
+ * Drop the recorded narration at `public/vo/voiceover-longform.mp3` and flip
+ * this to `true`. It is a compile-time constant rather than a runtime existence
+ * check on purpose: Remotion renders frames across parallel workers, so a
+ * fetch-and-setState probe would decide differently in different workers and
+ * produce a master with the narration on some frames and not others.
+ *
+ * Left `false`, this branch emits nothing and the render is byte-for-byte what
+ * it would be without the slot at all.
+ */
+export const HAS_VOICEOVER = false;
+
+/** Narration, once HAS_VOICEOVER is switched on. */
+export const Voiceover: React.FC = () =>
+  HAS_VOICEOVER ? <Audio src={VO()} volume={1} /> : null;
 
 /** Everything, as embedded in the delivered MP4. */
 export const FullAudio: React.FC = () => (
   <>
     <MusicBed />
     <SfxTimeline />
+    <Voiceover />
   </>
 );

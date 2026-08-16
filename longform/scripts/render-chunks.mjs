@@ -61,7 +61,16 @@ for (const c of chunks) {
 const listFile = resolve(TMP, "concat.txt");
 writeFileSync(listFile, done.map((f) => `file '${f.replace(/'/g, "'\\''")}'`).join("\n"));
 console.log("\nconcatenating (stream copy, no re-encode)…");
-execFileSync(FF, ["-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", listFile, "-c", "copy", FINAL]);
+// Concat, then trim the AUDIO alone to 898.000 s — see scripts/join-parts.mjs
+// for why (accumulated AAC priming), and why a blanket -t would be wrong.
+const RAW = resolve(TMP, "_joined-raw.mp4");
+execFileSync(FF, ["-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", listFile, "-c", "copy", RAW]);
+execFileSync(FF, ["-v", "error", "-y", "-i", RAW,
+                  "-map", "0:v", "-c:v", "copy",
+                  "-map", "0:a", "-c:a", "aac", "-b:a", "320k",
+                  "-af", "atrim=end=898",
+                  "-movflags", "+faststart", FINAL]);
+rmSync(RAW, { force: true });
 
 const size = statSync(FINAL).size;
 console.log(`wrote ${FINAL}  ${(size / 1e6).toFixed(0)} MB`);
