@@ -8,8 +8,6 @@ out/test/
 # assets — see README. Not tracked.
 public/
 
-# GitHub rejects files over 100 MB and git-lfs is unavailable in this
-# environment. A 178 s reel encodes to ~45 MB so the MP4s ARE tracked; only the
-# uncompressed WAV pairs are not (each ~34 MB — tracked, they fit — but the
-# FLACs are what ship, see README).
-out/*.wav
+# Everything in out/ is tracked: a 178 s reel encodes to ~31 MB and each
+# uncompressed WAV is ~34 MB, all comfortably under GitHub'''s 100 MB file limit.
+# (The long-form format needed workarounds here; at reel length nothing does.)
