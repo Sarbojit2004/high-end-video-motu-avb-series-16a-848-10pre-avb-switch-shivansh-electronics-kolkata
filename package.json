@@ -20,7 +20,9 @@
     "make-zip": "node scripts/make-zip.mjs",
     "coverage": "node scripts/coverage.mjs",
     "vo-check": "node scripts/vo-check.mjs",
-    "qa": "node scripts/qa-stills.mjs"
+    "qa": "node scripts/qa-stills.mjs",
+    "split-renders": "node scripts/split-renders.mjs",
+    "join-renders": "node scripts/join-renders.mjs"
   },
   "dependencies": {
     "@remotion/bundler": "4.0.497",

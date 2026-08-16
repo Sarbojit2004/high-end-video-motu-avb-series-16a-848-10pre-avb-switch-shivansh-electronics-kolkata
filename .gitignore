@@ -11,3 +11,6 @@ public/fonts/
 # delivered directly instead; regenerate with `npm run setup && npm run render:partN`.
 out/*.mp4
 out/*.zip
+
+# ...but the lossless chunks of those masters ARE tracked (see scripts/join-renders.mjs)
+!out/chunks/
