@@ -160,3 +160,31 @@ export const LongThumb1: React.FC = () => (
     specs={[['74 dB', 'GAIN'], ['125 dB', 'DYNAMIC RANGE'], ['1.8 ms', 'LATENCY']]}
   />
 );
+
+export const LongThumb2: React.FC = () => (
+  <LongThumb
+    part={2}
+    product="MOTU 16A"
+    hook="16×16"
+    line1="BALANCED TRS."
+    line2="ZERO PREAMPS."
+    blurb="The patchbay hub for a room already full of outboard gear."
+    heroA={59}
+    heroB={51}
+    specs={[['66', 'CHANNELS'], ['2×', 'RGB DISPLAYS'], ['DC', 'COUPLED OUTS']]}
+  />
+);
+
+export const LongThumb3: React.FC = () => (
+  <LongThumb
+    part={3}
+    product="MOTU 848"
+    hook="7.1.4"
+    line1="NATIVE ATMOS."
+    line2="ONE CLOCK SOURCE."
+    blurb="Twelve analog outputs — exactly what the array needs. No aggregation."
+    heroA={90}
+    heroB={86}
+    specs={[['12', 'TRS OUTPUTS'], ['74 dB', 'COMBO GAIN'], ['A/B/C', 'MONITORING']]}
+  />
+);

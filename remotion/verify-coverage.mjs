@@ -29,11 +29,16 @@ const catalogueHash = Object.fromEntries(
 );
 
 // which catalogue indices actually appear in a timeline
+const LONG = process.argv.includes('--long');
+const SERIES = LONG ? 'long-form' : 'reels';
 const re = /assets: \[([^\]]*)\]/g;
 const placed = new Set();
 const perPart = {};
 for (const p of [1, 2, 3]) {
-  const src = readFileSync(join(here, 'src', `part${p}`, 'timeline.ts'), 'utf8');
+  const rel = LONG
+    ? ['src', 'long', `part${p}`, 'timeline.ts']
+    : ['src', `part${p}`, 'timeline.ts'];
+  const src = readFileSync(join(here, ...rel), 'utf8');
   const ids = [...src.matchAll(re)]
     .flatMap((m) => m[1].split(',').map((x) => x.trim()).filter(Boolean))
     .map(Number);
@@ -51,8 +56,8 @@ for (const f of files) {
 
 const uniqueHashes = new Set(Object.values(hashOf));
 
-console.log('MANDATORY COVERAGE AUDIT');
-console.log('========================');
+console.log(`MANDATORY COVERAGE AUDIT — ${SERIES}`);
+console.log('='.repeat(28 + SERIES.length));
 console.log(`repo product images        : ${files.length}`);
 console.log(`unique by content (md5)    : ${uniqueHashes.size}`);
 console.log(`redundant duplicate copies : ${files.length - uniqueHashes.size}`);
@@ -65,7 +70,11 @@ if (uncovered.length) {
   console.log('NOT COVERED:');
   uncovered.forEach((f) => console.log(`  - ${f}`));
 } else {
-  console.log('every repo product image appears on screen across the three reels');
+  console.log(
+    `every repo product image appears on screen across the three ${
+      LONG ? 'long-form parts' : 'reels'
+    }`,
+  );
 }
 
 const unplaced = assets.filter((a) => !placed.has(a.idx));

@@ -7,8 +7,10 @@ import { Thumb1 } from './thumbnails/Thumb1';
 import { Thumb2 } from './thumbnails/Thumb2';
 import { Thumb3 } from './thumbnails/Thumb3';
 import { LongPart1 } from './long/part1/LongPart1';
+import { LongPart2 } from './long/part2/LongPart2';
+import { LongPart3 } from './long/part3/LongPart3';
 import { LONG_FRAMES, LW, LH } from './long/layout';
-import { LongThumb1 } from './long/LongThumb';
+import { LongThumb1, LongThumb2, LongThumb3 } from './long/LongThumb';
 import { FPS, H, PART_FRAMES, W } from './theme';
 
 const reel = { durationInFrames: PART_FRAMES, fps: FPS, width: W, height: H };
@@ -23,7 +25,11 @@ export const RemotionRoot: React.FC = () => (
     <Composition id="Part2" component={Part2} {...reel} />
     <Composition id="Part3" component={Part3} {...reel} />
     <Composition id="LongPart1" component={LongPart1} {...long} />
+    <Composition id="LongPart2" component={LongPart2} {...long} />
+    <Composition id="LongPart3" component={LongPart3} {...long} />
     <Composition id="LongThumb1" component={LongThumb1} {...longStill} />
+    <Composition id="LongThumb2" component={LongThumb2} {...longStill} />
+    <Composition id="LongThumb3" component={LongThumb3} {...longStill} />
     <Composition id="Thumb1" component={Thumb1} {...still} />
     <Composition id="Thumb2" component={Thumb2} {...still} />
     <Composition id="Thumb3" component={Thumb3} {...still} />
