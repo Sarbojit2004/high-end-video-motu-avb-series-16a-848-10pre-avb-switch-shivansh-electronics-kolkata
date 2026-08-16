@@ -1,0 +1,29 @@
+{
+  "motu-avb-reel-part1-10pre.mp4": {
+    "bytes": 218374412,
+    "sha256": "c755127f88d1edb3830ffa83bfc3d67cabece053458e680353610f93d65820ed",
+    "parts": [
+      "motu-avb-reel-part1-10pre.mp4.part00",
+      "motu-avb-reel-part1-10pre.mp4.part01",
+      "motu-avb-reel-part1-10pre.mp4.part02"
+    ]
+  },
+  "motu-avb-reel-part2-16a.mp4": {
+    "bytes": 210747445,
+    "sha256": "935c6162ad629d52f077863237bbe25d674fe4f365ceccae7a9fc62f137652d2",
+    "parts": [
+      "motu-avb-reel-part2-16a.mp4.part00",
+      "motu-avb-reel-part2-16a.mp4.part01",
+      "motu-avb-reel-part2-16a.mp4.part02"
+    ]
+  },
+  "motu-avb-reel-part3-848-avbswitch.mp4": {
+    "bytes": 213687906,
+    "sha256": "66f9b7a2ff9da83112a4f0ce394655a20cb1927bf385cc89d8e74b6ce6b6add4",
+    "parts": [
+      "motu-avb-reel-part3-848-avbswitch.mp4.part00",
+      "motu-avb-reel-part3-848-avbswitch.mp4.part01",
+      "motu-avb-reel-part3-848-avbswitch.mp4.part02"
+    ]
+  }
+}
