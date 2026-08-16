@@ -5,7 +5,7 @@ import { makeReel } from "../Reel";
 
 const { Full } = makeReel(BEATS, BEAT_STARTS);
 
-export const Reel1: React.FC = () => <Full audio={<FullAudio />} />;
+export const Reel2: React.FC = () => <Full audio={<FullAudio />} />;
 
 /** Picture-only build for the QA still pass. */
-export const Reel1Silent: React.FC = () => <Full />;
+export const Reel2Silent: React.FC = () => <Full />;

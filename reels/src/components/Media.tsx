@@ -1,7 +1,7 @@
 import React from "react";
 import { AbsoluteFill, Img, useCurrentFrame } from "remotion";
-import { COLORS, RADII, hexA } from "../theme";
-import { img, meta } from "../assets";
+import { COLORS, RADII, SAFE, hexA } from "../theme";
+import { img, meta, ar } from "../assets";
 import { EASE, ramp, mapClamp, gimbal, inOut } from "../lib/anim";
 import { micro } from "../fonts";
 
@@ -211,12 +211,20 @@ export const PortSweep: React.FC<{
   const frame = useCurrentFrame();
   const sweepEnd = Math.round(duration * 0.7);
 
+  // The pull-back has to REACH 1.0 on a frame that is actually rendered. Ending
+  // it at `duration` meant the last visible frame (duration - 1) still sat at
+  // ~1.02 — a sliver of the unit clipped at the moment of the cut, which is the
+  // one thing this build must never do. It resolves early and then settles
+  // slightly under 1.0, exactly as MacroReveal does, so the complete unit is on
+  // screen and still alive for the final beat of the sweep.
+  const resolveAt = sweepEnd + Math.round((duration - sweepEnd) * 0.78);
   const p = mapClamp(frame, [0, sweepEnd], [from, to], EASE.inOut);
   const scale =
     frame < sweepEnd
       ? zoom
-      : mapClamp(frame, [sweepEnd, duration], [zoom, 1], EASE.out);
-  const originX = frame < sweepEnd ? p : mapClamp(frame, [sweepEnd, duration], [p, 0.5], EASE.out);
+      : mapClamp(frame, [sweepEnd, resolveAt], [zoom, 1], EASE.out) *
+        mapClamp(frame, [resolveAt, duration], [1, 0.988], EASE.linear);
+  const originX = frame < sweepEnd ? p : mapClamp(frame, [sweepEnd, resolveAt], [p, 0.5], EASE.out);
 
   // Rolling focal plane: sharp at centre, soft toward the edges of the move.
   const roll = Math.abs(Math.sin(p * Math.PI * 5)) * 1.7;
@@ -345,23 +353,47 @@ export const Montage: React.FC<{
   cols?: number;
   gap?: number;
   stagger?: number;
+  /** Width the grid is laid out in; only differs from the safe column in tests. */
+  containerW?: number;
   style?: React.CSSProperties;
-}> = ({ items, duration, cols, gap = 22, stagger = 5, style }) => {
+}> = ({ items, duration, cols, gap = 22, stagger = 5, containerW = SAFE.contentW, style }) => {
   const c = cols ?? Math.min(items.length, 3);
   const rows = Math.ceil(items.length / c);
+
+  /**
+   * Row heights come from the images' own aspect ratios, not from an equal
+   * split of whatever height is going spare.
+   *
+   * Equal `1fr` rows meant a row of three square icons in a 1,160px-tall slot
+   * got a 317x1,160 cell each: the image resolved to 317px and centred, while
+   * its caption chip — anchored to the BOTTOM of the cell — stranded itself
+   * ~500px underneath, with a field of white in between. Sizing each row to
+   * `cellWidth / aspect` makes the grid exactly as tall as its contents need,
+   * so captions sit on their images and the block centres as one object.
+   */
+  const cellW = (containerW - gap * (c - 1)) / c;
+  const rowH = Array.from({ length: rows }, (_, r) =>
+    Math.max(...items.slice(r * c, r * c + c).map((it) => cellW / ar(it.idx)))
+  );
+  const natural = rowH.reduce((a, b) => a + b, 0) + gap * (rows - 1);
+
   return (
+    <div style={{ width: "100%", height: "100%", display: "flex", alignItems: "center" }}>
     <div
       style={{
         display: "grid",
         // minmax(0, ...) is load-bearing: a bare `1fr` track has an `auto`
         // minimum, so each row would grow to the intrinsic height of the image
         // inside it and overflow the frame. This is what pushed montage tiles
-        // off the bottom of the canvas.
+        // off the bottom of the canvas. The fr WEIGHTS are the natural row
+        // heights, so rows keep their relative proportions when the grid has to
+        // shrink to fit a slot smaller than `natural`.
         gridTemplateColumns: `repeat(${c}, minmax(0, 1fr))`,
-        gridTemplateRows: `repeat(${rows}, minmax(0, 1fr))`,
+        gridTemplateRows: rowH.map((h) => `minmax(0, ${h.toFixed(2)}fr)`).join(" "),
         gap,
         width: "100%",
-        height: "100%",
+        height: natural,
+        maxHeight: "100%",
         ...style,
       }}
     >
@@ -375,6 +407,7 @@ export const Montage: React.FC<{
           seed={i * 3}
         />
       ))}
+    </div>
     </div>
   );
 };

@@ -93,14 +93,27 @@ export const R1_SHARED = {
 } as const;
 
 // ───────────────────────────────────────────────── Reel 2 — "The Matrix"
-// MOTU 16A + software control. 50 images. (Populated when Reel 2 is built.)
+// MOTU 16A + software control. 50 images.
 export const S16A = {
   qFront: 79, qFrontRight: 80, qRear: 77, qRearRight: 78, qFrontDark: 81,
   frontElevation: 76, rearElevation: 51,
   wideFront: 45, wideFrontAlt: 47, wideFrontB: 49,
   meters: 58, rearOptical: 60, lineOutJacks: 62, rearCableFan: 63,
   networkOptical: 65, rearFull: 74, frontLineArt: 67, connectivity: 69, rtl: 71,
-  deskLifestyle: 42, laptopLifestyle: 56, ipad: 73,
+  deskLifestyle: 42, laptopLifestyle: 56, rackLifestyle: 70, ipad: 73,
+  cuemixInputTrim: 44, cuemixMixSends: 46, cuemixMixing: 50, cuemixOutputs: 52,
+  cuemixEq: 53, cuemixPatchbay: 54, cuemixPatchbayAlt: 55, cuemixDynamics: 72,
+  cuemixHome: 75,
+} as const;
+
+/** Reel 2 shared/context images — CueMix, DAW, bundled content, accessories. */
+export const R2_SHARED = {
+  modularSynth: 21, cuemixBadge: 43, ipadCuemix: 22,
+  cuemixMonitor2: 48, cuemixMonitor3: 96, reverb: 25, usbC: 61,
+  daw1: 2, daw2: 59, daw3: 64, daw4: 66, daw5: 99,
+  bundleInstruments: 57, bundleLoopmasters: 83, bundleLucid: 84,
+  bundleSoundbanks: 92, bundleBigFish: 102,
+  topology16A: 68,
 } as const;
 
 // ───────────────────────────────────── Reel 3 — "The Command Center & Scale"
@@ -111,7 +124,13 @@ export const S848 = {
   headphones: 88, lineOut: 89, rearCableFan: 90, rearIO: 91,
   insertsCombo: 93, meters: 94, metersAlt: 101, combos4: 95,
   monitorGroup: 97, speakerSelect: 18,
+  cuemixPatchbay: 19, cuemixPatchbayAlt: 98,
   frontLineArt: 103, connectivity: 104, rtl: 105, ipad: 106,
+} as const;
+
+/** Reel 3 shared/context images. */
+export const R3_SHARED = {
+  rearNetworkOptical: 20, studioWide: 82, thunderbolt: 87,
 } as const;
 
 export const AVBSW = { qWhite: 112, qPorts: 114, frontElevation: 116 } as const;

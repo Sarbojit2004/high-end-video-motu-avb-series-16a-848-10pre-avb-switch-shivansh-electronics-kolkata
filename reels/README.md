@@ -24,11 +24,16 @@ cd reels
 npm install
 npm run setup            # stage images + fonts, synthesize SFX, stage music stems
 npm run validate-audio   # both audio layers
-npm run verify           # typecheck + content guard + coverage + branding
-npm run render:reel1     # 178 s reel
-npm run render:thumb1    # 1080x1920 thumbnail
-npm run render:audio1    # the two standalone audio deliverables
+npm run verify           # typecheck + content guard + coverage + branding (all 3 reels)
+npm run qa               # a still per beat, checked for light ground
+npm run render:reel1     # 178 s reel   (also :reel2, :reel3)
+npm run render:thumb1    # 1080x1920 thumbnail   (also :thumb2, :thumb3)
+npm run render:audio1    # the two standalone audio deliverables   (also :audio2, :audio3)
 ```
+
+`qa` and `whole-unit` take the reel number through the `REEL` environment
+variable (`REEL=2 npm run qa`); `coverage` and `branding` take it as an argument
+(`node scripts/coverage.mjs 2`). `npm run verify` runs all three reels.
 
 `npm run setup` is required before the first render — `public/` is generated
 from the repository's own source assets and is not committed.
@@ -82,8 +87,8 @@ Reel 3: 36.** The two logos appear in all three.
 (the brief says four) plus 17 stems. Deployment is a **Path B body with a Path A
 signature**: each reel's body is scored by the track that matches its product —
 GIFTED for Reel 1 (highest dynamics of the five, 0.473, tracking energy), DIABLO
-for Reel 2 (dense, synth-forward, routing), ETERNITY for Reel 3 (loudest and
-most driving, the closing chapter) — while **every reel opens its hook and
+for Reel 2 (dense, synth-forward, routing), ETERNITY for Reel 3 (loudest and most
+driving, the closing chapter) — while **every reel opens its hook and
 closes its CTA on Mindscape**, the only supplied track long enough to cover
 178 s unlooped and the calmest of the five. That gives the set one recognisable
 sonic signature at the two moments a viewer notices most, without layering
@@ -101,17 +106,27 @@ Per Brief Stage 11 there are no cinematic low-frequency whooshes;
 ## Verification
 
 ```bash
-npm run verify          # typecheck, content guard, coverage, branding cadence
-npm run qa              # a still per beat, checked for light ground
-node scripts/coverage.mjs 1
-node scripts/branding.mjs 1
+npm run verify                 # typecheck, content guard, coverage, branding cadence
+REEL=2 npm run qa              # a still per beat, checked for light ground
+REEL=2 npm run whole-unit      # every camera move resolves to the whole unit
+node scripts/coverage.mjs 2
+node scripts/branding.mjs 2
 ```
 
 - **`guard.mjs`** — scans everything that can reach the screen for TASCAM, any
   competing audio-interface manufacturer, any other brand relationship, and
   incorrect / rounded / blended pricing. It extracts string literals and JSX
   text rather than raw source, so `zoom={2.6}` is not mistaken for a brand.
-- **`coverage.mjs`** — every image assigned to the reel appears in it.
+- **`coverage.mjs`** — every image assigned to the reel appears in it, *and*
+  the beat's layout actually renders it. A beat can list an image its layout
+  ignores (`ecosystemSplit` did exactly that), which would report coverage the
+  viewer never gets; the script reconciles each beat's image list against what
+  its layout puts on screen.
+- **`whole-unit.mjs`** — the two camera moves scale their container above 1.0
+  inside `overflow: hidden`, so *during* a move the frame is a crop by design.
+  This renders the last frame of every beat carrying a move and asserts the
+  transform has resolved to ≤1.0, i.e. the complete unit is on screen before the
+  cut. It caught `PortSweep` ending at 1.02 on its final visible frame.
 - **`branding.mjs`** — no Shivansh gap over 25 s, MOTU present mid-reel, website
   the most-repeated single detail.
 - `src/Root.tsx` throws at load if a schedule does not sum to exactly 178 s.

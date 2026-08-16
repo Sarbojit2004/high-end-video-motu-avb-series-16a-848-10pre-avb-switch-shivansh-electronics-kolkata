@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "MOTU AVB Series ecosystem \u2014 three standalone 178s light-background portrait reels (Remotion). Shivansh Electronics, Authorized Distributor of MOTU (Mark of the Unicorn, USA) Interfaces for East and North East India.",
+  "description": "MOTU AVB Series ecosystem — three standalone 178s light-background portrait reels (Remotion). Shivansh Electronics, Authorized Distributor of MOTU (Mark of the Unicorn, USA) Interfaces for East and North East India.",
   "scripts": {
     "dev": "remotion studio",
     "studio": "remotion studio",
@@ -19,6 +19,7 @@
     "branding": "node scripts/branding.mjs",
     "verify": "npm run typecheck && npm run guard && npm run coverage && npm run branding",
     "qa": "node scripts/qa-stills.mjs",
+    "whole-unit": "node scripts/whole-unit.mjs",
     "render:reel1": "remotion render Reel1 out/motu-avb-reel-1-source.mp4 --concurrency=3 --crf=18",
     "render:reel2": "remotion render Reel2 out/motu-avb-reel-2-matrix.mp4 --concurrency=3 --crf=18",
     "render:reel3": "remotion render Reel3 out/motu-avb-reel-3-command-scale.mp4 --concurrency=3 --crf=18",
