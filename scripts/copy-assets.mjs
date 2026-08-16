@@ -3,7 +3,9 @@
 // so no scene can accidentally reference them.
 import fs from "node:fs";
 import path from "node:path";
+import { execFileSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
+import ffmpegPath from "ffmpeg-static";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
@@ -35,10 +37,45 @@ const files = fs
   .filter((f) => !EXCLUDED.has(f))
   .sort();
 
+// Chromium's image decoder fails with "The source image cannot be decoded" once
+// several very large sources are in flight at render concurrency — three of
+// these files are 9021×7260 (65 MP ≈ 262 MB of RGBA each), and one scene shows
+// the same file as both ambient bands plus a product plate. Nothing needs to
+// exceed ~2× the 1080 px canvas width, so cap the long edge on copy. Purely a
+// decode-safety measure: 2600 px is still heavily oversampled for 1080×1920.
+const MAX_EDGE = 2600;
+
+const dimsOf = (file) => {
+  let out = "";
+  try {
+    out = execFileSync(ffmpegPath, ["-hide_banner", "-i", file], {
+      stdio: ["ignore", "pipe", "pipe"],
+    }).toString();
+  } catch (e) {
+    // ffmpeg exits non-zero when given an input and no output; the probe text
+    // we need is still on stderr.
+    out = (e.stderr ?? "").toString();
+  }
+  const m = out.match(/,\s(\d{2,})x(\d{2,})[\s,]/);
+  return m ? { w: +m[1], h: +m[2] } : null;
+};
+
 const map = {};
+let downscaled = 0;
 for (const f of files) {
   const s = slug(f);
-  fs.copyFileSync(path.join(ROOT, f), path.join(IMG_OUT, s));
+  const src = path.join(ROOT, f);
+  const dst = path.join(IMG_OUT, s);
+  const d = dimsOf(src);
+  if (d && Math.max(d.w, d.h) > MAX_EDGE) {
+    const scale = d.w >= d.h ? `${MAX_EDGE}:-2` : `-2:${MAX_EDGE}`;
+    execFileSync(ffmpegPath, ["-i", src, "-vf", `scale=${scale}:flags=lanczos`, "-y", dst], {
+      stdio: ["ignore", "ignore", "pipe"],
+    });
+    downscaled++;
+  } else {
+    fs.copyFileSync(src, dst);
+  }
   map[f] = s;
 }
 fs.writeFileSync(path.join(IMG_OUT, "_map.json"), JSON.stringify(map, null, 2));
@@ -54,5 +91,6 @@ if (fs.existsSync(FONT_SRC)) {
 }
 
 console.log(`images copied : ${files.length}`);
+console.log(`downscaled    : ${downscaled} (long edge > ${MAX_EDGE}px)`);
 console.log(`excluded      : ${EXCLUDED.size} (${[...EXCLUDED].join(", ")})`);
 console.log(`fonts copied  : ${fontsCopied}`);
