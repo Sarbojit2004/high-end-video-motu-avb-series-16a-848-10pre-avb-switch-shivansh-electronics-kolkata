@@ -3,8 +3,8 @@
 // Parts 2 and 3 import this unchanged; nothing here is redefined per part.
 //
 // Type system is structurally ported from the established project type system
-// (Neumann TLM 107 reel: Fraunces display + Archivo technical grotesque, five
-// tiers, same choreography rules). Colour values are re-derived from scratch
+// (Fraunces display + Archivo technical grotesque, five tiers, same
+// choreography rules). Colour values are re-derived from scratch
 // for this project's LIGHT background — the source project was dark-on-dark and
 // none of its text colours or scrim technique carry over.
 // ─────────────────────────────────────────────────────────────────────────────
