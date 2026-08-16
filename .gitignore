@@ -4,3 +4,10 @@ qa/
 public/images/
 public/fonts/
 *.log
+
+# Final renders are 150-230 MB each by delivery spec (8-12 Mbps H.264 for a
+# 178 s part). GitHub hard-rejects any file over 100 MB and git-lfs is not
+# available here, so the masters cannot be tracked in this repo. They are
+# delivered directly instead; regenerate with `npm run setup && npm run render:partN`.
+out/*.mp4
+out/*.zip
