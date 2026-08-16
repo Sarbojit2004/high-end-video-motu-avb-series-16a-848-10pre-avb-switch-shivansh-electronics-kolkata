@@ -1,0 +1,44 @@
+{
+  "name": "motu-avb-series-reels",
+  "version": "1.0.0",
+  "private": true,
+  "description": "MOTU AVB Series (10pre / 16A / 848 / AVB Switch) \u2014 three sequential 178s vertical reels (Remotion). Shivansh Electronics, Authorized Distributor of MOTU (Mark of the Unicorn, USA) Interfaces for East and North East India.",
+  "scripts": {
+    "dev": "remotion studio",
+    "studio": "remotion studio",
+    "typecheck": "tsc --noEmit",
+    "bundle": "remotion bundle",
+    "make-assets": "node scripts/copy-assets.mjs",
+    "make-sfx": "node scripts/make-sfx.mjs",
+    "make-audio": "node scripts/make-audio.mjs",
+    "setup": "npm run make-assets && npm run make-sfx && npm run make-audio",
+    "still": "remotion still",
+    "render:part1": "remotion render Part1 out/motu-avb-reel-part1-10pre.mp4 --concurrency=2",
+    "render:part2": "remotion render Part2 out/motu-avb-reel-part2-16a.mp4 --concurrency=2",
+    "render:part3": "remotion render Part3 out/motu-avb-reel-part3-848-avbswitch.mp4 --concurrency=2",
+    "render:thumbs": "node scripts/render-thumbnails.mjs",
+    "make-zip": "node scripts/make-zip.mjs",
+    "coverage": "node scripts/coverage.mjs",
+    "vo-check": "node scripts/vo-check.mjs",
+    "qa": "node scripts/qa-stills.mjs",
+    "split-renders": "node scripts/split-renders.mjs",
+    "join-renders": "node scripts/join-renders.mjs"
+  },
+  "dependencies": {
+    "@remotion/bundler": "4.0.497",
+    "@remotion/cli": "4.0.497",
+    "@remotion/media-utils": "4.0.497",
+    "@remotion/renderer": "4.0.497",
+    "@remotion/shapes": "4.0.497",
+    "@remotion/transitions": "4.0.497",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "remotion": "4.0.497"
+  },
+  "devDependencies": {
+    "@types/react": "18.3.12",
+    "@types/react-dom": "18.3.1",
+    "ffmpeg-static": "5.3.0",
+    "typescript": "5.6.3"
+  }
+}
