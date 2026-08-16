@@ -20,3 +20,4 @@ public/
 out/*.mp4
 out/*.wav
 !out/parts/
+out/parts/concat.txt
