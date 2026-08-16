@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "MOTU AVB Series Ecosystem (16A / 848 / 10pre / AVB Switch) — 898s light-background landscape long-form video (Remotion). Shivansh Electronics, Authorized Distributor of MOTU (Mark of the Unicorn, USA) Interfaces for East and North East India.",
+  "description": "MOTU AVB Series Ecosystem (16A / 848 / 10pre / AVB Switch) \u2014 898s light-background landscape long-form video (Remotion). Shivansh Electronics, Authorized Distributor of MOTU (Mark of the Unicorn, USA) Interfaces for East and North East India.",
   "scripts": {
     "dev": "remotion studio",
     "studio": "remotion studio",
@@ -23,7 +23,8 @@
     "render:music": "remotion render MusicBedOnly out/motu-avb-longform-music-bed.wav",
     "render:sfx": "remotion render SfxTimelineOnly out/motu-avb-longform-transition-sfx-timeline.wav",
     "render:audio": "npm run render:music && npm run render:sfx",
-    "make-zip": "node scripts/make-zip.mjs"
+    "make-zip": "node scripts/make-zip.mjs",
+    "join": "node scripts/join-parts.mjs"
   },
   "dependencies": {
     "@remotion/bundler": "4.0.497",

@@ -15,7 +15,7 @@ const FF = createRequire(import.meta.url)("ffmpeg-static");
 const { CHAPTER_SPANS, TOTAL_FRAMES } = await loadSchedule();
 
 const OUT = resolve(PROJ, "out");
-const TMP = resolve(OUT, "chunks");
+const TMP = resolve(OUT, "parts");  // tracked in git — see longform/.gitignore
 mkdirSync(TMP, { recursive: true });
 
 const FINAL = resolve(OUT, "motu-avb-ecosystem-longform.mp4");
@@ -65,4 +65,8 @@ execFileSync(FF, ["-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", listF
 
 const size = statSync(FINAL).size;
 console.log(`wrote ${FINAL}  ${(size / 1e6).toFixed(0)} MB`);
-if (process.env.KEEP_CHUNKS !== "1") rmSync(TMP, { recursive: true, force: true });
+// Parts are KEPT and committed: at ~240 MB the joined master exceeds GitHub's
+// 100 MB per-file limit and git-lfs is unavailable here, so the master is
+// delivered through the repo as chapter parts plus scripts/join-parts.mjs,
+// which recombines them with a stream copy into a bit-identical file.
+console.log("parts retained in out/parts/ for delivery (see scripts/join-parts.mjs)");

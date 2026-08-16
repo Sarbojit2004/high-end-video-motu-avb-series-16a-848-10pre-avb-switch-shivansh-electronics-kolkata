@@ -28,7 +28,7 @@ export const COLORS = {
   // ~4% of white means that white ground is imperceptible against it, so the
   // logos read as sitting on the video rather than on a plate.
   paper: "#F6F8FA",
-  paperLift: "#FCFDFE",
+  paperLift: "#FDFEFE",
   paperEdge: "#EFF2F6",
   paperWell: "#E7EBF1",
 

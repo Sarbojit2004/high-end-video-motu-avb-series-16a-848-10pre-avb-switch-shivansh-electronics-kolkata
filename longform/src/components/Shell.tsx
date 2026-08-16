@@ -14,8 +14,24 @@ export const Ground: React.FC<{
   bloomY?: number;
   bloomStrength?: number;
   grid?: boolean;
-}> = ({ bloom = COLORS.motuBlue, bloomX = 50, bloomY = 34, bloomStrength = 0.06, grid = false }) => (
-  <AbsoluteFill style={{ background: `linear-gradient(180deg, ${COLORS.paperLift} 0%, ${COLORS.paper} 46%, ${COLORS.paperEdge} 100%)` }}>
+  /**
+   * Flat, near-white page instead of the usual vertical gradient. Used by the
+   * full-frame branding beats. Both logos are used exactly as supplied — opaque,
+   * with their own white background, never keyed and never boxed — and at the
+   * sizes those beats use them (up to 660px wide) even the gradient's 4% step
+   * down to paperEdge reads as a faint rectangle behind the artwork, which is
+   * the one thing the logo treatment must not do. A flat paperLift page puts the
+   * step at ~1%, below the threshold of visibility.
+   */
+  flat?: boolean;
+}> = ({ bloom = COLORS.motuBlue, bloomX = 50, bloomY = 34, bloomStrength = 0.06, grid = false, flat = false }) => (
+  <AbsoluteFill
+    style={{
+      background: flat
+        ? COLORS.paperLift
+        : `linear-gradient(180deg, ${COLORS.paperLift} 0%, ${COLORS.paper} 46%, ${COLORS.paperEdge} 100%)`,
+    }}
+  >
     <AbsoluteFill
       style={{
         background: `radial-gradient(58% 46% at ${bloomX}% ${bloomY}%, ${hexA(bloom, bloomStrength)} 0%, ${hexA(bloom, 0)} 70%)`,

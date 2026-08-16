@@ -555,11 +555,16 @@ export const BeatScene: React.FC<{ b: Beat }> = ({ b }) => {
 
   const bloom =
     b.ch === 1 ? COLORS.alert : b.ch === 6 ? COLORS.signal : COLORS.motuBlue;
+  // Beats that present a large logo get the flat page — see Ground's `flat`.
+  const bigLogo = b.kind === "brandBeat" || b.kind === "outro" || b.kind === "contact" || b.kind === "price";
   const bg = (
     <AbsoluteFill>
-      <Ground bloom={bloom} bloomStrength={b.ch === 1 ? 0.05 : 0.07} grid={
-        b.kind === "topology" || b.kind === "engineDiagram" || b.kind === "counters"
-      } />
+      <Ground
+        bloom={bloom}
+        bloomStrength={bigLogo ? 0.03 : b.ch === 1 ? 0.05 : 0.07}
+        flat={bigLogo}
+        grid={b.kind === "topology" || b.kind === "engineDiagram" || b.kind === "counters"}
+      />
       {b.kind === "topology" || b.kind === "engineDiagram" ? <Motes seed={b.ch} count={20} opacity={0.35} /> : null}
     </AbsoluteFill>
   );

@@ -48,17 +48,39 @@ Set `RESUME=1` to keep completed chunks on a re-run.
 
 ## Deliverables
 
-| File | What it is |
-|---|---|
-| `out/motu-avb-ecosystem-longform.mp4` | The final render, music bed and SFX embedded |
-| `out/thumbnail-motu-avb-ecosystem-longform.png` | 1920×1080 landscape thumbnail |
-| `out/motu-avb-longform-music-bed.wav` | Layer 1 alone, 898 s, exactly as deployed |
-| `out/motu-avb-longform-transition-sfx-timeline.wav` | Layer 2 alone, 898 s, every hit at its exact position |
-| `VO_SCRIPT_LONGFORM_MOTU_AVB_ECOSYSTEM.md` | Full timed narration script |
-| `ASSET_COVERAGE.md` | Per-image ledger — where each of the 122 images appears |
-| `BRANDING_CADENCE.md` | Timestamped list of every Shivansh and MOTU appearance |
+| File | What it is | In git |
+|---|---|---|
+| `out/parts/chunk-0*.mp4` + `npm run join` | The final render, music bed and SFX embedded | yes |
+| `out/motu-avb-ecosystem-longform.mp4` | The joined master, produced by `npm run join` | no — see below |
+| `out/thumbnail-motu-avb-ecosystem-longform.png` | 1920x1080 landscape thumbnail | yes |
+| `out/motu-avb-longform-music-bed.flac` | Layer 1 alone, 898 s, exactly as deployed | yes |
+| `out/motu-avb-longform-transition-sfx-timeline.flac` | Layer 2 alone, 898 s, every hit at its exact position | yes |
+| `out/*.wav` | The same two files uncompressed, via `npm run make-wav` | no — 172 MB each |
+| `out/motu-avb-ecosystem-longform-project.zip` | Self-contained project (safety net) | yes |
+| `VO_SCRIPT_LONGFORM_MOTU_AVB_ECOSYSTEM.md` | Full timed narration script | yes |
+| `ASSET_COVERAGE.md` | Per-image ledger — where each of the 122 images appears | yes |
+| `BRANDING_CADENCE.md` | Timestamped list of every Shivansh and MOTU appearance | yes |
 
-Both WAVs are **898.00 s / 26,940 frames**, generated from the *same* schedule
+### Why the master and the WAVs are not single committed files
+
+GitHub hard-rejects any file over 100 MB and git-lfs is not available in this
+environment. The 898 s master is ~240 MB and each WAV is 172 MB, so:
+
+- **The video** is committed as **seven chapter parts**, each well under the
+  limit. `npm run join` recombines them with an ffmpeg stream copy — no
+  re-encode, so the result is bit-identical to the master this project renders.
+- **The audio** is committed as **FLAC**, which is lossless. `npm run make-wav`
+  decodes both back to 48 kHz / 16-bit stereo WAV; the round trip is verified
+  sample-identical (matching ffmpeg MD5) to the WAVs Remotion writes directly.
+
+Nothing is downgraded by either route — both are exact, just packaged to fit.
+
+```bash
+npm run join       # out/parts/*.mp4  ->  out/motu-avb-ecosystem-longform.mp4
+npm run make-wav   # out/*.flac       ->  out/*.wav
+```
+
+Both audio files are **898.00 s / 26,940 frames**, generated from the *same* schedule
 that renders the picture. They drop onto the timeline at 00:00 and are already in
 sync — no manual placement, no clip-by-clip alignment. Only loudness needs
 adjusting against your recorded narration.
