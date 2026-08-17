@@ -50,12 +50,21 @@ export const Thumb3: React.FC = () => (
         </div>
       </div>
 
-      {/* both heroes, complete and uncropped, each above its own price */}
-      <div style={{ flex: 1, minHeight: 0, marginTop: 24, marginBottom: 18, display: "flex", gap: 16 }}>
-        <div style={{ flex: 1, minWidth: 0 }}>
+      {/* Both heroes, complete and uncropped, stacked rather than paired
+          side by side. Two half-width slots do not work here: the 848's
+          three-quarter render is 3.89:1, so beside the switch it resolves to a
+          third of its height, and the front-on alternative is a black-ground
+          photo, which `Plate` seats on a card that then fills the whole slot
+          with white. Full width each, at heights set from their own aspect
+          ratios, keeps both light-ground, uncropped and evenly weighted. */}
+      <div style={{
+        flex: 1, minHeight: 0, marginTop: 24, marginBottom: 18,
+        display: "flex", flexDirection: "column", justifyContent: "center", gap: 12,
+      }}>
+        <div style={{ width: "100%", height: 250 }}>
           <Plate idx={S848.qFront} style={{ width: "100%", height: "100%" }} />
         </div>
-        <div style={{ flex: 1, minWidth: 0 }}>
+        <div style={{ width: "100%", height: 300 }}>
           <Plate idx={AVBSW.qPorts} style={{ width: "100%", height: "100%" }} />
         </div>
       </div>
