@@ -18,6 +18,34 @@ const tc = (f) => {
   return `${String(Math.floor(s / 60)).padStart(2, "0")}:${String(s % 60).padStart(2, "0")}`;
 };
 
+/**
+ * What each layout in BeatScene.tsx ACTUALLY puts on screen. Listing an image
+ * on a beat whose layout ignores it would report coverage the viewer never
+ * gets — so the two are reconciled here rather than assumed.
+ *   idxOnly  — renders b.idx and nothing else
+ *   idxPlus  — renders b.idx plus every other entry in b.images
+ *   all      — renders every entry in b.images
+ *   none     — renders no photography at all
+ */
+const RENDERS = {
+  hook: "idxOnly", software: "idxOnly", specGrid: "idxOnly",
+  macroReveal: "idxPlus", dataFlow: "idxPlus",
+  portSweep: "idxOnly",
+  montage: "all", hero: "all", badges: "all", ecosystemSplit: "all",
+  brandBeat: "none", price: "none", cta: "none", outro: "none",
+};
+
+const unrendered = [];
+BEATS.forEach((b) => {
+  const mode = RENDERS[b.kind];
+  const shown =
+    mode === "none" ? [] :
+    mode === "all" ? b.images :
+    mode === "idxOnly" ? (b.idx === undefined ? [] : [b.idx]) :
+    [b.idx, ...b.images.filter((i) => i !== b.idx)].filter((i) => i !== undefined);
+  for (const i of b.images) if (!shown.includes(i)) unrendered.push({ beat: b.id, kind: b.kind, idx: i });
+});
+
 const where = new Map();
 BEATS.forEach((b, i) => {
   for (const idx of b.images) {
@@ -35,6 +63,8 @@ console.log(`  assigned images : ${assigned.length}`);
 console.log(`  covered         : ${assigned.length - missing.length}`);
 console.log(`  MISSING         : ${missing.length}`);
 for (const m of missing) console.log(`     !! ${m.idx} ${m.product} ${m.file}`);
+console.log(`  LISTED BUT NOT RENDERED BY ITS LAYOUT: ${unrendered.length}`);
+for (const u of unrendered) console.log(`     !! image ${u.idx} on ${u.beat} (${u.kind})`);
 
 const byProd = {};
 for (const a of assigned) {
@@ -77,6 +107,6 @@ ${assigned.sort((a, b) => a.idx - b.idx).map((a) => {
 `
 );
 console.log(`\nwrote ASSET_COVERAGE_REEL${REEL}.md`);
-const pass = missing.length === 0 && TOTAL_FRAMES === 5340;
+const pass = missing.length === 0 && unrendered.length === 0 && TOTAL_FRAMES === 5340;
 console.log(pass ? "COVERAGE: PASS" : "COVERAGE: FAIL");
 process.exit(pass ? 0 : 1);

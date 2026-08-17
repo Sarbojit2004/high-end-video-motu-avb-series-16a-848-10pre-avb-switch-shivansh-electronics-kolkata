@@ -1,6 +1,7 @@
-import { VIDEO, SPEC } from "../theme";
-import { TENPRE, R1_SHARED, type SfxKey } from "../assets";
-import type { BrandMode } from "../components/Brand";
+import { SPEC } from "../theme";
+import { TENPRE, R1_SHARED } from "../assets";
+import type { Beat } from "../beat";
+import { frames, starts, totalFrames } from "../beat";
 
 /**
  * REEL 1 — "THE SOURCE" (MOTU 10pre + shared-engine intro)
@@ -18,28 +19,6 @@ import type { BrandMode } from "../components/Brand";
  * faster but still complete, uncropped pass, which is Section 0's stated
  * resolution to the 534 s-vs-898 s runtime squeeze.
  */
-
-export type Beat = {
-  id: string;
-  sec: number;
-  kind:
-    | "hook" | "macroReveal" | "portSweep" | "ecosystemSplit" | "badges"
-    | "specGrid" | "hero" | "montage" | "software" | "dataFlow"
-    | "brandBeat" | "price" | "cta" | "outro";
-  images: number[];
-  idx?: number;
-  eyebrow?: string;
-  heading?: string;
-  sub?: string;
-  specs?: { label: string; value: string }[];
-  labels?: string[];
-  cols?: number;
-  focal?: [number, number];
-  macroScale?: number;
-  brand: BrandMode;
-  motu?: boolean;
-  sfx: SfxKey;
-};
 
 const B = (b: Beat): Beat => b;
 
@@ -201,16 +180,9 @@ export const BEATS: Beat[] = [
   }),
 ];
 
-export const frames = (sec: number): number => Math.round(sec * VIDEO.fps);
-
-export const BEAT_STARTS: number[] = (() => {
-  const out: number[] = [];
-  let acc = 0;
-  for (const b of BEATS) { out.push(acc); acc += frames(b.sec); }
-  return out;
-})();
-
-export const TOTAL_FRAMES = BEATS.reduce((a, b) => a + frames(b.sec), 0);
+export { frames };
+export const BEAT_STARTS = starts(BEATS);
+export const TOTAL_FRAMES = totalFrames(BEATS);
 export const TOTAL_SECONDS = BEATS.reduce((a, b) => a + b.sec, 0);
 
 /**

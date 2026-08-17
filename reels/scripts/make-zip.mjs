@@ -19,7 +19,11 @@ mkdirSync(STAGE, { recursive: true });
 for (const f of ["src", "scripts", "package.json", "tsconfig.json", "remotion.config.ts",
                  "README.md", "asset-manifest.json",
                  "ASSET_COVERAGE_REEL1.md", "BRANDING_CADENCE_REEL1.md",
-                 "VO_SCRIPT_REEL1_MOTU_10PRE.md"]) {
+                 "ASSET_COVERAGE_REEL2.md", "BRANDING_CADENCE_REEL2.md",
+                 "ASSET_COVERAGE_REEL3.md", "BRANDING_CADENCE_REEL3.md",
+                 "VO_SCRIPT_REEL1_MOTU_10PRE.md",
+                 "VO_SCRIPT_REEL2_MOTU_16A.md",
+                 "VO_SCRIPT_REEL3_MOTU_848_AVB_SWITCH.md"]) {
   const src = resolve(PROJ, f);
   if (existsSync(src)) cpSync(src, resolve(STAGE, f), { recursive: true });
 }
@@ -41,10 +45,10 @@ writeFileSync(resolve(STAGE, "OFFLINE-SETUP.md"), `# Rendering from this zip
 
     npm install
     node scripts/setup-from-zip.mjs
-    npm run render:reel1
+    npm run render:reel1     # or render:reel2 / render:reel3
 
 \`assets/\` already holds the render-ready images, the two ported woff2 font
-families and the 15 synthesized SFX files, so those need no network and no
+families and the 21 synthesized SFX files, so those need no network and no
 sibling repository.
 
 The one thing not bundled is the music: the five instrumental tracks and their
@@ -55,8 +59,8 @@ at that folder (it looks for \`../sound-effects\` by default) and run:
 
     node scripts/make-music.mjs
 
-Then \`npm run render:reel1\` reproduces the master, and \`npm run render:audio\`
-reproduces the two standalone audio deliverables.
+Then \`npm run render:reelN\` reproduces that reel's master, and
+\`npm run render:audioN\` reproduces its two standalone audio deliverables.
 `);
 
 writeFileSync(resolve(STAGE, "scripts/setup-from-zip.mjs"), `// Stages the bundled assets/ folder into public/ so the project renders
