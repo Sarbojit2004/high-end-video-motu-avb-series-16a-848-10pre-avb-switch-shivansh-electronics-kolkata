@@ -10,6 +10,11 @@ import { resolve } from "node:path";
 import { loadSchedule, PROJ } from "./_load.mjs";
 
 const manifest = JSON.parse(readFileSync(resolve(PROJ, "asset-manifest.json"), "utf8"));
+// The repository-wide inventory, for the denominator: this project's own
+// manifest holds only the curated subset, so it cannot report what was
+// selected FROM.
+const ALL = JSON.parse(readFileSync(resolve(PROJ, "../reels/asset-manifest.json"), "utf8"));
+const ALL_PRODUCT = ALL.filter((a) => a.product !== "Brand").length;
 const { BEATS, BEAT_STARTS, frames, TOTAL_FRAMES } = await loadSchedule();
 
 const tc = (f) => {
@@ -89,15 +94,28 @@ writeFileSync(
   resolve(PROJ, "ASSET_COVERAGE_MASTER_REEL.md"),
   `# Asset coverage — MOTU AVB Master Reel
 
-${assigned.length} images are assigned to this reel out of the 122 unique images
-in the repository (141 files; 19 are byte-identical duplicates confirmed by
-format-agnostic pixel hashing, not filename similarity). Every one appears
-below, and every appearance renders through \`<Plate>\` (\`object-fit: contain\`)
-so the complete unit is visible — nothing is cropped, clipped or trimmed to fit
-the runtime.
+**${assigned.length} curated images**, selected from the **${ALL_PRODUCT} unique product images** in the
+repository (141 files; 19 fold into others on identical pixel content, confirmed
+by a format-agnostic hash rather than by filename similarity — \`MOTU 10pre (23).jpg\`,
+\`MOTU 16A (3).jpg\` and \`MOTU 848 (6).jpg\` are one image under three names).
 
-The two brand logos (${logos.map((l) => l.idx).join(", ")}) appear in all three
-reels via the Brand components rather than a beat's image list.
+Unlike the long-form video and the three-part reel series, this reel does **not**
+carry "every enumerated image must appear". It carries a curated selection
+instead; the reasoning per block, and the full account of what was deliberately
+left out, is in \`scripts/curation.mjs\`.
+
+What is **not** relaxed is completeness per image. Every image below renders
+through \`<Plate>\` (\`object-fit: contain\`), so it is shown whole and uncropped —
+including every member of a clubbed Ecosystem Montage beat, each of which holds
+the frame alone at full size before the group assembles. \`scripts/whole-unit.mjs\`
+verifies that on rendered stills.
+
+Images 9, 18 and 62 appear in two beats each, deliberately: they carry the thesis
+Ecosystem Montage at 00:38 and then return inside their own product segment as a
+callback.
+
+The two brand logos (${logos.map((l) => l.idx).join(", ")}) appear throughout via the Brand
+components rather than through any beat's image list.
 
 | # | Product | Tier | Source file | Appears at |
 |---|---|---|---|---|

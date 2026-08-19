@@ -1,8 +1,10 @@
-// Type system ported from the Neumann TLM 107 REEL's own committed source
-// (Section 8a — "do not invent a new font system"). The woff2 files are copied
-// by scripts/copy-assets.mjs from that repository's public/fonts.
+// Type system pulled from the approved MOTU three-part reel build
+// (Section 7 — "do not invent a new type system, do not re-derive one"). The
+// woff2 files are copied by scripts/copy-assets.mjs from `reels/public/fonts`,
+// which is that build's own staged set. This project reads nothing from the
+// Neumann repository.
 //
-// Hierarchy follows Brief Stage 10 rather than the reference's own usage:
+// Hierarchy follows Brief Stage 10:
 // MOTU's identity is engineering-precise, so ARCHIVO (technical grotesque)
 // carries the weight — uppercase tracked headlines, spec callouts with tabular
 // numerals, micro-callouts. FRAUNCES (editorial serif) is held back for the few

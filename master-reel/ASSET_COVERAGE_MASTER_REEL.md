@@ -1,14 +1,27 @@
 # Asset coverage — MOTU AVB Master Reel
 
-61 images are assigned to this reel out of the 122 unique images
-in the repository (141 files; 19 are byte-identical duplicates confirmed by
-format-agnostic pixel hashing, not filename similarity). Every one appears
-below, and every appearance renders through `<Plate>` (`object-fit: contain`)
-so the complete unit is visible — nothing is cropped, clipped or trimmed to fit
-the runtime.
+**61 curated images**, selected from the **120 unique product images** in the
+repository (141 files; 19 fold into others on identical pixel content, confirmed
+by a format-agnostic hash rather than by filename similarity — `MOTU 10pre (23).jpg`,
+`MOTU 16A (3).jpg` and `MOTU 848 (6).jpg` are one image under three names).
 
-The two brand logos (121, 122) appear in all three
-reels via the Brand components rather than a beat's image list.
+Unlike the long-form video and the three-part reel series, this reel does **not**
+carry "every enumerated image must appear". It carries a curated selection
+instead; the reasoning per block, and the full account of what was deliberately
+left out, is in `scripts/curation.mjs`.
+
+What is **not** relaxed is completeness per image. Every image below renders
+through `<Plate>` (`object-fit: contain`), so it is shown whole and uncropped —
+including every member of a clubbed Ecosystem Montage beat, each of which holds
+the frame alone at full size before the group assembles. `scripts/whole-unit.mjs`
+verifies that on rendered stills.
+
+Images 9, 18 and 62 appear in two beats each, deliberately: they carry the thesis
+Ecosystem Montage at 00:38 and then return inside their own product segment as a
+callback.
+
+The two brand logos (121, 122) appear throughout via the Brand
+components rather than through any beat's image list.
 
 | # | Product | Tier | Source file | Appears at |
 |---|---|---|---|---|

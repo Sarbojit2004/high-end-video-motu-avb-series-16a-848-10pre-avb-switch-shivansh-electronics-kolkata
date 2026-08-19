@@ -34,10 +34,11 @@ export const Logo: React.FC<{
 );
 
 /**
- * The rotating Shivansh presence, ported from the Neumann reel's BrandPlate
- * pattern: each scene mounts one with a `mode`, so brand awareness accumulates
- * continuously without the same element appearing back to back. At reel length
- * the guideline is tighter than the long format's — no gap beyond ~20-25 s.
+ * The rotating Shivansh presence, pulled from the approved MOTU three-part reel
+ * build: each scene mounts one with a `mode`, so brand awareness accumulates
+ * continuously without the same element appearing back to back. The guideline
+ * is that build's own — no gap beyond ~20-25 s — applied here across one
+ * continuous 298 s runtime rather than reset per reel (Section 6).
  */
 export type BrandMode =
   | "none" | "cornerLogo" | "lowerThird" | "website"

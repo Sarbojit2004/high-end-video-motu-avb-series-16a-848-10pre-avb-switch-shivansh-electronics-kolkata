@@ -64,12 +64,9 @@ export const RADII = { card: 26, plate: 18, chip: 999, sm: 12 } as const;
  * platform UI (caption overlay, action rail, handle, progress bar) sits.
  * Background and ambient imagery may extend into those bands.
  *
- * NOTE ON THE REFERENCE: the Neumann reel's own committed source uses
- * `marginTop: 96, marginBottom: 150`, and places brand plates 110px from the
- * bottom — looser than these values, and inside the band platform UI actually
- * occupies. These reels deliberately take the more conservative numbers the
- * brief specifies, because the section's stated purpose is to keep content
- * clear of that UI, and the reference's margins would not achieve it.
+ * These are the exact values proven in the approved three-part reel build
+ * (`reels/src/theme.ts`), used unchanged. Section 2 requires them to be pulled
+ * from that build rather than re-derived, and they are.
  */
 export const SAFE = {
   top: 180,
