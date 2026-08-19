@@ -1,0 +1,47 @@
+{
+  "name": "motu-avb-compressed-reel-2026",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "MOTU AVB Series ecosystem — one 88s light-background portrait compressed reel presenting the 16A, 848, 10pre and AVB Switch together (Remotion). Shivansh Electronics, Authorized Distributor of MOTU (Mark of the Unicorn, USA) Interfaces for East and North East India.",
+  "scripts": {
+    "dev": "remotion studio",
+    "studio": "remotion studio",
+    "typecheck": "tsc --noEmit",
+    "bundle": "remotion bundle",
+    "make-assets": "node scripts/copy-assets.mjs",
+    "make-sfx": "node scripts/make-sfx.mjs",
+    "make-music": "node scripts/make-music.mjs",
+    "setup": "npm run make-assets && npm run make-sfx && npm run make-music",
+    "validate-audio": "node scripts/validate-audio.mjs",
+    "guard": "node scripts/guard.mjs",
+    "coverage": "node scripts/coverage.mjs",
+    "branding": "node scripts/branding.mjs",
+    "pacing": "node scripts/pacing.mjs",
+    "verify": "npm run typecheck && npm run guard && npm run coverage && npm run branding && npm run pacing",
+    "qa": "node scripts/qa-stills.mjs",
+    "whole-unit": "node scripts/whole-unit.mjs",
+    "render": "remotion render CompressedReel out/motu-avb-compressed-reel-ecosystem.mp4 --concurrency=3 --crf=18",
+    "render:thumb": "remotion still Thumb out/thumbnail-motu-avb-compressed-reel-ecosystem.png",
+    "render:audio": "remotion render CompressedReelMusic out/motu-avb-compressed-reel-music-bed.wav --codec=wav && remotion render CompressedReelSfx out/motu-avb-compressed-reel-transition-sfx-timeline.wav --codec=wav",
+    "make-zip": "node scripts/make-zip.mjs"
+  },
+  "dependencies": {
+    "@remotion/bundler": "4.0.497",
+    "@remotion/cli": "4.0.497",
+    "@remotion/media-utils": "4.0.497",
+    "@remotion/renderer": "4.0.497",
+    "@remotion/shapes": "4.0.497",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "remotion": "4.0.497"
+  },
+  "devDependencies": {
+    "@types/node": "^26.2.0",
+    "@types/react": "18.3.12",
+    "@types/react-dom": "18.3.1",
+    "ffmpeg-static": "^5.3.0",
+    "sharp": "^0.35.3",
+    "typescript": "5.6.3"
+  }
+}
