@@ -32,6 +32,8 @@ export type AssetEntry = {
   /** Auto-detected from the image's own four corners at asset-copy time. */
   bg: "light" | "mixed" | "dark";
   border: number;
+  /** Whether the staged file carries an alpha channel — see Plate. */
+  alpha: boolean;
 };
 
 export const ASSETS = manifest as AssetEntry[];

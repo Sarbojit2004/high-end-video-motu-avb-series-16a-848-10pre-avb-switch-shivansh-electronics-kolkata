@@ -61,8 +61,12 @@ for (const a of manifest) {
   }
   corners.sort((x, y) => x - y);
   const border = (corners[1] + corners[2]) / 2;
+  // Whether the image can dissolve into the page at all. A light-ground PNG
+  // with alpha has no ground of its own and blends seamlessly; a light-ground
+  // JPG carries a hard #FFF rectangle that reads as a visible box against the
+  // #F6F8FA page. Plate needs to tell them apart.
   out.push({ ...a, slug, ext, bg: border > 0.7 ? "light" : border < 0.3 ? "dark" : "mixed",
-             border: +border.toFixed(3) });
+             border: +border.toFixed(3), alpha: Boolean(dm.hasAlpha) });
 }
 writeFileSync(resolve(PROJ, "asset-manifest.json"), JSON.stringify(out, null, 1));
 console.log(`images: ${out.length} -> public/images/`);

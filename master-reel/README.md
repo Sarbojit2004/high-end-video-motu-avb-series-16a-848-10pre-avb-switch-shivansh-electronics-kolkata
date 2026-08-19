@@ -151,6 +151,28 @@ each file's energy below 400 Hz (measured worst case here: 0.04%).
   the most-repeated single detail.
 - **`qa-stills.mjs`** — a still per beat with a ground-luminance check.
 
+## Image grounds
+
+`Plate` picks a presentation from the image's own detected ground:
+
+| Ground | Treatment |
+|---|---|
+| light, with alpha | bare — it has no ground of its own and dissolves into the page |
+| light, no alpha | a soft rounded well |
+| mixed | a soft rounded well |
+| dark | a rounded card with a shadow, so a dark photo reads as an intentional frame |
+
+The light/no-alpha row exists because of the AVB Switch. Its three photographs
+are the only product images in the repository with no transparent version, so
+their hard `#FFF` rectangle sat visibly on the `#F6F8FA` page — a box around the
+one product that most needed to look deliberate. The well turns that edge into a
+designed panel. This affects four images (112, 114, 116, 118); the other 21
+light-ground images carry alpha and stay bare.
+
+Logos are exempt by construction: `Logo` renders a raw `<Img>` and never touches
+`Plate`, so the "directly on screen, never boxed" rule cannot be affected by any
+of this.
+
 ## Logos
 
 Both logos are used **exactly as supplied**: opaque, with their own white

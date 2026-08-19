@@ -15,7 +15,12 @@ import { micro } from "../fonts";
  * page, a soft well, or a card), never by cutting into the subject.
  *
  * The image's own background is auto-detected at asset-copy time:
- *   light  -> presented bare; it dissolves into the light page
+ *   light + alpha -> presented bare; it has no ground and dissolves into the page
+ *   light, no alpha -> a soft well. Its ground is a hard #FFF rectangle, and on
+ *             a #F6F8FA page that edge reads as an accidental box; the well
+ *             turns it into a deliberate rounded panel instead. All three AVB
+ *             Switch photographs are in this category — they are the only
+ *             product images in the set with no transparent version available.
  *   mixed  -> a soft well, just enough to seat it
  *   dark   -> a deliberate rounded card with a soft shadow, so a dark photo on
  *             a light page reads as an intentional frame
@@ -33,7 +38,10 @@ export const Plate: React.FC<{
 }> = ({ idx, frame = "auto", radius = RADII.card, pad, style, imgStyle, children }) => {
   const m = meta(idx);
   const kind: Exclude<PlateFrame, "auto"> =
-    frame !== "auto" ? frame : m.bg === "light" ? "bare" : m.bg === "mixed" ? "well" : "card";
+    frame !== "auto" ? frame
+      : m.bg === "light" ? (m.alpha ? "bare" : "well")
+      : m.bg === "mixed" ? "well"
+      : "card";
   const padding = pad ?? (kind === "bare" ? 0 : kind === "well" ? 20 : 26);
 
   const shell: React.CSSProperties =
