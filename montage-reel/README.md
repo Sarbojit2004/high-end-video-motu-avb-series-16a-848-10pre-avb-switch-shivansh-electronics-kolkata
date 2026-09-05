@@ -27,6 +27,7 @@ cd montage-reel
 npm install
 npm run setup        # images + logos → public/, beat analysis, SFX synthesis, music bed
 npm run render:all   # three parts → out/
+npm run render:thumb # ecosystem cover still → out/
 node --experimental-strip-types scripts/check-sizes.mjs   # < 100 MB, frame-exact, audio present
 ```
 
@@ -186,6 +187,25 @@ shots twice as Act IV callbacks). One photograph is excluded on content:
 modular synthesizer, not MOTU hardware. Holds run 0.33–2.0 s (mean 0.81 s);
 vertical 9:16 lets two or three landscape images stack in one frame, which is
 how 40 images fit in 21 s.
+
+---
+
+## Thumbnail
+
+`npm run render:thumb` → `out/thumbnail-motu-avb-ecosystem.png` (2160 × 3840,
+the reel's own frame size, 9.7 MB).
+
+It is the reel's cover frame, built from the same system rather than designed
+separately: the Act 0 / Act V bookend palette (Deep Navy ground, White + Cyan),
+the routing-line signal motif, the same grain pass, and the full type hierarchy
+— **Alfa Slab One** hero (`AVB` / `ECOSYSTEM`), **Tinos** classical line naming
+every product, **Bricolage Grotesque** (Telegraf's stand-in) product labels and
+`AVB SWITCH`, microtype for the URL, both logos on their white plates.
+
+All four products appear in one frame, arranged as the idea the reel argues:
+the 16A, 848 and 10pre stacked as a rack, their signal routed down the gutters
+into the AVB Switch that ties them together. Source: `src/Thumbnail.tsx`
+(entirely static — no `useCurrentFrame`, so it renders identically at any frame).
 
 ---
 

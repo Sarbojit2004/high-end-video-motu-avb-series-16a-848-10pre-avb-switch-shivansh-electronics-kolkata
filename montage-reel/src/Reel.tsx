@@ -1,20 +1,15 @@
-import React, { useEffect, useState } from "react";
-import { AbsoluteFill, Audio, Sequence, continueRender, delayRender, staticFile, useCurrentFrame } from "remotion";
+import React from "react";
+import { AbsoluteFill, Audio, Sequence, staticFile, useCurrentFrame } from "remotion";
 import { TIMELINE, TAIL } from "./data/timeline.ts";
 import { TOTAL_FRAMES, PARTS, ACTS, beatFrame, FPS } from "./data/grid.ts";
 import { ACT_PALETTES, inkFor } from "./design/palette.ts";
-import { loadFonts } from "./design/fonts.ts";
+import { useFonts } from "./design/fonts.ts";
 import { ShotView } from "./components/Shot.tsx";
 import { ColdOpen } from "./acts/ColdOpen.tsx";
 import { BrandClose } from "./acts/BrandClose.tsx";
 import { Grain } from "./components/Grain.tsx";
 import { Flash } from "./components/Transitions.tsx";
 import { CornerMark } from "./components/Brand.tsx";
-
-const useFonts = () => {
-  const [handle] = useState(() => delayRender("fonts"));
-  useEffect(() => { loadFonts().then(() => continueRender(handle)).catch((e) => { console.error(e); continueRender(handle); }); }, [handle]);
-};
 
 /** The whole 90 s as one continuous composition; export parts wrap it with an offset. */
 export const Reel: React.FC<{ offsetFrames?: number; audioFile?: string }> = ({ offsetFrames = 0, audioFile = "audio/bed.wav" }) => {
