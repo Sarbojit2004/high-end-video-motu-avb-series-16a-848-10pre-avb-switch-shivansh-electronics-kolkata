@@ -30,6 +30,13 @@ const clamp = (v: number, a: number, b: number) => Math.max(a, Math.min(b, v));
 
 export const ShotView: React.FC<{ shot: BuiltShot }> = ({ shot }) => {
   const frame = useCurrentFrame(); // relative to the sequence start (= startFrame - lead)
+  /** entry progress of the i-th element of a multi-image shot: staggered inside the transition
+   *  lead so everything is fully on screen AT the landing beat; hard cuts pop in complete. */
+  const entry = (i: number, stagger: number, n = shot.images.length) => {
+    if (shot.lead <= 0) return frame >= shot.lead ? 1 : 0;
+    const st = Math.min(stagger, Math.floor(shot.lead / Math.max(1, n))); // every element is fully in by the beat
+    return easeOut((frame - i * st) / Math.max(3, shot.lead - i * st));
+  };
   const land = shot.lead; // the beat lands here
   const nominalEnd = shot.endFrame - shot.startFrame + shot.lead; // where the next shot's beat lands
   const p = ACT_PALETTES[shot.act];
@@ -112,11 +119,12 @@ export const ShotView: React.FC<{ shot: BuiltShot }> = ({ shot }) => {
     const top0 = (HEIGHT - totalH) / 2 + (shot.text?.role === "word" ? 300 : shot.text ? -100 : 0);
     let y = top0;
     body = imgs.map((slug, i) => {
-      const t = easeOut((local - i * 6) / 12);
+      const t = entry(i, 3);
+      const settle = easeOut((local - i * 2) / 9);
       const fromLeft = i % 2 === 0;
       const rowH = rows[i];
       const el = (
-        <div key={slug} style={{ position: "absolute", left: SAFE_X, top: y, width: w, height: rowH, opacity: t, transform: `translateX(${(1 - t) * (fromLeft ? -1 : 1) * 260}px) scale(${0.96 + 0.04 * t})`, borderRadius: 24, overflow: "hidden", boxShadow: `0 40px 100px ${rgba("#000", 0.5)}` }}>
+        <div key={slug} style={{ position: "absolute", left: SAFE_X, top: y, width: w, height: rowH, opacity: t, transform: `translateX(${(1 - t) * (fromLeft ? -1 : 1) * 260}px) scale(${0.965 + 0.035 * settle})`, borderRadius: 24, overflow: "hidden", boxShadow: `0 40px 100px ${rgba("#000", 0.5)}` }}>
           <Picture slug={slug} width={w} height={rowH} ground={bg} drift={0.4} seed={seedOf(slug) + i} localFrame={local} />
         </div>
       );
@@ -142,10 +150,11 @@ export const ShotView: React.FC<{ shot: BuiltShot }> = ({ shot }) => {
     const totalH = rowsN * cellH + gap * (rowsN - 1);
     const top0 = (HEIGHT - totalH) / 2;
     body = imgs.map((slug, i) => {
-      const t = easeOut((local - i * 4) / 10);
+      const t = entry(i, 2);
+      const settle = easeOut((local - i * 2) / 8);
       const c = i % cols, r = Math.floor(i / cols);
       return (
-        <div key={slug} style={{ position: "absolute", left: SAFE_X + c * (cellW + gap), top: top0 + r * (cellH + gap), width: cellW, height: cellH, opacity: t, transform: `scale(${0.7 + 0.3 * t}) rotate(${(1 - t) * (c % 2 ? 6 : -6)}deg)`, borderRadius: 30, overflow: "hidden", boxShadow: `0 30px 80px ${rgba("#000", 0.45)}` }}>
+        <div key={slug} style={{ position: "absolute", left: SAFE_X + c * (cellW + gap), top: top0 + r * (cellH + gap), width: cellW, height: cellH, opacity: t, transform: `scale(${(0.7 + 0.3 * t) * (0.94 + 0.06 * settle)}) rotate(${(1 - t) * (c % 2 ? 6 : -6)}deg)`, borderRadius: 30, overflow: "hidden", boxShadow: `0 30px 80px ${rgba("#000", 0.45)}` }}>
           <Picture slug={slug} width={cellW} height={cellH} ground={bg} drift={0.3} seed={seedOf(slug)} localFrame={local} plate />
         </div>
       );
@@ -156,10 +165,11 @@ export const ShotView: React.FC<{ shot: BuiltShot }> = ({ shot }) => {
     const cellH = cellW * 0.78;
     const top0 = (HEIGHT - (cellH * 2 + gap)) / 2 + (shot.text?.role === "label" ? -90 : 0);
     body = imgs.map((slug, i) => {
-      const t = easeOut((local - i * 3) / 9);
+      const t = entry(i, 2);
+      const settle = easeOut((local - i * 2) / 8);
       const c = i % 2, r = Math.floor(i / 2);
       return (
-        <div key={slug} style={{ position: "absolute", left: SAFE_X + c * (cellW + gap), top: top0 + r * (cellH + gap), width: cellW, height: cellH, opacity: t, transform: `scale(${0.9 + 0.1 * t})`, borderRadius: 26, overflow: "hidden", boxShadow: `0 30px 80px ${rgba("#000", 0.5)}` }}>
+        <div key={slug} style={{ position: "absolute", left: SAFE_X + c * (cellW + gap), top: top0 + r * (cellH + gap), width: cellW, height: cellH, opacity: t, transform: `scale(${(0.9 + 0.1 * t) * (0.96 + 0.04 * settle)})`, borderRadius: 26, overflow: "hidden", boxShadow: `0 30px 80px ${rgba("#000", 0.5)}` }}>
           <Picture slug={slug} width={cellW} height={cellH} ground={p.bg[(i + (shot.bg ?? 0)) % p.bg.length]} drift={0.3} seed={seedOf(slug)} localFrame={local} />
         </div>
       );
