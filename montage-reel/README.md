@@ -197,4 +197,20 @@ AAC 256 kbps. `scripts/check-sizes.mjs` verifies every part is < 100 MB,
 frame-exact (1649 / 2574 / 1166 frames) and carries audio. Measured sizes are
 recorded below after each render.
 
-RENDER_RESULTS_PLACEHOLDER
+### Measured (this delivery)
+
+| Part | Frames | Duration | Video bitrate | Size | Gate |
+|---|---|---|---|---|---|
+| `out/motu-avb-montage-reel-part1-of-3.mp4` | 1649 | 27.541 s | 15.0 Mbps | **50.2 MB** | ok |
+| `out/motu-avb-montage-reel-part2-of-3.mp4` | 2574 | 42.944 s | 14.5 Mbps | **75.5 MB** | ok |
+| `out/motu-avb-montage-reel-part3-of-3.mp4` | 1166 | 19.477 s | 13.6 Mbps | **32.2 MB** | ok |
+
+H.264 High, 2160×3840, 60 fps, yuv420p, AAC 256 kbps 48 kHz; all three parts
+frame-exact against the timing map and under 100 MB (`npm run check-sizes`).
+Sizes are in MiB as GitHub counts them. Render time on the 4-core build
+container: ~1 s per frame at concurrency 3 (≈ 95 min for the set).
+
+Join in the NLE: place Part 1, Part 2, Part 3 back-to-back on one track with no
+gaps and no re-sync; the embedded audio is one continuous bed sliced at the two
+split frames.
+
