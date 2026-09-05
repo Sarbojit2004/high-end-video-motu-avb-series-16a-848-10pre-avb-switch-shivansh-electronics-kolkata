@@ -14,6 +14,12 @@ USA) Interfaces for East and North East India.
 All three are chapters of one continuous argument — **one identical engine,
 three specialised front-ends, one scalable AVB network** — not three standalone ads.
 
+> **New — 90-second 4K montage reel (no voiceover):** see [`montage-reel/`](montage-reel/README.md).
+> 2160×3840 @ 60 fps, one continuous timeline exported as three sequential parts
+> (`montage-reel/out/motu-avb-montage-reel-part{1,2,3}-of-3.mp4`, each < 100 MB).
+> Its own visual system, typography, colour and audio bed — independent of the
+> reels documented below.
+
 ---
 
 ## Quick start

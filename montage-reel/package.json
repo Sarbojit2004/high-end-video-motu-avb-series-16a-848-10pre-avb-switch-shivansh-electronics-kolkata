@@ -1,0 +1,42 @@
+{
+  "name": "motu-avb-ecosystem-montage-reel",
+  "version": "1.0.0",
+  "private": true,
+  "description": "MOTU AVB Ecosystem (16A / 848 / 10pre / AVB Switch) \u2014 90 s, 2160x3840 @ 60 fps, no-voiceover image + motion-graphics montage reel, exported as 3 sequential parts (Remotion). Shivansh Electronics, Kolkata.",
+  "scripts": {
+    "studio": "remotion studio",
+    "typecheck": "tsc --noEmit",
+    "make-assets": "node scripts/copy-assets.mjs",
+    "fetch-fonts": "node scripts/fetch-fonts.mjs",
+    "make-grain": "node scripts/make-grain.mjs",
+    "analyze-music": "python3 scripts/analyze-music.py",
+    "make-sfx": "node scripts/make-sfx.mjs",
+    "make-audio": "node --experimental-strip-types scripts/make-audio.mjs",
+    "setup": "npm run make-assets && npm run fetch-fonts && npm run make-grain && npm run make-sfx && npm run make-audio",
+    "contrast": "node --experimental-strip-types scripts/contrast.mjs",
+    "coverage": "node --experimental-strip-types scripts/coverage.mjs",
+    "verify": "npm run typecheck && npm run contrast && npm run coverage",
+    "qa": "node scripts/qa-stills.mjs",
+    "render:part1": "remotion render Part1 out/motu-avb-montage-reel-part1-of-3.mp4 --concurrency=3",
+    "render:part2": "remotion render Part2 out/motu-avb-montage-reel-part2-of-3.mp4 --concurrency=3",
+    "render:part3": "remotion render Part3 out/motu-avb-montage-reel-part3-of-3.mp4 --concurrency=3",
+    "render:all": "npm run render:part1 && npm run render:part2 && npm run render:part3",
+    "check-sizes": "node --experimental-strip-types scripts/check-sizes.mjs",
+    "deliver-audio": "node --experimental-strip-types scripts/deliver-audio.mjs"
+  },
+  "dependencies": {
+    "@remotion/bundler": "4.0.497",
+    "@remotion/cli": "4.0.497",
+    "@remotion/media-utils": "4.0.497",
+    "@remotion/renderer": "4.0.497",
+    "@remotion/transitions": "4.0.497",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "remotion": "4.0.497"
+  },
+  "devDependencies": {
+    "@types/react": "18.3.12",
+    "@types/react-dom": "18.3.1",
+    "typescript": "5.6.3"
+  }
+}

@@ -1,0 +1,100 @@
+[
+  {
+    "family": "Alfa Slab One",
+    "style": "normal",
+    "weight": "400",
+    "file": "alfa-slab-one-normal-400.ttf",
+    "bytes": 91272
+  },
+  {
+    "family": "Bricolage Grotesque",
+    "style": "normal",
+    "weight": "300",
+    "file": "bricolage-grotesque-normal-300.ttf",
+    "bytes": 82212
+  },
+  {
+    "family": "Bricolage Grotesque",
+    "style": "normal",
+    "weight": "500",
+    "file": "bricolage-grotesque-normal-500.ttf",
+    "bytes": 82244
+  },
+  {
+    "family": "Bricolage Grotesque",
+    "style": "normal",
+    "weight": "700",
+    "file": "bricolage-grotesque-normal-700.ttf",
+    "bytes": 82204
+  },
+  {
+    "family": "Bricolage Grotesque",
+    "style": "normal",
+    "weight": "800",
+    "file": "bricolage-grotesque-normal-800.ttf",
+    "bytes": 82332
+  },
+  {
+    "family": "Bodoni Moda",
+    "style": "italic",
+    "weight": "500",
+    "file": "bodoni-moda-italic-500.ttf",
+    "bytes": 47708
+  },
+  {
+    "family": "Bodoni Moda",
+    "style": "italic",
+    "weight": "700",
+    "file": "bodoni-moda-italic-700.ttf",
+    "bytes": 47724
+  },
+  {
+    "family": "Bodoni Moda",
+    "style": "normal",
+    "weight": "500",
+    "file": "bodoni-moda-normal-500.ttf",
+    "bytes": 44844
+  },
+  {
+    "family": "Bodoni Moda",
+    "style": "normal",
+    "weight": "700",
+    "file": "bodoni-moda-normal-700.ttf",
+    "bytes": 44844
+  },
+  {
+    "family": "Caveat",
+    "style": "normal",
+    "weight": "600",
+    "file": "caveat-normal-600.ttf",
+    "bytes": 251816
+  },
+  {
+    "family": "Caveat",
+    "style": "normal",
+    "weight": "700",
+    "file": "caveat-normal-700.ttf",
+    "bytes": 251256
+  },
+  {
+    "family": "Tinos",
+    "style": "italic",
+    "weight": "400",
+    "file": "tinos-italic-400.ttf",
+    "bytes": 548440
+  },
+  {
+    "family": "Tinos",
+    "style": "normal",
+    "weight": "400",
+    "file": "tinos-normal-400.ttf",
+    "bytes": 507368
+  },
+  {
+    "family": "Tinos",
+    "style": "normal",
+    "weight": "700",
+    "file": "tinos-normal-700.ttf",
+    "bytes": 582100
+  }
+]

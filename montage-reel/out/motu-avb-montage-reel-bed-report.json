@@ -1,0 +1,66 @@
+{
+  "target": {
+    "lufs": -10,
+    "truePeak": -1
+  },
+  "sections": [
+    {
+      "section": 0,
+      "track": "danny",
+      "srcStart": 19.478,
+      "stretch": 1,
+      "reelStart": 0,
+      "length": 27.48,
+      "measured": {
+        "lufs": -7.45,
+        "tp": 0.33,
+        "lra": 2
+      }
+    },
+    {
+      "section": 1,
+      "track": "ian",
+      "srcStart": 24.99,
+      "stretch": 1.02356,
+      "reelStart": 27.48,
+      "length": 21.448,
+      "measured": {
+        "lufs": -8.13,
+        "tp": 0.73,
+        "lra": 3.4
+      }
+    },
+    {
+      "section": 2,
+      "track": "ian",
+      "srcStart": 68.886,
+      "stretch": 1.02262,
+      "reelStart": 48.928,
+      "length": 21.448,
+      "measured": {
+        "lufs": -6.34,
+        "tp": 0.8,
+        "lra": 2.5
+      }
+    },
+    {
+      "section": 3,
+      "track": "danny",
+      "srcStart": 111.476,
+      "stretch": 1.00765,
+      "reelStart": 70.375,
+      "length": 17.472,
+      "measured": {
+        "lufs": -6.83,
+        "tp": 0.3,
+        "lra": 4.3
+      }
+    }
+  ],
+  "master": {
+    "lufs": -9.99,
+    "truePeak": -1,
+    "lra": 2.2
+  },
+  "sfxEvents": 181
+}
