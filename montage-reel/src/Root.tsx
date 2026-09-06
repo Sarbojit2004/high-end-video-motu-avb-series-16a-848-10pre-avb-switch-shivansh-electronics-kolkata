@@ -1,6 +1,7 @@
 import React from "react";
 import { Composition } from "remotion";
 import { Reel, partFrames } from "./Reel.tsx";
+import { Thumbnail } from "./Thumbnail.tsx";
 import { FPS, WIDTH, HEIGHT, TOTAL_FRAMES, PARTS } from "./data/grid.ts";
 
 /**
@@ -8,6 +9,9 @@ import { FPS, WIDTH, HEIGHT, TOTAL_FRAMES, PARTS } from "./data/grid.ts";
  * sequential export parts (brief §9). Each Part is the SAME timeline offset by
  * its start frame, with the shared audio bed offset identically, so the three
  * MP4s join back-to-back with no gap and no re-sync.
+ *
+ * "Thumbnail" is the reel's cover frame, rendered as a still at the same
+ * 2160 x 3840 as the video.
  */
 export const RemotionRoot: React.FC = () => (
   <>
@@ -16,5 +20,6 @@ export const RemotionRoot: React.FC = () => (
       const { from, duration } = partFrames(p.id);
       return <Composition key={p.id} id={p.id} component={Reel} durationInFrames={duration} fps={FPS} width={WIDTH} height={HEIGHT} defaultProps={{ offsetFrames: from }} />;
     })}
+    <Composition id="Thumbnail" component={Thumbnail} durationInFrames={1} fps={FPS} width={WIDTH} height={HEIGHT} />
   </>
 );

@@ -21,6 +21,7 @@
     "render:part2": "remotion render Part2 out/motu-avb-montage-reel-part2-of-3.mp4 --concurrency=3",
     "render:part3": "remotion render Part3 out/motu-avb-montage-reel-part3-of-3.mp4 --concurrency=3",
     "render:all": "npm run render:part1 && npm run render:part2 && npm run render:part3",
+    "render:thumb": "remotion still Thumbnail out/thumbnail-motu-avb-ecosystem.png --image-format=png",
     "check-sizes": "node --experimental-strip-types scripts/check-sizes.mjs",
     "deliver-audio": "node --experimental-strip-types scripts/deliver-audio.mjs"
   },

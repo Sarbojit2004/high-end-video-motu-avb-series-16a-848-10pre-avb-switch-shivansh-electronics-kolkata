@@ -1,20 +1,17 @@
-import React, { useEffect, useState } from "react";
-import { AbsoluteFill, Audio, Sequence, continueRender, delayRender, staticFile, useCurrentFrame } from "remotion";
+import React from "react";
+import { AbsoluteFill, Audio, Sequence, staticFile, useCurrentFrame } from "remotion";
 import { TIMELINE, TAIL } from "./data/timeline.ts";
 import { TOTAL_FRAMES, PARTS, ACTS, beatFrame, FPS } from "./data/grid.ts";
 import { ACT_PALETTES, inkFor } from "./design/palette.ts";
-import { loadFonts } from "./design/fonts.ts";
+import { useFonts } from "./design/fonts.ts";
 import { ShotView } from "./components/Shot.tsx";
 import { ColdOpen } from "./acts/ColdOpen.tsx";
 import { BrandClose } from "./acts/BrandClose.tsx";
 import { Grain } from "./components/Grain.tsx";
 import { Flash } from "./components/Transitions.tsx";
 import { CornerMark } from "./components/Brand.tsx";
-
-const useFonts = () => {
-  const [handle] = useState(() => delayRender("fonts"));
-  useEffect(() => { loadFonts().then(() => continueRender(handle)).catch((e) => { console.error(e); continueRender(handle); }); }, [handle]);
-};
+import { ContextBand } from "./components/ContextBand.tsx";
+import { cardAtFrame } from "./data/text-track.ts";
 
 /** The whole 90 s as one continuous composition; export parts wrap it with an offset. */
 export const Reel: React.FC<{ offsetFrames?: number; audioFile?: string }> = ({ offsetFrames = 0, audioFile = "audio/bed.wav" }) => {
@@ -42,6 +39,12 @@ export const Reel: React.FC<{ offsetFrames?: number; audioFile?: string }> = ({ 
             </Sequence>
           );
         })}
+        {/* the heading/subheading layer: one instance above every shot, so a
+            run's pair is introduced on its opening cut, holds dead still
+            through the cuts inside that run, and exits with motion before the
+            next pair. Under the colour flashes on purpose — a flash frame is a
+            film-projector frame and covers everything. */}
+        <TextLayer />
         {flashes.map((f, i) => <Flash key={i} color={f.color} frames={f.frames} />)}
         {/* understated persistent corner mark through the product acts only (brief §6) */}
         <Sequence from={beatFrame(9)} durationInFrames={beatFrame(125) - beatFrame(9)} layout="none">
@@ -51,6 +54,19 @@ export const Reel: React.FC<{ offsetFrames?: number; audioFile?: string }> = ({ 
       </Sequence>
     </AbsoluteFill>
   );
+};
+
+/** Roles that own the whole frame themselves — the band stays off for them. */
+const OWN_FRAME = new Set(["title", "word", "mood", "script"]);
+
+const TextLayer: React.FC = () => {
+  const frame = useCurrentFrame();
+  const shot = TIMELINE.shots.find((s) => frame >= s.startFrame && frame < s.endFrame);
+  if (!shot || shot.kind === "cold" || shot.kind === "brand") return null;
+  if (shot.text && OWN_FRAME.has(shot.text.role)) return null;
+  const card = cardAtFrame(frame);
+  if (!card) return null;
+  return <ContextBand card={card} globalFrame={frame} palette={ACT_PALETTES[shot.act]} />;
 };
 
 const CornerMarkForFrame: React.FC = () => {

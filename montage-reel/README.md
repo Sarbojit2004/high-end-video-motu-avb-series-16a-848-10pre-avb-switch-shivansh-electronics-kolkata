@@ -27,6 +27,8 @@ cd montage-reel
 npm install
 npm run setup        # images + logos → public/, beat analysis, SFX synthesis, music bed
 npm run render:all   # three parts → out/
+npm run render:thumb # ecosystem cover still → out/
+node --experimental-strip-types scripts/text-coverage.mjs   # text-layer gate
 node --experimental-strip-types scripts/check-sizes.mjs   # < 100 MB, frame-exact, audio present
 ```
 
@@ -126,6 +128,51 @@ reports WOFF2 faces as loaded but paints fallbacks.
 
 ---
 
+## On-screen text (rectification pass)
+
+Every product appearance carries a **heading + subheading pair**. The pair is
+introduced on the cut that opens a run, holds through that run's rapid-fire
+cuts, and exits with motion before the next one; a product change always opens
+a fresh pair on that cut.
+
+`node --experimental-strip-types scripts/text-coverage.mjs` is the gate. It
+reports every shot in the product acts and what text is on it, and fails the
+build on any violation. Current state: **100 % of product-act time carries
+text, 0 shots with none**, longest text-free run **0.0 s** (limit 2.5 s).
+
+| | |
+|---|---|
+| Heading | ALL UPPERCASE, no terminal punctuation — the product name (`MOTU 16A`, `MOTU 848`, `MOTU 10PRE`, `AVB SWITCH`) or an ecosystem-level word (`AVB NETWORK`, `IN SYNC`, `MOTU AVB`) |
+| Subheading | Title Case, 2–4 words, no terminal punctuation, never a spec value — `Front And Rear`, `CueMix Pro Control`, `Patch Bay Routing`, `Ties It Together`, `One Shared Clock` … |
+| Primary pairing | **Bodoni Moda** heading (the Didone contrast voice) at 150–260 px, auto-fitted so it dominates the width it occupies, with **Caveat** as the script companion at 46 % of its scale tucked against the heading's baseline |
+| Secondary pairing | the existing act-opening product-name cards and Alfa Slab One hero words, each with their Tinos line — untouched by this pass |
+| Contrast | the pair always sits on a tight scrim in the act's own scrim colour at the verified 94 % opacity; the script takes the act accent only where that clears 4.5:1 on that scrim, otherwise the scrim's own ink |
+
+**Motion.** The build-in rides the cut that brought the shot on: a whip or
+line-reveal gives the heading a directional wipe, a glitch or flash gives it a
+blurred stagger, a punch or hard cut gives it a scale-in. The subheading
+follows four frames later. Three elements persist on independent chains, so
+nothing re-animates unless it actually changes:
+
+| Element | Holds while | Effect |
+|---|---|---|
+| scrim | any unbroken run of cards | the plate never blinks between runs |
+| heading | the product does not change | the product name locks for a whole act |
+| subheading | the phrase does not change | in the Act IV callback burst the heading flips product-to-product every beat over one held `One Ecosystem` |
+
+**What this pass did not touch:** the shot list, which images appear and in what
+order, the act boundaries and timing, the per-act palettes, the transitions
+between shots, the music/SFX mix, and the Act 0 / Act V branding lockups. The
+bare one-line labels are superseded by the full pair, but their layout
+reservations in `Shot.tsx` are left in place so no image moves.
+
+Source: `src/data/text-track.ts` (the cards + validator), `src/components/ContextBand.tsx`
+(the pair), and `TextLayer` in `src/Reel.tsx` — one instance above every shot,
+so the pair holds dead still through a run's cuts instead of being dragged by
+each whip.
+
+---
+
 ## Colour (brief §4)
 
 Each act draws a 2–4 colour micro-palette from the supplied pool
@@ -186,6 +233,25 @@ shots twice as Act IV callbacks). One photograph is excluded on content:
 modular synthesizer, not MOTU hardware. Holds run 0.33–2.0 s (mean 0.81 s);
 vertical 9:16 lets two or three landscape images stack in one frame, which is
 how 40 images fit in 21 s.
+
+---
+
+## Thumbnail
+
+`npm run render:thumb` → `out/thumbnail-motu-avb-ecosystem.png` (2160 × 3840,
+the reel's own frame size, 9.7 MB).
+
+It is the reel's cover frame, built from the same system rather than designed
+separately: the Act 0 / Act V bookend palette (Deep Navy ground, White + Cyan),
+the routing-line signal motif, the same grain pass, and the full type hierarchy
+— **Alfa Slab One** hero (`AVB` / `ECOSYSTEM`), **Tinos** classical line naming
+every product, **Bricolage Grotesque** (Telegraf's stand-in) product labels and
+`AVB SWITCH`, microtype for the URL, both logos on their white plates.
+
+All four products appear in one frame, arranged as the idea the reel argues:
+the 16A, 848 and 10pre stacked as a rack, their signal routed down the gutters
+into the AVB Switch that ties them together. Source: `src/Thumbnail.tsx`
+(entirely static — no `useCurrentFrame`, so it renders identically at any frame).
 
 ---
 

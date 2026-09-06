@@ -19,7 +19,8 @@
 // scripts/fetch-fonts.mjs) with the FontFace API, and rendering is blocked
 // until every face is usable.
 // ─────────────────────────────────────────────────────────────────────────────
-import { staticFile } from "remotion";
+import { useEffect, useState } from "react";
+import { continueRender, delayRender, staticFile } from "remotion";
 
 export const FONT = {
   display: `"Alfa Slab One", "Rockwell Extra Bold", serif`,
@@ -59,4 +60,17 @@ export const loadFonts = (): Promise<string[]> => {
     return loaded;
   })();
   return loading;
+};
+
+/** Block rendering until every declared face is registered. Used by the reel and the thumbnail. */
+export const useFonts = (): void => {
+  const [handle] = useState(() => delayRender("fonts"));
+  useEffect(() => {
+    loadFonts()
+      .then(() => continueRender(handle))
+      .catch((e) => {
+        console.error(e);
+        continueRender(handle);
+      });
+  }, [handle]);
 };
