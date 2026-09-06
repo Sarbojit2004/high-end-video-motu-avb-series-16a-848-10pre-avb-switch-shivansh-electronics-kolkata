@@ -267,10 +267,11 @@ recorded below after each render.
 
 | Part | Frames | Duration | Video bitrate | Size | Gate |
 |---|---|---|---|---|---|
-| `out/motu-avb-montage-reel-part1-of-3.mp4` | 1649 | 27.541 s | 15.0 Mbps | **50.2 MB** | ok |
-| `out/motu-avb-montage-reel-part2-of-3.mp4` | 2574 | 42.944 s | 14.5 Mbps | **75.5 MB** | ok |
-| `out/motu-avb-montage-reel-part3-of-3.mp4` | 1166 | 19.477 s | 13.6 Mbps | **32.2 MB** | ok |
+| `out/motu-avb-montage-reel-part1-of-3.mp4` | 1649 | 27.541 s | 15.0 Mbps | **50.1 MB** | ok |
+| `out/motu-avb-montage-reel-part2-of-3.mp4` | 2574 | 42.944 s | 14.2 Mbps | **74.2 MB** | ok |
+| `out/motu-avb-montage-reel-part3-of-3.mp4` | 1166 | 19.477 s | 13.5 Mbps | **31.9 MB** | ok |
 
+Measured on the delivered renders, which carry the on-screen text layer.
 H.264 High, 2160×3840, 60 fps, yuv420p, AAC 256 kbps 48 kHz; all three parts
 frame-exact against the timing map and under 100 MB (`npm run check-sizes`).
 Sizes are in MiB as GitHub counts them. Render time on the 4-core build
