@@ -1,6 +1,6 @@
 import React from "react";
 import { AbsoluteFill, Audio, Sequence, staticFile, useCurrentFrame } from "remotion";
-import { TIMELINE, TAIL } from "./data/timeline.ts";
+import { TIMELINE, TAIL, type BuiltShot } from "./data/timeline.ts";
 import { TOTAL_FRAMES, PARTS, ACTS, beatFrame, FPS } from "./data/grid.ts";
 import { ACT_PALETTES, inkFor } from "./design/palette.ts";
 import { useFonts } from "./design/fonts.ts";
@@ -61,12 +61,22 @@ const OWN_FRAME = new Set(["title", "word", "mood", "script"]);
 
 const TextLayer: React.FC = () => {
   const frame = useCurrentFrame();
-  const shot = TIMELINE.shots.find((s) => frame >= s.startFrame && frame < s.endFrame);
+  // Follow the shot that is VISUALLY DOMINANT, not the one the clock is still
+  // inside. Once an incoming shot's transition lead has begun it already covers
+  // the frame, so without this the previous product's name would sit over the
+  // new product for the length of that lead (visible in the Act IV callback
+  // burst, where the heading flips every beat), and the band would overlap an
+  // incoming full-frame title card for up to 14 frames.
+  let shot: BuiltShot | undefined;
+  for (const s of TIMELINE.shots) if (frame >= s.startFrame - s.lead && frame < s.endFrame) shot = s;
   if (!shot || shot.kind === "cold" || shot.kind === "brand") return null;
   if (shot.text && OWN_FRAME.has(shot.text.role)) return null;
-  const card = cardAtFrame(frame);
+  // inside that shot's lead, read the track at the shot's own landing beat, so
+  // the pair swaps with the picture instead of trailing it
+  const at = Math.max(frame, shot.startFrame);
+  const card = cardAtFrame(at);
   if (!card) return null;
-  return <ContextBand card={card} globalFrame={frame} palette={ACT_PALETTES[shot.act]} />;
+  return <ContextBand card={card} globalFrame={at} palette={ACT_PALETTES[shot.act]} />;
 };
 
 const CornerMarkForFrame: React.FC = () => {
