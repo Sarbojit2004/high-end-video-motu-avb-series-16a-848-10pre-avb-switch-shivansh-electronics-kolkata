@@ -6,7 +6,7 @@ import { ACT_PALETTES, inkFor, rgba } from "../design/palette.ts";
 import { IMAGE_BY_SLUG } from "../data/images.ts";
 import DIMS from "../data/image-manifest.json";
 import { Picture, easeOut } from "./Picture.tsx";
-import { TitleCard, HeroWord, MoodWord, Label, Scrim } from "./Text.tsx";
+import { TitleCard, HeroWord, MoodWord, Scrim } from "./Text.tsx";
 import { Enter, Exit, HitPop } from "./Transitions.tsx";
 import { SignalField } from "./SignalField.tsx";
 
@@ -98,13 +98,9 @@ export const ShotView: React.FC<{ shot: BuiltShot }> = ({ shot }) => {
           <Scrim color={p.scrim} pad={70}><HeroWord value={shot.text.value} ink={p.scrimInk} start={textStart} size={shot.text.value.length > 6 ? 280 : 520} maxWidth={1700} /></Scrim>
         </div>
       );
-    } else if (shot.text?.role === "label") {
-      overlay = (
-        <div style={{ position: "absolute", left: SAFE_X, top: top + h + 70 }}>
-          <Label value={shot.text.value} ink={ink} accent={p.accent} start={textStart} />
-        </div>
-      );
     }
+    // role === "label": superseded by <ContextBand>, which carries the full
+    // heading + subheading pair for this run. Layout reservation unchanged.
   } else if (shot.kind === "stack") {
     const n = imgs.length;
     const gap = 40;
@@ -137,9 +133,8 @@ export const ShotView: React.FC<{ shot: BuiltShot }> = ({ shot }) => {
           <HeroWord value={shot.text.value} ink={ink} start={textStart} size={shot.text.value.length > 4 ? 520 : 640} />
         </div>
       );
-    } else if (shot.text?.role === "label") {
-      overlay = <div style={{ position: "absolute", left: SAFE_X, top: top0 + totalH + 70 }}><Label value={shot.text.value} ink={ink} accent={p.accent} start={textStart} /></div>;
     }
+    // role === "label": superseded by <ContextBand> (see above).
   } else if (shot.kind === "strip") {
     const n = imgs.length;
     const cols = n <= 3 ? n : 2;
@@ -180,9 +175,8 @@ export const ShotView: React.FC<{ shot: BuiltShot }> = ({ shot }) => {
           <Scrim color={p.scrim} pad={60}><HeroWord value={shot.text.value} ink={p.scrimInk} start={textStart} size={340} /></Scrim>
         </div>
       );
-    } else if (shot.text?.role === "label") {
-      overlay = <div style={{ position: "absolute", left: 0, right: 0, top: top0 + cellH * 2 + gap + 90, display: "flex", justifyContent: "center" }}><Label value={shot.text.value} ink={ink} accent={p.accent} start={textStart} /></div>;
     }
+    // role === "label": superseded by <ContextBand> (see above).
   } else if (shot.kind === "close") {
     const slug = imgs[0];
     const insetW = WIDTH - 2 * (SAFE_X + 200);
@@ -200,6 +194,11 @@ export const ShotView: React.FC<{ shot: BuiltShot }> = ({ shot }) => {
       </>
     );
   }
+
+  // The heading/subheading pair is NOT drawn here: it lives in <TextLayer> in
+  // Reel.tsx, one instance above every shot, so a run's pair holds perfectly
+  // still through that run's cuts instead of being dragged by each whip or
+  // glitch and covered by the incoming shot's opaque ground.
 
   const content = (
     <AbsoluteFill>
