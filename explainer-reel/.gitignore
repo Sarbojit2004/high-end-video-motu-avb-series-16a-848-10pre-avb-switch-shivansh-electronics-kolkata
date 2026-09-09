@@ -1,0 +1,7 @@
+node_modules/
+out/qa/
+out/*.log
+scripts/_groups.json
+# Intermediate uncompressed beds — the committed deliverables are the MP3s.
+public/audio/*.wav
+!public/audio/vo.wav
