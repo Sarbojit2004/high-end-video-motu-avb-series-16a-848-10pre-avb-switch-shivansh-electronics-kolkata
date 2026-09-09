@@ -142,7 +142,6 @@ export const StagedCutout: React.FC<Common> = ({
             opacity: 0.16,
             WebkitMaskImage: "linear-gradient(to top, rgba(0,0,0,0) 8%, rgba(0,0,0,1) 88%)",
             maskImage: "linear-gradient(to top, rgba(0,0,0,0) 8%, rgba(0,0,0,1) 88%)",
-            opacity: 1,
           }}
         >
           <Img src={src(asset)} style={{ width: "100%", height: h, objectFit: "contain", objectPosition: "top" }} />

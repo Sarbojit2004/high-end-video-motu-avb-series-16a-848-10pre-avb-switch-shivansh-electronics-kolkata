@@ -24,13 +24,28 @@ import { GridField, Particles } from "./components/Environment.tsx";
 // grid texture would turn to mush.
 // ─────────────────────────────────────────────────────────────────────────────
 
+// The thumbnail's four rows are chosen by hand, not by rule.
+//
+// At feed size the only colour on an otherwise black-and-grey image is the lit
+// TFT metering on the front panels, and that is what makes the stack read as
+// four working instruments rather than four dark rectangles. A rule that picks
+// the first available render gets rear-panel views for some products and front
+// for others, which reads as inconsistent at any size. So the three interfaces
+// take their front three-quarter render, and the switch takes the photograph of
+// the actual box — the thumbnail already says "network" in type, so the fourth
+// row should complete the "four products" claim with the product itself.
+const THUMB_HERO: Record<string, string> = {
+  p16a: "motu-16a-newly-added-4-png",
+  p848: "motu-848-newly-added-4-png",
+  p10pre: "motu-10pre-newly-added-png",
+  pswitch: "motu-avb-switch-1-jpg",
+};
+
 const heroFor = (product: string) => {
-  const pool = ASSETS.filter((a) => a.product === product);
-  return (
-    pool.find((a) => a.kind === "strip") ??
-    pool.find((a) => a.kind === "cutout") ??
-    pool[0]
-  );
+  const pinned = ASSETS.find((a) => a.slug === THUMB_HERO[product]);
+  if (pinned) return pinned;
+  const pool = ASSETS.filter((a) => a.product === product && a.subject === "hardware");
+  return pool.find((a) => a.kind === "strip") ?? pool.find((a) => a.kind === "cutout") ?? pool[0];
 };
 
 const STACK = [
@@ -97,12 +112,12 @@ export const Thumbnail: React.FC = () => {
       <div
         style={{
           position: "absolute",
-          top: 1310,
+          top: 1240,
           left: SAFE.x,
           width: SAFE.w,
           display: "flex",
           flexDirection: "column",
-          gap: 26,
+          gap: 30,
         }}
       >
         {STACK.map((p) => {
@@ -113,7 +128,7 @@ export const Thumbnail: React.FC = () => {
               key={p.key}
               style={{
                 position: "relative",
-                height: 372,
+                height: 430,
                 borderRadius: 30,
                 overflow: "hidden",
                 background: GROUND.darkLift,
@@ -134,12 +149,23 @@ export const Thumbnail: React.FC = () => {
                   padding: a.ar > 3.4 ? "0 26px" : 0,
                 }}
               />
-              {/* A left-hand scrim so the label always has contrast to sit on. */}
+              {/* A left-hand scrim so the label always has contrast to sit on,
+                  plus an edge vignette. Some source renders are shot on white,
+                  and without the vignette that white reaches the cell border and
+                  reads as a bright patch against the black field. */}
               <div
                 style={{
                   position: "absolute",
                   inset: 0,
                   background: `linear-gradient(90deg, rgba(6,6,8,0.94) 0%, rgba(6,6,8,0.72) 34%, rgba(6,6,8,0.08) 68%)`,
+                }}
+              />
+              <div
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  background:
+                    "radial-gradient(ellipse 66% 88% at 46% 50%, rgba(6,6,8,0) 0%, rgba(6,6,8,0.35) 72%, rgba(6,6,8,0.88) 100%)",
                 }}
               />
               <div style={{ position: "relative", paddingLeft: 46 }}>
@@ -188,7 +214,7 @@ export const Thumbnail: React.FC = () => {
       <div
         style={{
           position: "absolute",
-          bottom: 250,
+          bottom: 220,
           left: 0,
           width: VIDEO.width,
           display: "flex",
@@ -204,7 +230,7 @@ export const Thumbnail: React.FC = () => {
       <div
         style={{
           position: "absolute",
-          bottom: 168,
+          bottom: 140,
           left: 0,
           width: VIDEO.width,
           textAlign: "center",
