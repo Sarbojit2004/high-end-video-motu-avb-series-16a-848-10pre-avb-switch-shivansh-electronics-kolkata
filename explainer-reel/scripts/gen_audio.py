@@ -496,9 +496,17 @@ LEVELS = {
 }
 
 
-def to_mp3(wav):
+def to_mp3(wav, bitrate="192k"):
+    """Emit the committed copy.
+
+    A 180 s stereo bed at 48 kHz/16-bit is 34.5 MB of WAV; three of them is
+    100 MB of repository for audio that will sit at -15 dBFS under a voice.
+    The beds ship as MP3 and the WAVs stay local (gitignored), which costs
+    nothing audible under narration and keeps the repository sane.
+    """
     mp3 = wav[:-4] + ".mp3"
-    subprocess.run([FFMPEG, "-v", "error", "-y", "-i", wav, "-b:a", "192k", mp3], check=True)
+    subprocess.run([FFMPEG, "-v", "error", "-y", "-i", wav, "-b:a", bitrate, mp3], check=True)
+    return mp3
 
 
 if __name__ == "__main__":
@@ -519,8 +527,28 @@ if __name__ == "__main__":
         write_wav(os.path.join(SFX_OUT, f"{name}.wav"), st, peak_db=LEVELS[name])
         print(f"  {name:15s} {len(s) / SR:5.3f}s  {LEVELS[name]:+.1f} dBFS")
 
+    # The two beds also ship as MP3 — that is what the render and the repository
+    # actually use.
+    print()
+    for name in ("music-bed", "ambient-bed"):
+        m = to_mp3(os.path.join(OUT, f"{name}.wav"))
+        print(f"  {name}.mp3  {os.path.getsize(m) / 1e6:5.1f} MB")
+
     # A silent VO placeholder at exactly the film's runtime, so the client can
     # drop their recording straight in with no code change (brief Section 6).
-    write_wav(os.path.join(OUT, "vo.wav"), np.zeros((N, 2)), peak_db=0.0)
-    print(f"\nvo.wav placeholder — {DUR:.3f}s of silence, replace with the recorded take")
+    #
+    # Written at 8 kHz mono rather than 48 kHz stereo: it is silence, its only
+    # jobs are to exist at that path so the render does not 404 and to be
+    # exactly 180.000 s so scripts/sync-vo.mjs reports sensibly. At full rate it
+    # would be 34 MB of nothing in the repository. The client's own take
+    # replaces it at whatever rate they record.
+    vo = os.path.join(OUT, "vo.wav")
+    pcm = np.zeros((int(DUR * 8000), 2), dtype="<i2")
+    with wave.open(vo, "wb") as w:
+        w.setnchannels(2)
+        w.setsampwidth(2)
+        w.setframerate(8000)
+        w.writeframes(pcm.tobytes())
+    print(f"\n  vo.wav placeholder — {DUR:.3f}s of silence, "
+          f"{os.path.getsize(vo) / 1e6:.1f} MB. Replace with the recorded take.")
     print("done.")

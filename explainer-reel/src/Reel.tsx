@@ -229,10 +229,10 @@ export const Reel: React.FC = () => {
           of exactly 180.000 s already sits at this path, so replacing the file
           is the only step — no code changes. */}
       <Audio src={staticFile("audio/vo.wav")} volume={1} />
-      <Audio src={staticFile("audio/ambient-bed.wav")} volume={0.5} />
+      <Audio src={staticFile("audio/ambient-bed.mp3")} volume={0.5} />
       {/* The bed is already carved for the voice at synthesis time and mastered
           to -15.5 dBFS peak; this holds it well under a spoken track. */}
-      <Audio src={staticFile("audio/music-bed.wav")} volume={0.42} />
+      <Audio src={staticFile("audio/music-bed.mp3")} volume={0.42} />
 
       {SFX_PLAN.map((s, i) => (
         <Sequence key={i} from={sec(s.at)} durationInFrames={90}>
