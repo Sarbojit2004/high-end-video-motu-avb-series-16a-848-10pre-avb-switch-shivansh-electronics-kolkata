@@ -156,10 +156,15 @@ export const Caption: React.FC<Props> = ({
           opacity: keyIn,
           transform: `translateY(${interpolate(keyIn, [0, 1], [40, 0])}px) scale(${keyScale}) rotate(${keyTilt}deg)`,
           transformOrigin: align === "center" ? "50% 70%" : "8% 70%",
+          // A 90 px-radius glow behind a 330 px script word spanning most of the
+          // frame is a very large convolution, and it runs on every one of
+          // 5,400 frames — measured at 2.4 s/frame against 1.3 s/frame for the
+          // previous cut. A tighter glow plus a small drop shadow reads the
+          // same on a black ground for a fraction of the cost.
           textShadow:
             env === "dark"
-              ? `0 0 ${S(90)}px ${accent.glow}55, 0 ${S(6)}px ${S(24)}px rgba(0,0,0,0.55)`
-              : `0 ${S(5)}px ${S(18)}px rgba(20,18,14,0.20)`,
+              ? `0 0 ${S(30)}px ${accent.glow}66, 0 ${S(5)}px ${S(12)}px rgba(0,0,0,0.7)`
+              : `0 ${S(4)}px ${S(10)}px rgba(20,18,14,0.22)`,
           whiteSpace: "nowrap",
         }}
       >
@@ -177,7 +182,7 @@ export const Caption: React.FC<Props> = ({
             lineHeight: 1.06,
             opacity: tailIn,
             transform: `translateY(${interpolate(tailIn, [0, 1], [30, 0])}px)`,
-            textShadow: env === "dark" ? `0 ${S(4)}px ${S(18)}px rgba(0,0,0,0.6)` : "none",
+            textShadow: env === "dark" ? `0 ${S(3)}px ${S(9)}px rgba(0,0,0,0.7)` : "none",
             maxWidth: "100%",
           }}
         >
