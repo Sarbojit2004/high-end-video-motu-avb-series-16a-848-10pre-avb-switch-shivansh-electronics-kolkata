@@ -1,7 +1,17 @@
 node_modules/
+
+# Render scratch — QA contact sheets, stills and logs.
 out/qa/
 out/*.log
-scripts/_groups.json
-# Intermediate uncompressed beds — the committed deliverables are the MP3s.
+
+# The 540p intermediate the 480p preview was downscaled from. The 480p file is
+# the review deliverable; keeping both would just be 17 MB of duplicate.
+out/preview-540.mp4
+
+# Uncompressed intermediate beds. The committed deliverables are the MP3s,
+# regenerable with `npm run audio`. The silent VO placeholder is kept, because
+# it is the documented drop-in path for the client's recording.
 public/audio/*.wav
 !public/audio/vo.wav
+
+scripts/_groups.json
