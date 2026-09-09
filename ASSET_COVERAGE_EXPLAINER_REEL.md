@@ -56,7 +56,7 @@ bookend the film: the claim in the cold open, the proof in the close.
 | MOTU 848 | 32 | 32 | 0 | `#B9761A` |
 | MOTU 10pre | 33 | 33 | 0 | `#187A56` |
 | MOTU AVB Switch | 8 | 8 | 0 | `#1F5FD0` |
-| Shared platform | 12 | 12 | 0 | `#3A3733` |
+| Shared platform | 12 | 12 | 0 | `#1E1B16` |
 
 ## Tiers
 
@@ -100,19 +100,19 @@ Ordered by first appearance on the timeline.
 | 2 | `00:00.0` _(+2 more)_ | Cold open | GRID | `motu-16a-10-png.png` | hardware | `MOTU 16A (10).png` |
 | 3 | `00:00.0` _(+2 more)_ | Cold open | GRID | `motu-848-11-png.png` | hardware | `MOTU 848 (11).png` |
 | 4 | `00:00.0` _(+3 more)_ | Cold open | GRID | `motu-avb-switch-1-jpg.jpg` | hardware | `MOTU AVB SWITCH (1).jpg` |
-| 5 | `00:02.1` | Cold open | STRIP | `motu-10pre-21-jpg.jpg` | ui | `MOTU 10pre (21).jpg`<br>`MOTU 848 (21).jpg` |
+| 5 | `00:02.1` | Cold open | HERO | `motu-10pre-21-jpg.jpg` | ui | `MOTU 10pre (21).jpg`<br>`MOTU 848 (21).jpg` |
 | 6 | `00:04.6` | Cold open | HERO | `motu-16a-8-png.png` | hardware | `MOTU 16A (8).png`<br>`MOTU 848 (10).png` |
-| 7 | `00:08.5` _(+1 more)_ | Cold open | STRIP | `motu-10pre-24-jpg.jpg` | ui | `MOTU 10pre (24).jpg`<br>`MOTU 16A (4).jpg`<br>`MOTU 848 (7).jpg` |
+| 7 | `00:08.5` _(+1 more)_ | Cold open | HERO | `motu-10pre-24-jpg.jpg` | ui | `MOTU 10pre (24).jpg`<br>`MOTU 16A (4).jpg`<br>`MOTU 848 (7).jpg` |
 | 8 | `00:12.5` | Cold open | HERO | `motu-10pre-22-jpg.jpg` | hardware | `MOTU 10pre (22).jpg`<br>`MOTU 848 (27).jpg` |
-| 9 | `00:14.6` | Cold open | STRIP | `motu-16a-23-jpg.jpg` | hardware | `MOTU 16A (23).jpg`<br>`MOTU 848 (14).jpg` |
-| 10 | `00:16.9` | 16A | HERO | `motu-16a-7-png.png` | hardware | `MOTU 16A (7).png` |
+| 9 | `00:14.6` | Cold open | HERO | `motu-16a-23-jpg.jpg` | hardware | `MOTU 16A (23).jpg`<br>`MOTU 848 (14).jpg` |
+| 10 | `00:16.9` _(+1 more)_ | 16A | HERO | `motu-16a-7-png.png` | hardware | `MOTU 16A (7).png` |
 | 11 | `00:20.9` | 16A | HERO | `motu-16a-13-png.png` | hardware | `MOTU 16A (13).png` |
 | 12 | `00:24.0` | 16A | HERO | `motu-16a-24-jpg.jpg` | hardware | `MOTU 16A (24).jpg` |
-| 13 | `00:28.7` | 16A | GRID | `motu-16a-1-png.png` | mark | `MOTU 16A (1).png` |
-| 14 | `00:28.7` | 16A | GRID | `motu-16a-10-jpg.jpg` | ui | `MOTU 16A (10).jpg` |
-| 15 | `00:28.7` | 16A | GRID | `motu-16a-11-jpg.jpg` | ui | `MOTU 16A (11).jpg` |
-| 16 | `00:28.7` | 16A | GRID | `motu-16a-11-png.png` | hardware | `MOTU 16A (11).png` |
-| 17 | `00:28.7` | 16A | GRID | `motu-16a-12-jpg.jpg` | ui | `MOTU 16A (12).jpg` |
+| 13 | `00:28.7` | 16A | GRID | `motu-16a-10-jpg.jpg` | ui | `MOTU 16A (10).jpg` |
+| 14 | `00:28.7` | 16A | GRID | `motu-16a-11-jpg.jpg` | ui | `MOTU 16A (11).jpg` |
+| 15 | `00:28.7` | 16A | GRID | `motu-16a-11-png.png` | hardware | `MOTU 16A (11).png` |
+| 16 | `00:28.7` | 16A | GRID | `motu-16a-12-jpg.jpg` | ui | `MOTU 16A (12).jpg` |
+| 17 | `00:28.7` | 16A | GRID | `motu-16a-12-png.png` | hardware | `MOTU 16A (12).png` |
 | 18 | `00:28.7` | 16A | GRID | `motu-16a-13-jpg.jpg` | ui | `MOTU 16A (13).jpg` |
 | 19 | `00:28.7` | 16A | GRID | `motu-16a-14-jpg.jpg` | ui | `MOTU 16A (14).jpg` |
 | 20 | `00:28.7` | 16A | GRID | `motu-16a-15-jpg.jpg` | ui | `MOTU 16A (15).jpg` |
@@ -123,52 +123,52 @@ Ordered by first appearance on the timeline.
 | 25 | `00:28.7` | 16A | GRID | `motu-16a-7-jpg.jpg` | ui | `MOTU 16A (7).jpg` |
 | 26 | `00:32.6` | 16A | HERO | `motu-16a-25-jpg.jpg` | hardware | `MOTU 16A (25).jpg` |
 | 27 | `00:36.1` | 16A | GRID | `motu-16a-1-jpg.jpg` | hardware | `MOTU 16A (1).jpg` |
-| 28 | `00:36.1` | 16A | GRID | `motu-16a-12-png.png` | hardware | `MOTU 16A (12).png` |
+| 28 | `00:36.1` | 16A | GRID | `motu-16a-1-png.png` | mark | `MOTU 16A (1).png` |
 | 29 | `00:36.1` | 16A | GRID | `motu-16a-18-jpg.jpg` | hardware | `MOTU 16A (18).jpg` |
 | 30 | `00:36.1` | 16A | GRID | `motu-16a-2-jpg.jpg` | hardware | `MOTU 16A (2).jpg` |
 | 31 | `00:36.1` | 16A | GRID | `motu-16a-21-jpg.jpg` | hardware | `MOTU 16A (21).jpg` |
 | 32 | `00:36.1` | 16A | GRID | `motu-16a-28-jpg.jpg` | hardware | `MOTU 16A (28).jpg` |
 | 33 | `00:36.1` | 16A | GRID | `motu-16a-4-png.png` | hardware | `MOTU 16A (4).png` |
 | 34 | `00:36.1` | 16A | GRID | `motu-16a-5-png.png` | diagram | `MOTU 16A (5).png` |
-| 35 | `00:36.1` | 16A | GRID | `motu-16a-9-jpg.jpg` | hardware | `MOTU 16A (9).jpg` |
-| 36 | `00:36.1` | 16A | GRID | `motu-16a-9-png.png` | hardware | `MOTU 16A (9).png` |
-| 37 | `00:36.1` | 16A | GRID | `motu-16a-newly-added-2-png.png` | hardware | `MOTU 16A NEWLY ADDED (2).png` |
-| 38 | `00:36.1` | 16A | GRID | `motu-16a-newly-added-3-png.png` | hardware | `MOTU 16A NEWLY ADDED (3).png` |
-| 39 | `00:36.1` | 16A | GRID | `motu-16a-newly-added-4-png.png` | hardware | `MOTU 16A NEWLY ADDED (4).png` |
-| 40 | `00:36.1` | 16A | GRID | `motu-16a-newly-added-jpg.jpg` | hardware | `MOTU 16A NEWLY ADDED.jpg` |
-| 41 | `00:40.3` | 16A | HERO | `motu-16a-6-png.png` | diagram | `MOTU 16A (6).png` |
+| 35 | `00:36.1` | 16A | GRID | `motu-16a-6-png.png` | diagram | `MOTU 16A (6).png` |
+| 36 | `00:36.1` | 16A | GRID | `motu-16a-9-jpg.jpg` | hardware | `MOTU 16A (9).jpg` |
+| 37 | `00:36.1` | 16A | GRID | `motu-16a-9-png.png` | hardware | `MOTU 16A (9).png` |
+| 38 | `00:36.1` | 16A | GRID | `motu-16a-newly-added-2-png.png` | hardware | `MOTU 16A NEWLY ADDED (2).png` |
+| 39 | `00:36.1` | 16A | GRID | `motu-16a-newly-added-3-png.png` | hardware | `MOTU 16A NEWLY ADDED (3).png` |
+| 40 | `00:36.1` | 16A | GRID | `motu-16a-newly-added-4-png.png` | hardware | `MOTU 16A NEWLY ADDED (4).png` |
+| 41 | `00:36.1` | 16A | GRID | `motu-16a-newly-added-jpg.jpg` | hardware | `MOTU 16A NEWLY ADDED.jpg` |
 | 42 | `00:44.2` | 16A | HERO | `motu-16a-newly-added-1-png.png` | hardware | `MOTU 16A NEWLY ADDED (1).png` |
 | 43 | `00:49.8` | 848 | HERO | `motu-848-9-png.png` | hardware | `MOTU 848 (9).png` |
 | 44 | `00:55.1` | 848 | HERO | `motu-848-23-jpg.jpg` | hardware | `MOTU 848 (23).jpg` |
 | 45 | `00:59.9` | 848 | PAIR | `motu-848-12-png.png` | hardware | `MOTU 848 (12).png` |
 | 46 | `01:05.2` | 848 | HERO | `motu-848-20-jpg.jpg` | hardware | `MOTU 848 (20).jpg` |
 | 47 | `01:08.7` | 848 | GRID | `motu-848-1-jpg.jpg` | context | `MOTU 848 (1).jpg` |
-| 48 | `01:08.7` | 848 | GRID | `motu-848-1-png.png` | mark | `MOTU 848 (1).png` |
-| 49 | `01:08.7` | 848 | GRID | `motu-848-10-jpg.jpg` | bundle | `MOTU 848 (10).jpg` |
-| 50 | `01:08.7` | 848 | GRID | `motu-848-11-jpg.jpg` | bundle | `MOTU 848 (11).jpg` |
-| 51 | `01:08.7` | 848 | GRID | `motu-848-13-jpg.jpg` | mark | `MOTU 848 (13).jpg` |
-| 52 | `01:08.7` | 848 | GRID | `motu-848-2-png.png` | bundle | `MOTU 848 (2).png` |
-| 53 | `01:08.7` | 848 | GRID | `motu-848-24-jpg.jpg` | ui | `MOTU 848 (24).jpg` |
-| 54 | `01:08.7` | 848 | GRID | `motu-848-26-jpg.jpg` | ui | `MOTU 848 (26).jpg` |
-| 55 | `01:08.7` | 848 | GRID | `motu-848-3-jpg.jpg` | ui | `MOTU 848 (3).jpg` |
-| 56 | `01:08.7` | 848 | GRID | `motu-848-3-png.png` | mark | `MOTU 848 (3).png` |
-| 57 | `01:08.7` | 848 | GRID | `motu-848-5-jpg.jpg` | bundle | `MOTU 848 (5).jpg` |
-| 58 | `01:08.7` | 848 | GRID | `motu-848-6-png.png` | hardware | `MOTU 848 (6).png` |
-| 59 | `01:08.7` | 848 | GRID | `motu-848-newly-added-1-png.png` | hardware | `MOTU 848 NEWLY ADDED (1).png` |
-| 60 | `01:13.0` | 848 | HERO | `motu-10pre-20-jpg.jpg` | hardware | `MOTU 10pre (20).jpg`<br>`MOTU 848 (19).jpg` |
-| 61 | `01:16.5` | 848 | HERO | `motu-848-15-jpg.jpg` | hardware | `MOTU 848 (15).jpg` |
-| 62 | `01:20.1` | 848 | PAIR | `motu-848-newly-added-2-png.png` | hardware | `MOTU 848 NEWLY ADDED (2).png` |
-| 63 | `01:20.1` | 848 | PAIR | `motu-848-newly-added-3-png.png` | hardware | `MOTU 848 NEWLY ADDED (3).png` |
-| 64 | `01:23.7` | 848 | GRID | `motu-848-16-jpg.jpg` | hardware | `MOTU 848 (16).jpg` |
-| 65 | `01:23.7` | 848 | GRID | `motu-848-17-jpg.jpg` | hardware | `MOTU 848 (17).jpg` |
-| 66 | `01:23.7` | 848 | GRID | `motu-848-18-jpg.jpg` | hardware | `MOTU 848 (18).jpg` |
-| 67 | `01:23.7` | 848 | GRID | `motu-848-22-jpg.jpg` | hardware | `MOTU 848 (22).jpg` |
-| 68 | `01:23.7` | 848 | GRID | `motu-848-25-jpg.jpg` | hardware | `MOTU 848 (25).jpg` |
+| 48 | `01:08.7` | 848 | GRID | `motu-848-24-jpg.jpg` | ui | `MOTU 848 (24).jpg` |
+| 49 | `01:08.7` | 848 | GRID | `motu-848-26-jpg.jpg` | ui | `MOTU 848 (26).jpg` |
+| 50 | `01:08.7` | 848 | GRID | `motu-848-3-jpg.jpg` | ui | `MOTU 848 (3).jpg` |
+| 51 | `01:08.7` | 848 | GRID | `motu-848-6-png.png` | hardware | `MOTU 848 (6).png` |
+| 52 | `01:08.7` | 848 | GRID | `motu-848-newly-added-1-png.png` | hardware | `MOTU 848 NEWLY ADDED (1).png` |
+| 53 | `01:08.7` | 848 | GRID | `motu-848-newly-added-2-png.png` | hardware | `MOTU 848 NEWLY ADDED (2).png` |
+| 54 | `01:08.7` | 848 | GRID | `motu-848-newly-added-3-png.png` | hardware | `MOTU 848 NEWLY ADDED (3).png` |
+| 55 | `01:08.7` | 848 | GRID | `motu-848-newly-added-4-png.png` | hardware | `MOTU 848 NEWLY ADDED (4).png` |
+| 56 | `01:13.0` | 848 | HERO | `motu-10pre-20-jpg.jpg` | hardware | `MOTU 10pre (20).jpg`<br>`MOTU 848 (19).jpg` |
+| 57 | `01:16.5` | 848 | HERO | `motu-848-15-jpg.jpg` | hardware | `MOTU 848 (15).jpg` |
+| 58 | `01:20.1` | 848 | HERO | `motu-848-16-jpg.jpg` | hardware | `MOTU 848 (16).jpg` |
+| 59 | `01:23.7` | 848 | GRID | `motu-848-1-png.png` | mark | `MOTU 848 (1).png` |
+| 60 | `01:23.7` | 848 | GRID | `motu-848-10-jpg.jpg` | bundle | `MOTU 848 (10).jpg` |
+| 61 | `01:23.7` | 848 | GRID | `motu-848-11-jpg.jpg` | bundle | `MOTU 848 (11).jpg` |
+| 62 | `01:23.7` | 848 | GRID | `motu-848-13-jpg.jpg` | mark | `MOTU 848 (13).jpg` |
+| 63 | `01:23.7` | 848 | GRID | `motu-848-17-jpg.jpg` | hardware | `MOTU 848 (17).jpg` |
+| 64 | `01:23.7` | 848 | GRID | `motu-848-18-jpg.jpg` | hardware | `MOTU 848 (18).jpg` |
+| 65 | `01:23.7` | 848 | GRID | `motu-848-2-png.png` | bundle | `MOTU 848 (2).png` |
+| 66 | `01:23.7` | 848 | GRID | `motu-848-22-jpg.jpg` | hardware | `MOTU 848 (22).jpg` |
+| 67 | `01:23.7` | 848 | GRID | `motu-848-25-jpg.jpg` | hardware | `MOTU 848 (25).jpg` |
+| 68 | `01:23.7` | 848 | GRID | `motu-848-3-png.png` | mark | `MOTU 848 (3).png` |
 | 69 | `01:23.7` | 848 | GRID | `motu-848-4-jpg.jpg` | hardware | `MOTU 848 (4).jpg` |
-| 70 | `01:23.7` | 848 | GRID | `motu-848-7-png.png` | diagram | `MOTU 848 (7).png` |
-| 71 | `01:23.7` | 848 | GRID | `motu-848-8-png.png` | diagram | `MOTU 848 (8).png` |
-| 72 | `01:23.7` | 848 | GRID | `motu-848-newly-added-1-jpg.jpg` | hardware | `MOTU 848 NEWLY ADDED (1).jpg` |
-| 73 | `01:23.7` | 848 | GRID | `motu-848-newly-added-4-png.png` | hardware | `MOTU 848 NEWLY ADDED (4).png` |
+| 70 | `01:23.7` | 848 | GRID | `motu-848-5-jpg.jpg` | bundle | `MOTU 848 (5).jpg` |
+| 71 | `01:23.7` | 848 | GRID | `motu-848-7-png.png` | diagram | `MOTU 848 (7).png` |
+| 72 | `01:23.7` | 848 | GRID | `motu-848-8-png.png` | diagram | `MOTU 848 (8).png` |
+| 73 | `01:23.7` | 848 | GRID | `motu-848-newly-added-1-jpg.jpg` | hardware | `MOTU 848 NEWLY ADDED (1).jpg` |
 | 74 | `01:25.2` | 10pre | HERO | `motu-10pre-10-png.png` | hardware | `MOTU 10pre (10).png` |
 | 75 | `01:29.5` | 10pre | HERO | `motu-10pre-newly-added-2-png.png` | hardware | `MOTU 10PRE NEWLY ADDED (2).png` |
 | 76 | `01:34.6` | 10pre | HERO | `motu-10pre-11-jpg.jpg` | hardware | `MOTU 10pre (11).jpg` |
@@ -208,13 +208,13 @@ Ordered by first appearance on the timeline.
 | 110 | `02:20.8` | AVB Switch | HERO | `motu-16a-5-jpg.jpg` | diagram | `MOTU 16A (5).jpg`<br>`MOTU 848 (8).jpg` |
 | 111 | `02:23.9` | AVB Switch | HERO | `motu-avb-switch-5-png.png` | mark | `MOTU AVB SWITCH (5).png` |
 | 112 | `02:28.9` | AVB Switch | HERO | `motu-avb-switch-3-png.png` | context | `MOTU AVB SWITCH (3).png` |
-| 113 | `02:32.6` _(+2 more)_ | Close | STRIP | `motu-10pre-27-jpg.jpg` | ui | `MOTU 10pre (27).jpg`<br>`MOTU 16A (20).jpg` |
-| 114 | `02:32.6` | Close | STRIP | `motu-16a-2-png.png` | ui | `MOTU 16A (2).png`<br>`MOTU 848 (4).png` |
-| 115 | `02:32.6` | Close | STRIP | `motu-16a-3-png.png` | ui | `MOTU 16A (3).png`<br>`MOTU 848 (5).png` |
-| 116 | `02:38.4` | Close | STRIP | `motu-10pre-26-jpg.jpg` | mark | `MOTU 10pre (26).jpg`<br>`MOTU 16A (8).jpg`<br>`MOTU 848 (9).jpg` |
-| 117 | `02:38.4` | Close | STRIP | `motu-10pre-28-jpg.jpg` | mark | `MOTU 10pre (28).jpg`<br>`MOTU 16A (22).jpg` |
-| 118 | `02:38.4` | Close | STRIP | `motu-16a-19-jpg.jpg` | bundle | `MOTU 16A (19).jpg`<br>`MOTU 848 (12).jpg` |
-| 119 | `02:42.4` | Close | STRIP | `motu-avb-switch-4-png.png` | mark | `MOTU AVB SWITCH (4).png` |
+| 113 | `02:32.6` _(+2 more)_ | Close | HERO | `motu-10pre-27-jpg.jpg` | ui | `MOTU 10pre (27).jpg`<br>`MOTU 16A (20).jpg` |
+| 114 | `02:38.4` | Close | HERO | `motu-16a-2-png.png` | ui | `MOTU 16A (2).png`<br>`MOTU 848 (4).png` |
+| 115 | `02:42.4` | Close | GRID | `motu-10pre-26-jpg.jpg` | mark | `MOTU 10pre (26).jpg`<br>`MOTU 16A (8).jpg`<br>`MOTU 848 (9).jpg` |
+| 116 | `02:42.4` | Close | GRID | `motu-10pre-28-jpg.jpg` | mark | `MOTU 10pre (28).jpg`<br>`MOTU 16A (22).jpg` |
+| 117 | `02:42.4` | Close | GRID | `motu-16a-19-jpg.jpg` | bundle | `MOTU 16A (19).jpg`<br>`MOTU 848 (12).jpg` |
+| 118 | `02:42.4` | Close | GRID | `motu-16a-3-png.png` | ui | `MOTU 16A (3).png`<br>`MOTU 848 (5).png` |
+| 119 | `02:42.4` | Close | GRID | `motu-avb-switch-4-png.png` | mark | `MOTU AVB SWITCH (4).png` |
 
 ## Reprises
 

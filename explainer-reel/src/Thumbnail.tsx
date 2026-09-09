@@ -59,7 +59,7 @@ export const Thumbnail: React.FC = () => {
   const env = "dark" as const;
 
   return (
-    <AbsoluteFill style={{ background: GROUND.dark, fontFamily: FONT.ui, overflow: "hidden" }}>
+    <AbsoluteFill style={{ background: GROUND.dark, fontFamily: FONT.display, overflow: "hidden" }}>
       {/* The void, lit from above — the reference's dark environment. */}
       <AbsoluteFill
         style={{

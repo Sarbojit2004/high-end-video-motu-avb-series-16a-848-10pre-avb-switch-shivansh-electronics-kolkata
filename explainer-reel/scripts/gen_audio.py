@@ -485,15 +485,97 @@ SOUNDS = {
     "whoosh-air": lambda: whoosh(0.58, 760, 5200, 0.85),
 }
 
-# Per-cue level. These are not all the same loudness — a caption mark must be
-# far quieter than a segment swell or it will step on the narration.
-LEVELS = {
-    "caption-in": -26.0, "clock-tick": -22.0, "spec-latch": -19.0,
-    "port-link": -18.0, "stream-open": -17.0, "data-sweep": -18.0,
-    "net-lock": -15.0, "seg-swell": -14.0, "sub-drop": -16.0,
-    "whoosh-soft": -19.0, "whoosh-bright": -18.0, "whoosh-rev": -18.0,
-    "whoosh-air": -19.0,
+# Per-cue offset from the -23 LUFS reference.
+#
+# All thirteen cues are mastered to the same perceived loudness first, then
+# offset by these. A caption mark and a segment swell doing the same job at the
+# same measured loudness would still be wrong: one is punctuation under a
+# spoken line, the other is a chapter boundary. 0.0 means exactly -23 LUFS.
+RELATIVE = {
+    "seg-swell": 0.0,        # the reference cue — a segment boundary
+    "net-lock": -1.0,        # the one narrative cue, just under the swell
+    "sub-drop": -2.0,
+    "data-sweep": -3.0,
+    "stream-open": -4.0,
+    "port-link": -4.0,
+    "whoosh-bright": -3.0,
+    "whoosh-rev": -3.0,
+    "whoosh-soft": -4.0,
+    "whoosh-air": -4.0,
+    "spec-latch": -5.0,      # a figure landing, under narration
+    "clock-tick": -8.0,
+    "caption-in": -11.0,     # near-subliminal punctuation
 }
+
+
+# ════════════════════════════════════════════════ LOUDNESS MASTERING ══
+# The brief asks for the bed and the transition cues at -23 LUFS (EBU R128).
+#
+# WHY THIS EXISTS. The first cut mastered the bed to a PEAK figure (-15.5 dBFS)
+# and then scaled it again in the render. A slow pad has a very low crest
+# factor, so peak-normalising it left the bed at -29.4 LUFS, and the extra
+# 0.42 gain in the timeline took it to about -37 LUFS — present in the file,
+# inaudible in the room. Perceived loudness has to be measured, not inferred
+# from a peak.
+#
+# Pure gain, not loudnorm's dynamic mode: these are synthesised cues with
+# deliberate transients, and R128's dynamic normaliser would compress them.
+# Measure, compute one gain, apply it, then guard the peak.
+
+
+def measure_lufs(path):
+    """Integrated loudness of a file, via ffmpeg's EBU R128 meter.
+
+    Short cues are padded to four seconds first: R128's integrated measurement
+    needs a few seconds of programme, and its -70 LUFS absolute gate discards
+    the added silence rather than averaging it in.
+    """
+    r = subprocess.run(
+        [FFMPEG, "-hide_banner", "-i", path,
+         "-af", "apad=whole_dur=4,ebur128=framelog=quiet", "-f", "null", "-"],
+        capture_output=True, text=True,
+    )
+    for line in reversed(r.stderr.splitlines()):
+        if "I:" in line and "LUFS" in line:
+            try:
+                return float(line.split("I:")[1].split("LUFS")[0].strip())
+            except ValueError:
+                continue
+    return None
+
+
+def master_lufs(path, target=-23.0, ceiling_db=-1.0):
+    """Scale a file to `target` LUFS with a single gain, then guard the peak."""
+    cur = measure_lufs(path)
+    if cur is None:
+        print(f"    ! could not measure {os.path.basename(path)}")
+        return None
+    gain = target - cur
+
+    with wave.open(path, "rb") as w:
+        n, ch, sr = w.getnframes(), w.getnchannels(), w.getframerate()
+        x = np.frombuffer(w.readframes(n), dtype="<i2").astype(np.float64) / 32768.0
+    x = x.reshape(-1, ch) * (10 ** (gain / 20))
+
+    # A pure gain can push a transient past full scale; pull the whole file
+    # down if it does, rather than clipping it.
+    peak = np.abs(x).max()
+    ceil = 10 ** (ceiling_db / 20)
+    trimmed = 0.0
+    if peak > ceil:
+        trimmed = 20 * np.log10(ceil / peak)
+        x *= ceil / peak
+
+    with wave.open(path, "wb") as w:
+        w.setnchannels(ch)
+        w.setsampwidth(2)
+        w.setframerate(sr)
+        w.writeframes((np.clip(x, -1, 1) * 32767).astype("<i2").tobytes())
+
+    final = measure_lufs(path)
+    note = f"  (peak-limited {trimmed:+.1f} dB)" if trimmed else ""
+    print(f"    {os.path.basename(path):20s} {cur:7.1f} -> {final:7.1f} LUFS{note}")
+    return final
 
 
 def to_mp3(wav, bitrate="192k"):
@@ -520,12 +602,23 @@ if __name__ == "__main__":
     a = build_ambient()
     write_wav(os.path.join(OUT, "ambient-bed.wav"), a, peak_db=-27.0)
 
-    print(f"{len(SOUNDS)} sfx cues ...", flush=True)
+    # The bed carries the loudness the brief specifies. The ambient layer sits
+    # far below it on purpose — at -23 LUFS as well the two would sum to about
+    # -20 and the bed would no longer be "the bed".
+    print("\nmastering to EBU R128 ...", flush=True)
+    master_lufs(os.path.join(OUT, "music-bed.wav"), target=-23.0)
+    master_lufs(os.path.join(OUT, "ambient-bed.wav"), target=-32.0)
+
+    print(f"\n{len(SOUNDS)} sfx cues ...", flush=True)
     for name, fn in SOUNDS.items():
         s = declick(np.asarray(fn(), dtype=np.float64))
         st = stereo(s, width=0.30, pre=0.006) if s.ndim == 1 else s
-        write_wav(os.path.join(SFX_OUT, f"{name}.wav"), st, peak_db=LEVELS[name])
-        print(f"  {name:15s} {len(s) / SR:5.3f}s  {LEVELS[name]:+.1f} dBFS")
+        dst = os.path.join(SFX_OUT, f"{name}.wav")
+        write_wav(dst, st, peak_db=-3.0)
+        # Every transition cue lands at the same perceived loudness as the bed,
+        # then RELATIVE is applied on top: a caption mark and a segment swell
+        # should not be equally loud even when both measure -23 LUFS.
+        master_lufs(dst, target=-23.0 + RELATIVE[name])
 
     # The two beds also ship as MP3 — that is what the render and the repository
     # actually use.
