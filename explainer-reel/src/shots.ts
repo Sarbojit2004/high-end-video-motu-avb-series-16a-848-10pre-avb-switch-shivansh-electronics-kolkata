@@ -179,8 +179,18 @@ const PINS: { seg: SegmentId; find: string; slug: string; why: string }[] = [
     why: "front-panel inserts and combo inputs together" },
 
   // ── AVB Switch: a network, never a box with channels ────────────────────
+  // Nine images across nine caption groups means every one lands somewhere
+  // prominent, so every one is placed deliberately rather than distributed.
+  { seg: "sswitch", find: "The AVB Switch has no preamps", slug: "motu-avb-switch-3-jpg",
+    why: "top view — nothing on it but six RJ-45s, which is the claim" },
   { seg: "sswitch", find: "six Gigabit ports", slug: "motu-avb-switch-1-jpg",
     why: "the switch itself, ports facing the viewer" },
+  { seg: "sswitch", find: "turn separate interfaces", slug: "motu-avb-switch-1-png",
+    why: "the topology — separate devices resolved into one system" },
+  { seg: "sswitch", find: "802.1AS locks every device", slug: "motu-avb-switch-2-jpg",
+    why: "the switch doing the locking, rather than a stock badge" },
+  { seg: "sswitch", find: "Up to 4,096 channels", slug: "motu-avb-switch-5-png",
+    why: "a meter at full scale — the one place the gauge graphic earns its spot" },
   { seg: "sswitch", find: "accurate to the nanosecond", slug: "motu-avb-switch-4-jpg",
     why: "the clock mark — gPTP is the one idea this segment must land" },
   { seg: "sswitch", find: "512 streams", slug: "motu-16a-5-jpg",

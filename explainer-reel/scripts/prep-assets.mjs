@@ -52,6 +52,11 @@ const REASSIGN = {
   "motu-16a-23.jpg": "shared",    // MOTU USB-C cable
   "motu-16a-3.png": "shared",     // DAW timeline
   "motu-16a-5.jpg": "pswitch",    // AVB network topology diagram — switch hero
+  // A generic "Quality Guaranteed" service rosette. It says nothing about the
+  // AVB Switch and has no technical line it belongs under, so it moves to the
+  // shared pool and appears as one cell of the closing board, where a brand
+  // assurance mark actually makes sense.
+  "motu-avb-switch-4.png": "shared",
   "motu-16a-8.png": "shared",     // rear panel: word clock + network + optical
 };
 

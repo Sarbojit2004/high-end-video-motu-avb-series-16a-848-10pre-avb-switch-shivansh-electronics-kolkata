@@ -33,7 +33,7 @@ gives 119 distinct images, and those 119 images satisfy all 135 valid filenames
 
 **Why dedupe at all.** Showing one photograph twice under two different product
 labels would directly contradict the product-identification discipline the brief
-makes mandatory (Section 4). Every one of the fourteen cross-product duplicates
+makes mandatory (Section 4). Every one of the cross-product duplicates
 turned out to be a *shared platform* asset — CueMix Pro screens, the DSP reverb
 window, the ESS and Thunderbolt marks, the bundled cable, DAW windows, rear-panel
 network detail. They are duplicated across product folders precisely because they
@@ -55,8 +55,8 @@ bookend the film: the claim in the cold open, the proof in the close.
 | MOTU 16A | 34 | 34 | 0 | `#C8322E` |
 | MOTU 848 | 32 | 32 | 0 | `#B9761A` |
 | MOTU 10pre | 33 | 33 | 0 | `#187A56` |
-| MOTU AVB Switch | 9 | 9 | 0 | `#1F5FD0` |
-| Shared platform | 11 | 11 | 0 | `#3A3733` |
+| MOTU AVB Switch | 8 | 8 | 0 | `#1F5FD0` |
+| Shared platform | 12 | 12 | 0 | `#3A3733` |
 
 ## Tiers
 
@@ -201,20 +201,20 @@ Ordered by first appearance on the timeline.
 | 103 | `01:54.9` | 10pre | GRID | `motu-10pre-29-jpg.jpg` | hardware | `MOTU 10pre (29).jpg` |
 | 104 | `01:54.9` | 10pre | GRID | `motu-10pre-newly-added-jpg.jpg` | hardware | `MOTU 10PRE NEWLY ADDED.jpg` |
 | 105 | `01:54.9` | 10pre | GRID | `motu-10pre-newly-added-png.png` | hardware | `MOTU 10PRE NEWLY ADDED.png` |
-| 106 | `01:57.5` | AVB Switch | HERO | `motu-avb-switch-2-jpg.jpg` | hardware | `MOTU AVB SWITCH (2).jpg` |
-| 107 | `02:06.1` | AVB Switch | HERO | `motu-avb-switch-3-jpg.jpg` | hardware | `MOTU AVB SWITCH (3).jpg` |
-| 108 | `02:08.9` | AVB Switch | STRIP | `motu-avb-switch-4-png.png` | mark | `MOTU AVB SWITCH (4).png` |
-| 109 | `02:08.9` | AVB Switch | STRIP | `motu-avb-switch-5-png.png` | mark | `MOTU AVB SWITCH (5).png` |
-| 110 | `02:13.2` | AVB Switch | HERO | `motu-avb-switch-4-jpg.jpg` | mark | `MOTU AVB SWITCH (4).jpg` |
-| 111 | `02:17.5` | AVB Switch | HERO | `motu-avb-switch-1-png.png` | diagram | `MOTU AVB SWITCH (1).png` |
-| 112 | `02:20.8` | AVB Switch | HERO | `motu-16a-5-jpg.jpg` | diagram | `MOTU 16A (5).jpg`<br>`MOTU 848 (8).jpg` |
-| 113 | `02:28.9` | AVB Switch | HERO | `motu-avb-switch-3-png.png` | context | `MOTU AVB SWITCH (3).png` |
-| 114 | `02:32.6` _(+2 more)_ | Close | STRIP | `motu-10pre-27-jpg.jpg` | ui | `MOTU 10pre (27).jpg`<br>`MOTU 16A (20).jpg` |
-| 115 | `02:32.6` | Close | STRIP | `motu-16a-2-png.png` | ui | `MOTU 16A (2).png`<br>`MOTU 848 (4).png` |
+| 106 | `01:57.5` | AVB Switch | HERO | `motu-avb-switch-3-jpg.jpg` | hardware | `MOTU AVB SWITCH (3).jpg` |
+| 107 | `02:06.1` | AVB Switch | HERO | `motu-avb-switch-1-png.png` | diagram | `MOTU AVB SWITCH (1).png` |
+| 108 | `02:08.9` | AVB Switch | HERO | `motu-avb-switch-2-jpg.jpg` | hardware | `MOTU AVB SWITCH (2).jpg` |
+| 109 | `02:13.2` | AVB Switch | HERO | `motu-avb-switch-4-jpg.jpg` | mark | `MOTU AVB SWITCH (4).jpg` |
+| 110 | `02:20.8` | AVB Switch | HERO | `motu-16a-5-jpg.jpg` | diagram | `MOTU 16A (5).jpg`<br>`MOTU 848 (8).jpg` |
+| 111 | `02:23.9` | AVB Switch | HERO | `motu-avb-switch-5-png.png` | mark | `MOTU AVB SWITCH (5).png` |
+| 112 | `02:28.9` | AVB Switch | HERO | `motu-avb-switch-3-png.png` | context | `MOTU AVB SWITCH (3).png` |
+| 113 | `02:32.6` _(+2 more)_ | Close | STRIP | `motu-10pre-27-jpg.jpg` | ui | `MOTU 10pre (27).jpg`<br>`MOTU 16A (20).jpg` |
+| 114 | `02:32.6` | Close | STRIP | `motu-16a-2-png.png` | ui | `MOTU 16A (2).png`<br>`MOTU 848 (4).png` |
+| 115 | `02:32.6` | Close | STRIP | `motu-16a-3-png.png` | ui | `MOTU 16A (3).png`<br>`MOTU 848 (5).png` |
 | 116 | `02:38.4` | Close | STRIP | `motu-10pre-26-jpg.jpg` | mark | `MOTU 10pre (26).jpg`<br>`MOTU 16A (8).jpg`<br>`MOTU 848 (9).jpg` |
-| 117 | `02:38.4` | Close | STRIP | `motu-16a-3-png.png` | ui | `MOTU 16A (3).png`<br>`MOTU 848 (5).png` |
-| 118 | `02:42.4` | Close | STRIP | `motu-10pre-28-jpg.jpg` | mark | `MOTU 10pre (28).jpg`<br>`MOTU 16A (22).jpg` |
-| 119 | `02:42.4` | Close | STRIP | `motu-16a-19-jpg.jpg` | bundle | `MOTU 16A (19).jpg`<br>`MOTU 848 (12).jpg` |
+| 117 | `02:38.4` | Close | STRIP | `motu-10pre-28-jpg.jpg` | mark | `MOTU 10pre (28).jpg`<br>`MOTU 16A (22).jpg` |
+| 118 | `02:38.4` | Close | STRIP | `motu-16a-19-jpg.jpg` | bundle | `MOTU 16A (19).jpg`<br>`MOTU 848 (12).jpg` |
+| 119 | `02:42.4` | Close | STRIP | `motu-avb-switch-4-png.png` | mark | `MOTU AVB SWITCH (4).png` |
 
 ## Reprises
 
@@ -228,7 +228,7 @@ and they are covered properly inside their own product segments:
 | `motu-16a-10-png` | 00:00.0, 02:57.6 | 00:28.7 (16A) |
 | `motu-848-11-png` | 00:00.0, 02:57.6 | 00:59.9 (848) |
 | `motu-10pre-4-png` | 00:00.0, 02:57.6 | 01:45.9 (10pre) |
-| `motu-avb-switch-1-jpg` | 00:00.0, 02:57.6 | 02:02.2 (AVB Switch), 02:23.9 (AVB Switch) |
+| `motu-avb-switch-1-jpg` | 00:00.0, 02:57.6 | 02:02.2 (AVB Switch), 02:17.5 (AVB Switch) |
 
 ---
 
