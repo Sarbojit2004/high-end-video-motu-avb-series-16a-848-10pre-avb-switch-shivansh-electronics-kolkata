@@ -264,7 +264,7 @@ export const EcosystemLayout: React.FC<LayoutProps> = ({ assets, env, f }) => {
                     : "linear-gradient(90deg, rgba(6,6,8,0.95) 0%, rgba(6,6,8,0.74) 34%, rgba(6,6,8,0.06) 68%)",
               }}
             />
-            <div style={{ position: "relative", paddingLeft: 44, fontFamily: FONT.ui }}>
+            <div style={{ position: "relative", paddingLeft: 44, fontFamily: FONT.display }}>
               <div
                 style={{
                   fontSize: 84,

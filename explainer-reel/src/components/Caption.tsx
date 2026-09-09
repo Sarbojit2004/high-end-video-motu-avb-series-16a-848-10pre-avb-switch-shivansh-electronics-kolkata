@@ -4,42 +4,75 @@ import { ACCENT, FONT, INK, TYPE, type ProductKey } from "../theme.ts";
 import type { TimedCaption } from "../script.ts";
 
 // ─────────────────────────────────────────────────────────────────────────────
-// THE CAPTION ENGINE — the single most important technique carried over from
-// the reference video (Section 2, item 1).
+// THE CAPTION LOCKUP
 //
-// The reference does NOT set static headline cards. It sets styled subtitles:
-// a short spoken phrase whose words arrive one at a time roughly in time with
-// the voice, with selective per-WORD styling inside the line — one word pulled
-// out in bold accent colour while its neighbours stay neutral, and words that
-// have not been reached yet sitting dimmed until they land.
+// Rebuilt to the supplied type specimen. The earlier version revealed a caption
+// word by word and recoloured the emphasised one as it was spoken; that is gone.
+// A caption is now a single designed lockup that arrives whole, built from the
+// two faces in the specimen:
 //
-// That behaviour is what makes it read as speech rather than as graphic design,
-// which is exactly why it suits a reel built to carry real narration.
+//     IT HAS                 lead-in   — display caps, small, muted
+//        no                  the word  — script face, accent colour, huge
+//     MICROPHONE PREAMPS     tail      — display caps, medium, full ink
 //
-// Reproduced here as four states per word:
+// The sentence is split AT its key word, so the script face always lands on the
+// term the sentence turns on — never on a filler word, and never on nothing.
+// When the key word opens the sentence the lead-in is simply absent and the
+// lockup becomes the two-tier arrangement of the specimen itself:
 //
-//   pending   dimmed, slightly small, slightly low        (not yet spoken)
-//   landing   springs up to full size and full weight     (being spoken)
-//   settled   neutral ink, full weight                    (already spoken)
-//   emphasis  accent colour + heaviest weight + a lift    (the marked word)
+//        Sixteen
+//     BALANCED LINE INPUTS
 //
-// Word timing is derived from the caption's own duration divided across its
-// words, so a long word in a short caption does not get the same slot as a
-// short one — weighting is by character count, which tracks speech better than
-// a flat split.
+// Because the whole thing animates as one object, the reel no longer depends on
+// per-word timing to look right — which also means it will not drift out of
+// sync when the client's recorded read runs faster or slower than the script.
 // ─────────────────────────────────────────────────────────────────────────────
 
 type Props = {
   caption: TimedCaption;
-  /** Absolute frame at which this caption begins. */
   startFrame: number;
   product: ProductKey;
   env: "light" | "dark";
-  /** Optional width override; defaults to the safe-zone width. */
   width?: number;
   align?: "left" | "center";
-  size?: number;
+  /** Multiplier on the whole lockup, for tight frames. */
+  scale?: number;
 };
+
+/** Splits a caption into lead-in / key word / tail around its emphasis. */
+export const splitCaption = (t: string, e?: string) => {
+  const words = t.trim().split(/\s+/).filter(Boolean);
+  const norm = (x: string) => x.replace(/[^\w.,+-]/g, "").toLowerCase();
+
+  if (e) {
+    const target = e.split(/\s+/).filter(Boolean);
+    for (let i = 0; i + target.length <= words.length; i++) {
+      if (target.every((tw, k) => norm(words[i + k]) === norm(tw))) {
+        return {
+          before: words.slice(0, i).join(" "),
+          key: words.slice(i, i + target.length).join(" "),
+          after: words.slice(i + target.length).join(" "),
+        };
+      }
+    }
+  }
+
+  // No emphasis declared, or it did not match: fall back to the longest word,
+  // which is very nearly always the carrying term in a technical line.
+  let bi = 0;
+  for (let i = 1; i < words.length; i++) {
+    if (norm(words[i]).length > norm(words[bi]).length) bi = i;
+  }
+  return {
+    before: words.slice(0, bi).join(" "),
+    key: words[bi] ?? t,
+    after: words.slice(bi + 1).join(" "),
+  };
+};
+
+/** Trailing punctuation is dropped from the script word — a brush script
+ *  carrying a full stop reads as a typo, not as punctuation. */
+const cleanKey = (k: string) => k.replace(/[.,;:]+$/, "");
 
 export const Caption: React.FC<Props> = ({
   caption,
@@ -48,7 +81,7 @@ export const Caption: React.FC<Props> = ({
   env,
   width,
   align = "left",
-  size = TYPE.caption.size,
+  scale = 1,
 }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
@@ -56,112 +89,107 @@ export const Caption: React.FC<Props> = ({
   const durF = Math.max(1, Math.round((caption.end - caption.start) * fps));
 
   const accent = ACCENT[product];
-  const dim = env === "light" ? INK.onLightDim : INK.onDarkDim;
-  const settled = env === "light" ? INK.onLight : INK.onDark;
-  const emph = env === "light" ? accent.key : accent.glow;
+  const keyColor = env === "light" ? accent.key : accent.glow;
+  const ink = env === "light" ? INK.onLight : INK.onDark;
+  const soft = env === "light" ? INK.onLightSoft : INK.onDarkSoft;
 
-  const words = caption.t.split(/\s+/).filter(Boolean);
+  const { before, key, after } = splitCaption(caption.t, caption.e);
 
-  // Which words carry the emphasis. `e` is a substring of the caption, so it
-  // may span several words ("one cue mix", "A, B, C").
-  const emphSet = React.useMemo(() => {
-    const s = new Set<number>();
-    if (!caption.e) return s;
-    const target = caption.e.split(/\s+/).filter(Boolean);
-    const norm = (x: string) => x.replace(/[^\w.,]/g, "").toLowerCase();
-    for (let i = 0; i + target.length <= words.length; i++) {
-      if (target.every((tw, k) => norm(words[i + k]) === norm(tw))) {
-        for (let k = 0; k < target.length; k++) s.add(i + k);
-        break;
-      }
-    }
-    return s;
-  }, [caption.e, caption.t]);
+  // One entrance for the whole lockup, and a small internal stagger so the
+  // tiers settle in reading order rather than snapping together.
+  const enter = spring({ frame: local, fps, config: { damping: 200, mass: 0.55 }, durationInFrames: 14 });
+  const keyIn = spring({ frame: local - 3, fps, config: { damping: 170, mass: 0.5, stiffness: 120 }, durationInFrames: 18 });
+  const tailIn = spring({ frame: local - 6, fps, config: { damping: 200, mass: 0.5 }, durationInFrames: 14 });
 
-  // Character-weighted word slots — longer words take proportionally longer.
-  const slots = React.useMemo(() => {
-    const lens = words.map((w) => Math.max(2, w.length));
-    const total = lens.reduce((a, b) => a + b, 0);
-    // Words land across the first 78% of the caption; the tail is the hold,
-    // so the finished line is legible before it leaves.
-    const usable = durF * 0.78;
-    let acc = 0;
-    return lens.map((l) => {
-      const at = (acc / total) * usable;
-      acc += l;
-      return at;
-    });
-  }, [caption.t, durF]);
+  const outAt = durF - 7;
+  const exit = local > outAt ? interpolate(local, [outAt, durF], [1, 0], { extrapolateRight: "clamp" }) : 1;
 
-  // Whole-line entrance and exit.
-  const lineIn = spring({ frame: local, fps, config: { damping: 200, mass: 0.5 }, durationInFrames: 9 });
-  const outAt = durF - 6;
-  const lineOut = local > outAt ? interpolate(local, [outAt, durF], [1, 0], { extrapolateRight: "clamp" }) : 1;
+  // The script word settles from slightly large and slightly rotated — the
+  // energy of a brush stroke landing, not a UI element sliding in.
+  const keyScale = interpolate(keyIn, [0, 1], [1.14, 1]);
+  const keyTilt = interpolate(keyIn, [0, 1], [-3.2, -1.4]);
+
+  const S = (n: number) => n * scale;
+
+  // The script face is set at one size for short keys and stepped down for
+  // longer ones, so a two-word key never runs past the safe margin. Measured
+  // against the widest key in the script ("Shivansh Electronics", 20 chars).
+  const keyLen = cleanKey(key).length;
+  const fit = keyLen <= 9 ? 1 : keyLen <= 13 ? 0.82 : keyLen <= 17 ? 0.66 : 0.55;
+  const items: React.CSSProperties = {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: align === "center" ? "center" : "flex-start",
+  };
 
   return (
-    <div
-      style={{
-        width: width ?? "100%",
-        display: "flex",
-        flexWrap: "wrap",
-        gap: `${size * 0.09}px ${size * 0.24}px`,
-        justifyContent: align === "center" ? "center" : "flex-start",
-        opacity: lineOut,
-        fontFamily: FONT.ui,
-      }}
-    >
-      {words.map((w, i) => {
-        const at = slots[i];
-        const isEmph = emphSet.has(i);
+    <div style={{ width: width ?? "100%", opacity: exit, ...items }}>
+      {before ? (
+        <div
+          style={{
+            fontFamily: FONT.display,
+            fontSize: S(TYPE.before.size),
+            letterSpacing: TYPE.before.track,
+            color: soft,
+            textTransform: "uppercase",
+            lineHeight: 1.1,
+            opacity: enter,
+            transform: `translateY(${interpolate(enter, [0, 1], [26, 0])}px)`,
+            marginBottom: S(6),
+          }}
+        >
+          {before}
+        </div>
+      ) : null}
 
-        // The word's own arrival.
-        const p = spring({
-          frame: local - at,
-          fps,
-          config: { damping: 190, mass: 0.42, stiffness: 130 },
-          durationInFrames: 12,
-        });
+      <div
+        style={{
+          fontFamily: FONT.script,
+          fontSize: S(TYPE.script.size) * fit,
+          letterSpacing: TYPE.script.track,
+          color: keyColor,
+          lineHeight: 0.98,
+          // A script face needs room the sans does not — its descenders and
+          // the swash on the capital both overshoot the em box.
+          padding: `${S(18)}px ${S(26)}px ${S(30)}px 0`,
+          marginLeft: S(-6),
+          opacity: keyIn,
+          transform: `translateY(${interpolate(keyIn, [0, 1], [40, 0])}px) scale(${keyScale}) rotate(${keyTilt}deg)`,
+          transformOrigin: align === "center" ? "50% 70%" : "8% 70%",
+          // A 90 px-radius glow behind a 330 px script word spanning most of the
+          // frame is a very large convolution, and it runs on every one of
+          // 5,400 frames — measured at 2.4 s/frame against 1.3 s/frame for the
+          // previous cut. A tighter glow plus a small drop shadow reads the
+          // same on a black ground for a fraction of the cost.
+          textShadow:
+            env === "dark"
+              ? `0 0 ${S(30)}px ${accent.glow}66, 0 ${S(5)}px ${S(12)}px rgba(0,0,0,0.7)`
+              : `0 ${S(4)}px ${S(10)}px rgba(20,18,14,0.22)`,
+          whiteSpace: "nowrap",
+        }}
+      >
+        {cleanKey(key)}
+      </div>
 
-        const landed = p > 0.02;
-        const color = !landed ? dim : isEmph ? emph : settled;
-        const weight = !landed
-          ? 300
-          : isEmph
-            ? TYPE.captionEmph.weight
-            : TYPE.caption.weight;
+      {after ? (
+        <div
+          style={{
+            fontFamily: FONT.display,
+            fontSize: S(TYPE.after.size),
+            letterSpacing: TYPE.after.track,
+            color: ink,
+            textTransform: "uppercase",
+            lineHeight: 1.06,
+            opacity: tailIn,
+            transform: `translateY(${interpolate(tailIn, [0, 1], [30, 0])}px)`,
+            textShadow: env === "dark" ? `0 ${S(3)}px ${S(9)}px rgba(0,0,0,0.7)` : "none",
+            maxWidth: "100%",
+          }}
+        >
+          {after}
+        </div>
+      ) : null}
 
-        // Emphasis words come in a touch larger and settle back — the accent
-        // beat the reference gives its red word.
-        const overshoot = isEmph ? interpolate(p, [0, 0.55, 1], [0.86, 1.06, 1]) : interpolate(p, [0, 1], [0.94, 1]);
-        const rise = interpolate(p, [0, 1], [size * 0.16, 0]);
-
-        return (
-          <span
-            key={i}
-            style={{
-              display: "inline-block",
-              fontSize: size,
-              lineHeight: TYPE.caption.line,
-              letterSpacing: isEmph ? TYPE.captionEmph.track : TYPE.caption.track,
-              fontWeight: weight,
-              color,
-              transform: `translateY(${rise}px) scale(${overshoot})`,
-              transformOrigin: "50% 80%",
-              opacity: lineIn,
-              // The reference's accent words glow on the black ground and sit
-              // flat on the cream one.
-              textShadow:
-                env === "dark"
-                  ? isEmph
-                    ? `0 0 ${size * 0.42}px ${accent.glow}88, 0 0 ${size * 0.13}px ${accent.glow}55`
-                    : `0 0 ${size * 0.30}px rgba(255,255,255,0.20)`
-                  : "none",
-            }}
-          >
-            {w}
-          </span>
-        );
-      })}
     </div>
   );
 };

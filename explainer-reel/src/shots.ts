@@ -179,8 +179,18 @@ const PINS: { seg: SegmentId; find: string; slug: string; why: string }[] = [
     why: "front-panel inserts and combo inputs together" },
 
   // ── AVB Switch: a network, never a box with channels ────────────────────
+  // Nine images across nine caption groups means every one lands somewhere
+  // prominent, so every one is placed deliberately rather than distributed.
+  { seg: "sswitch", find: "The AVB Switch has no preamps", slug: "motu-avb-switch-3-jpg",
+    why: "top view — nothing on it but six RJ-45s, which is the claim" },
   { seg: "sswitch", find: "six Gigabit ports", slug: "motu-avb-switch-1-jpg",
     why: "the switch itself, ports facing the viewer" },
+  { seg: "sswitch", find: "turn separate interfaces", slug: "motu-avb-switch-1-png",
+    why: "the topology — separate devices resolved into one system" },
+  { seg: "sswitch", find: "802.1AS locks every device", slug: "motu-avb-switch-2-jpg",
+    why: "the switch doing the locking, rather than a stock badge" },
+  { seg: "sswitch", find: "Up to 4,096 channels", slug: "motu-avb-switch-5-png",
+    why: "a meter at full scale — the one place the gauge graphic earns its spot" },
   { seg: "sswitch", find: "accurate to the nanosecond", slug: "motu-avb-switch-4-jpg",
     why: "the clock mark — gPTP is the one idea this segment must land" },
   { seg: "sswitch", find: "512 streams", slug: "motu-16a-5-jpg",
@@ -259,8 +269,20 @@ export const buildShots = (): { shots: Shot[]; total: number } => {
     }
 
     const avail = pool.filter((a) => !pinnedSlugs.has(a.slug));
-    const heroes = avail.filter((a) => rank(a) <= HERO_RANK);
-    const rest = avail.filter((a) => rank(a) > HERO_RANK);
+
+    // Logos, service badges and bundled-content artwork have to be covered, but
+    // they must never be the only thing in a frame. Given a small pool they
+    // otherwise land as a solo or two-up — which is how a stock "Guaranteed
+    // Service" rosette ended up filling the frame beside the line about the
+    // mixer running in hardware. They are held back here and dropped into one
+    // dense grid at the end of the segment, where a board of marks reads as a
+    // deliberate contact sheet instead of an accident.
+    const lowValue = avail.filter((a) => a.subject === "mark" || a.subject === "bundle");
+    const lowSlugs = new Set(lowValue.map((a) => a.slug));
+    const usable = avail.filter((a) => !lowSlugs.has(a.slug));
+
+    const heroes = usable.filter((a) => rank(a) <= HERO_RANK);
+    const rest = usable.filter((a) => rank(a) > HERO_RANK);
     const queueHero = heroes.slice();
     const queueRest = rest.slice();
     // Anything left over after heroes are placed rejoins the grid queue.
@@ -337,14 +359,25 @@ export const buildShots = (): { shots: Shot[]; total: number } => {
       });
     });
 
-    // Safety net: if the distribution left anything unused, append it to the
-    // segment's last grid shot rather than silently dropping coverage.
-    const leftover = [...queueHero, ...queueRest, ...spare];
+    // Safety net: anything the distribution did not place — plus the marks and
+    // bundle artwork held back above — goes onto the segment's last non-hero
+    // shot rather than being silently dropped.
+    const leftover = [...queueHero, ...queueRest, ...spare, ...lowValue];
     if (leftover.length) {
-      const last = [...shots].reverse().find((s) => s.segment === seg.id && s.kind !== "hero") ??
-        [...shots].reverse().find((s) => s.segment === seg.id)!;
-      last.assets.push(...leftover);
-      if (last.assets.length > 3) last.kind = "grid";
+      // Never onto a reprise: the ecosystem shot is exactly the four products
+      // and nothing else, in the open and in the close.
+      const segShots = [...shots].reverse().filter((s) => s.segment === seg.id && !s.reprise);
+      const last = segShots.find((s) => s.kind !== "hero") ?? segShots[0];
+      if (last) {
+        last.assets.push(...leftover);
+        if (last.assets.length > 3) last.kind = "grid";
+        else if (last.assets.length > 1) last.kind = "strip";
+      }
+    }
+
+    // A "strip" holding a single image is just a hero with the wrong staging.
+    for (const sh of shots) {
+      if (sh.segment === seg.id && sh.kind === "strip" && sh.assets.length === 1) sh.kind = "hero";
     }
   }
 

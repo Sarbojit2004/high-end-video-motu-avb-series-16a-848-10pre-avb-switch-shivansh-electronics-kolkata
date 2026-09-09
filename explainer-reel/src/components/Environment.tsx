@@ -266,7 +266,7 @@ export const TechMark: React.FC<{
     }
     // rate — a sample-rate readout
     return (
-      <div style={{ display: "flex", gap: 9, alignItems: "baseline", fontFamily: FONT.mono }}>
+      <div style={{ display: "flex", gap: 9, alignItems: "baseline", fontFamily: FONT.display }}>
         <span style={{ fontSize: 30, fontWeight: 800, color: key, letterSpacing: 1 }}>192</span>
         <span style={{ fontSize: 21, fontWeight: 600, color: ink, letterSpacing: 3 }}>kHz</span>
         <span style={{ fontSize: 21, fontWeight: 600, color: ink, letterSpacing: 3, opacity: 0.7 }}>24-BIT</span>

@@ -5,7 +5,7 @@ import { buildTimeline } from "./script.ts";
 import { buildShots, type Shot } from "./shots.ts";
 import { Caption } from "./components/Caption.tsx";
 import { Ground, GridField, Particles, TechMark } from "./components/Environment.tsx";
-import { ProductRule, StandingMark } from "./components/Chrome.tsx";
+import { ProductRule } from "./components/Chrome.tsx";
 import { ShotVisual, BAND } from "./components/Layouts.tsx";
 import { ContactPlate } from "./components/ContactPlate.tsx";
 
@@ -120,9 +120,9 @@ const SegmentBlock: React.FC<{ seg: (typeof segments)[number] }> = ({ seg }) => 
             style={{
               position: "absolute",
               left: SAFE.x,
-              top: BAND.bottom + 110,
+              top: BAND.bottom + 150,
               width: SAFE.w,
-              minHeight: 520,
+              minHeight: 640,
             }}
           >
             <Caption caption={c} startFrame={0} product={product} env={seg.env} />
@@ -131,7 +131,6 @@ const SegmentBlock: React.FC<{ seg: (typeof segments)[number] }> = ({ seg }) => 
       ))}
 
       <TechMark env={seg.env} product={product} kind={MARK[seg.id]} x={SAFE.x} y={VIDEO.height - 430} opacity={intro} />
-      <StandingMark env={seg.env} opacity={intro} />
     </AbsoluteFill>
   );
 };
@@ -202,7 +201,7 @@ export const Reel: React.FC = () => {
   const plateAt = sec(closeSeg.end - 11.5);
 
   return (
-    <AbsoluteFill style={{ background: GROUND.dark, fontFamily: FONT.ui }}>
+    <AbsoluteFill style={{ background: GROUND.dark, fontFamily: FONT.display }}>
       {segments.map((seg) => (
         <Sequence
           key={seg.id}
@@ -228,15 +227,19 @@ export const Reel: React.FC = () => {
       {/* The narration the client records drops in here. A silent placeholder
           of exactly 180.000 s already sits at this path, so replacing the file
           is the only step — no code changes. */}
+      {/* Every file below is already mastered to its final perceived loudness
+          by scripts/gen_audio.py — bed and reference transition cue at -23 LUFS
+          (EBU R128), ambient bed deliberately far under it, each cue trimmed
+          relative to the bed. So everything plays at unity here: a volume
+          multiplier in the timeline would silently undo that mastering, which
+          is exactly what made the first cut's bed inaudible at ~-37 LUFS. */}
       <Audio src={staticFile("audio/vo.wav")} volume={1} />
-      <Audio src={staticFile("audio/ambient-bed.mp3")} volume={0.5} />
-      {/* The bed is already carved for the voice at synthesis time and mastered
-          to -15.5 dBFS peak; this holds it well under a spoken track. */}
-      <Audio src={staticFile("audio/music-bed.mp3")} volume={0.42} />
+      <Audio src={staticFile("audio/ambient-bed.mp3")} volume={1} />
+      <Audio src={staticFile("audio/music-bed.mp3")} volume={1} />
 
       {SFX_PLAN.map((s, i) => (
         <Sequence key={i} from={sec(s.at)} durationInFrames={90}>
-          <Audio src={staticFile(`audio/sfx/${s.cue}.wav`)} volume={s.vol} />
+          <Audio src={staticFile(`audio/sfx/${s.cue}.wav`)} volume={1} />
         </Sequence>
       ))}
     </AbsoluteFill>

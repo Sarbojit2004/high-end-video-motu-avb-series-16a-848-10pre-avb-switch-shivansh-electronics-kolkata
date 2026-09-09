@@ -1,6 +1,6 @@
 import React from "react";
-import { Img, interpolate, staticFile, useCurrentFrame } from "remotion";
-import { ACCENT, CONTACT, FONT, GROUND, INK, SAFE, TYPE, VIDEO, type ProductKey } from "../theme";
+import { interpolate } from "remotion";
+import { ACCENT, FONT, INK, SAFE, TYPE, type ProductKey } from "../theme.ts";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // PRODUCT IDENTIFICATION + BRANDING CHROME
@@ -58,7 +58,7 @@ export const ProductRule: React.FC<{
         width: SAFE.w,
         opacity: intro,
         transform: `translateX(${slide}px)`,
-        fontFamily: FONT.ui,
+        fontFamily: FONT.display,
       }}
     >
       <div style={{ display: "flex", alignItems: "center", gap: 22 }}>
@@ -120,50 +120,9 @@ export const ProductRule: React.FC<{
   );
 };
 
-/**
- * The standing brand mark. Small, corner-set, present through the whole film
- * so a viewer arriving mid-scroll knows whose reel this is (Section 7).
- */
-export const StandingMark: React.FC<{ env: Env; opacity?: number }> = ({ env, opacity = 1 }) => {
-  const ink = env === "light" ? INK.onLightSoft : INK.onDarkSoft;
-  const logo = "logos/shivansh.png";
-  const motu = "logos/motu.png";
-  // The marks are white-plate artwork; on cream they need a shadow to separate.
-  const shadow =
-    env === "light"
-      ? "drop-shadow(0 3px 10px rgba(20,18,14,0.20))"
-      : "drop-shadow(0 3px 14px rgba(0,0,0,0.6))";
-
-  return (
-    <div
-      style={{
-        position: "absolute",
-        left: SAFE.x,
-        bottom: SAFE.bottom - 210,
-        display: "flex",
-        alignItems: "center",
-        gap: 32,
-        opacity: opacity * 0.82,
-        fontFamily: FONT.ui,
-      }}
-    >
-      <Img src={staticFile(logo)} style={{ height: 74, width: "auto", filter: shadow }} />
-      <div style={{ width: 3, height: 54, background: ink, opacity: 0.4 }} />
-      <Img src={staticFile(motu)} style={{ height: 62, width: "auto", filter: shadow }} />
-      <div
-        style={{
-          fontSize: 31,
-          fontWeight: 700,
-          letterSpacing: 3.0,
-          color: ink,
-          textTransform: "uppercase",
-        }}
-      >
-        {CONTACT.site}
-      </div>
-    </div>
-  );
-};
+// The standing brand mark that used to sit here — both logos plus the website,
+// held through every segment — was removed at the client's instruction. All
+// branding is now carried by the closing contact plate.
 
 /** The WhatsApp glyph, drawn rather than imported so it stays crisp at 4K. */
 export const WhatsAppIcon: React.FC<{ size: number; color: string }> = ({ size, color }) => (

@@ -59,7 +59,7 @@ export const Thumbnail: React.FC = () => {
   const env = "dark" as const;
 
   return (
-    <AbsoluteFill style={{ background: GROUND.dark, fontFamily: FONT.ui, overflow: "hidden" }}>
+    <AbsoluteFill style={{ background: GROUND.dark, fontFamily: FONT.display, overflow: "hidden" }}>
       {/* The void, lit from above — the reference's dark environment. */}
       <AbsoluteFill
         style={{
@@ -82,19 +82,21 @@ export const Thumbnail: React.FC = () => {
       >
         <div
           style={{
-            fontSize: 132,
-            fontWeight: 800,
-            letterSpacing: 14,
+            fontFamily: FONT.display,
+            fontSize: 128,
+            letterSpacing: 13,
             color: ACCENT.pswitch.glow,
             textShadow: `0 0 70px ${ACCENT.pswitch.glow}88`,
           }}
         >
           FOUR PRODUCTS
         </div>
+        {/* Same two-face lockup as the reel's captions, so the thumbnail is
+            visibly part of the same film rather than a separate cover. */}
         <div
           style={{
+            fontFamily: FONT.display,
             fontSize: 300,
-            fontWeight: 800,
             letterSpacing: -12,
             lineHeight: 0.94,
             color: INK.onDark,
@@ -103,8 +105,19 @@ export const Thumbnail: React.FC = () => {
           }}
         >
           ONE
-          <br />
-          NETWORK
+        </div>
+        <div
+          style={{
+            fontFamily: FONT.script,
+            fontSize: 372,
+            lineHeight: 0.9,
+            color: ACCENT.pswitch.glow,
+            textShadow: `0 0 110px ${ACCENT.pswitch.glow}66, 0 10px 40px rgba(0,0,0,0.6)`,
+            transform: "rotate(-2deg)",
+            paddingBottom: 40,
+          }}
+        >
+          network
         </div>
       </div>
 

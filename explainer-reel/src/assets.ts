@@ -1521,20 +1521,6 @@ export const ASSETS: Asset[] = [
   ]
  },
  {
-  "slug": "motu-avb-switch-4-png",
-  "file": "motu-avb-switch-4-png.png",
-  "product": "pswitch",
-  "w": 581,
-  "h": 836,
-  "ar": 0.695,
-  "kind": "cutout",
-  "subject": "mark",
-  "alpha": true,
-  "covers": [
-   "MOTU AVB SWITCH (4).png"
-  ]
- },
- {
   "slug": "motu-avb-switch-5-png",
   "file": "motu-avb-switch-5-png.png",
   "product": "pswitch",
@@ -1713,6 +1699,20 @@ export const ASSETS: Asset[] = [
   "covers": [
    "MOTU 16A (8).png",
    "MOTU 848 (10).png"
+  ]
+ },
+ {
+  "slug": "motu-avb-switch-4-png",
+  "file": "motu-avb-switch-4-png.png",
+  "product": "shared",
+  "w": 581,
+  "h": 836,
+  "ar": 0.695,
+  "kind": "cutout",
+  "subject": "mark",
+  "alpha": true,
+  "covers": [
+   "MOTU AVB SWITCH (4).png"
   ]
  }
 ];

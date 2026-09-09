@@ -95,7 +95,7 @@ export const ACCENT: Record<
   // Switch — the network. Blue: data, clock, infrastructure.
   pswitch: { key: "#1F5FD0", glow: "#5A9BFF", wash: "rgba(31,95,208,0.028)", name: "MOTU AVB Switch", short: "AVB SWITCH" },
   // Shared platform assets and the ecosystem-level segments.
-  shared: { key: "#3A3733", glow: "#D8D4CC", wash: "rgba(58,55,51,0.02)", name: "MOTU AVB", short: "AVB" },
+  shared: { key: "#1E1B16", glow: "#FFF6E9", wash: "rgba(58,55,51,0.02)", name: "MOTU AVB", short: "AVB" },
 };
 
 // ── Type ─────────────────────────────────────────────────────────────────────
@@ -104,18 +104,30 @@ export const ACCENT: Record<
 // self-hosted in this repository and carries the 300/500/700/800 range the
 // caption treatment needs (dim / neutral / emphasis / hero).
 export const FONT = {
-  ui: "'Bricolage Grotesque', 'Helvetica Neue', Arial, sans-serif",
-  mono: "'Bricolage Grotesque', ui-monospace, monospace",
+  // Filled by src/fonts.ts — the two roles from the supplied specimen.
+  script: "'ReelScript', 'Brush Script MT', cursive",
+  display: "'ReelDisplay', 'Archivo Black', 'Helvetica Neue', Arial, sans-serif",
 } as const;
 
+// ── Caption lockup ───────────────────────────────────────────────────────────
+// Every caption is set as a three-tier editorial lockup rather than a running
+// line, because that is what the supplied specimen does: one word carried by
+// the script face, the rest by the black sans, stacked.
+//
+//     IT HAS                 <- lead-in, display caps, small
+//        no                  <- the word, script face, accent colour, huge
+//     MICROPHONE PREAMPS     <- tail, display caps, medium
+//
+// The script word is always the one the sentence turns on, so the reel's key
+// term is the largest thing in the frame at every moment.
 export const TYPE = {
-  caption: { size: 132, line: 1.14, weight: 500, track: -1.6 },
-  captionEmph: { weight: 800, track: -2.4 },
-  hero: { size: 210, line: 1.0, weight: 800, track: -5 },
-  chapter: { size: 40, weight: 700, track: 5.5 },
-  label: { size: 34, weight: 700, track: 3.4 },
-  micro: { size: 27, weight: 500, track: 2.6 },
-  spec: { size: 96, weight: 800, track: -2 },
+  before: { size: 86, weight: 400, track: 5.4 },
+  script: { size: 330, weight: 400, track: -2 },
+  after: { size: 122, weight: 400, track: 2.2 },
+  chapter: { size: 40, weight: 400, track: 5.5 },
+  label: { size: 34, weight: 400, track: 3.4 },
+  micro: { size: 27, weight: 400, track: 2.6 },
+  spec: { size: 96, weight: 400, track: -2 },
 } as const;
 
 // ── Safe zone ────────────────────────────────────────────────────────────────

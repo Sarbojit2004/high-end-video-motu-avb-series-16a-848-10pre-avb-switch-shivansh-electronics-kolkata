@@ -48,7 +48,7 @@ export const ContactPlate: React.FC<{ startFrame: number; env: "light" | "dark" 
         width: SAFE.w,
         opacity: enter,
         transform: `translateY(${interpolate(enter, [0, 1], [70, 0])}px)`,
-        fontFamily: FONT.ui,
+        fontFamily: FONT.display,
       }}
     >
       {/* ── the two logos, together ─────────────────────────────────────── */}
