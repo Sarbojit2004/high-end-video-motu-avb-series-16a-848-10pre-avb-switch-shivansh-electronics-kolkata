@@ -15,3 +15,7 @@ public/audio/*.wav
 !public/audio/vo.wav
 
 scripts/_groups.json
+# The 4K master is 116 MB — over GitHub's per-file limit. It ships as three
+# stream-copied parts in out/parts/ instead; rejoin them with out/parts/JOIN.md.
+out/motu-avb-explainer-reel.mp4
+out/preview-540.mp4
