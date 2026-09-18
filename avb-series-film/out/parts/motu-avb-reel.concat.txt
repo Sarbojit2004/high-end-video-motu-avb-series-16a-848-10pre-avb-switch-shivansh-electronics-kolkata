@@ -1,3 +1,8 @@
 file 'motu-avb-reel-part0.mp4'
+duration 25.700000
 file 'motu-avb-reel-part1.mp4'
+inpoint 25.700000
+duration 32.200000
 file 'motu-avb-reel-part2.mp4'
+inpoint 57.900000
+duration 32.100000
