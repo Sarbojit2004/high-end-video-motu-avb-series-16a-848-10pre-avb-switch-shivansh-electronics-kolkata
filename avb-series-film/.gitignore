@@ -1,0 +1,12 @@
+node_modules/
+out/qa/
+out/*.log
+out/preview-*.mp4
+public/images/
+public/audio/*.wav
+!public/audio/vo-reel.wav
+!public/audio/vo-film.wav
+scripts/_timeline.json
+# 4K masters exceed GitHub's per-file limit; they ship as stream-copied parts in out/parts/
+out/motu-avb-reel-4k.mp4
+out/motu-avb-film-4k.mp4
