@@ -8,6 +8,7 @@
     "typecheck": "tsc --noEmit",
     "assets": "node scripts/prep-assets.mjs",
     "audio": "python3 scripts/gen_audio.py",
+    "audio:deliver": "node --experimental-strip-types scripts/sfx-plan.mjs && python3 scripts/deliver-audio.py",
     "script": "node --experimental-strip-types scripts/build-script.mjs",
     "render:reel": "remotion render Reel out/motu-avb-reel-4k.mp4 --concurrency=2",
     "render:film": "remotion render Film out/motu-avb-film-4k.mp4 --concurrency=2",

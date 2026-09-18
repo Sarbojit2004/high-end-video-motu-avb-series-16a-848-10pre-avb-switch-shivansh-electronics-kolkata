@@ -34,7 +34,7 @@ for (const f of files) {
   } else {
     const bg = path.join(DIR, "bg", f.replace(/\.(png|jpg)$/i, ".jpg"));
     // Wash grade baked in (see prep-assets.mjs) — no CSS filter at render time.
-    if (!existsSync(bg)) execFileSync(FFMPEG, ["-v", "error", "-y", "-i", p, "-vf", "scale=512:-2:flags=lanczos,format=rgb24,hue=s=0.6,lutrgb=r=val*0.30:g=val*0.30:b=val*0.30", "-q:v", "6", bg]);
+    if (!existsSync(bg)) execFileSync("python3", ["scripts/plate.py", p, bg, "0.6", "0.30"]);
     stills.push({ id, file: f, bg: "bg/" + path.basename(bg), w: m.w, h: m.h, ar: +(m.w / m.h).toFixed(3) });
   }
 }

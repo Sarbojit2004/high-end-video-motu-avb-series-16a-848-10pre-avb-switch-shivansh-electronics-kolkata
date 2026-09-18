@@ -143,7 +143,7 @@ for (const [, fs] of groups) {
   // The wash grade (about a quarter brightness, desaturated) is baked in here
   // rather than applied as a CSS filter at render time — a filter on a
   // full-frame layer is an offscreen pass over 8.3 million pixels per frame.
-  if (!existsSync(bg)) execFileSync(FFMPEG, ["-v", "error", "-y", "-i", src, "-vf", "scale=512:-2:flags=lanczos,format=rgb24,hue=s=0.55,lutrgb=r=val*0.28:g=val*0.28:b=val*0.28", "-q:v", "6", bg]);
+  if (!existsSync(bg)) execFileSync("python3", ["scripts/plate.py", src, bg, "0.55", "0.28"]);
 
   const post = meta(dst);
   const ar = post.w / post.h;
