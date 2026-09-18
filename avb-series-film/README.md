@@ -10,7 +10,7 @@ shot-plan format:
 | Runtime | 90.000 s (2,700 frames @ 30 fps) | 300.000 s (9,000 frames @ 30 fps) |
 | Narration | 209 words · 00:00.0 – 01:22.4 · **152.2 wpm** effective | 676 words · 00:03.0 – 04:52.0 · **153.5 wpm** effective |
 | End screen | last 7.0 s | last 7.4 s |
-| Master | `out/motu-avb-reel-4k.mp4` — ships as stream-copied parts in `out/parts/` | `out/motu-avb-film-4k.mp4` — ships as stream-copied parts in `out/parts/` |
+| Master | `out/motu-avb-reel-4k.mp4` — ships as 3 stream-copied parts + its audio track in `out/parts/` (rejoin is bit-identical, see `out/parts/JOIN.md`) | `out/motu-avb-film-4k.mp4` — same, in `out/parts/` |
 | Encode | H.264 CRF 17, yuv420p, 30 fps — quality-targeted, no bitrate cap, never re-encoded after render | same |
 | Speech script | `../VO_SCRIPT_AVB_REEL_90S.md` | `../VO_SCRIPT_AVB_FILM_5MIN.md` |
 | VO drop-in | `public/audio/vo-reel.wav` | `public/audio/vo-film.wav` |

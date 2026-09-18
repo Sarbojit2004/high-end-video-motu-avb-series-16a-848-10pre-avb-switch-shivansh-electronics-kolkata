@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
-"""Splits a 4K master into stream-copied parts under GitHub's file limit.
+"""Splits a 4K master into stream-copied parts under GitHub's file limit,
+plus the master's audio track on its own, so the parts rejoin to a file whose
+video frames and audio samples are bit-identical to the master (verified by
+frame differencing at the joins and sample differencing of the audio).
 
 The ffmpeg build here has no `segment` muxer and no `select`/`showinfo`
 filters, so the keyframe table is read straight out of the MP4 (moov > trak >
@@ -102,33 +105,57 @@ def main():
     max_bytes = int(float(sys.argv[4]) if len(sys.argv) > 4 else 88) * 1024 * 1024
     os.makedirs(outdir, exist_ok=True)
     keys, times, offs, total = video_tables(src)
+    fps = round(1 / (times[1] - times[0])) if len(times) > 1 else 30
     size = os.path.getsize(src)
     nparts = max(1, -(-size // max_bytes))
     # candidate cut points: keyframe times; choose the keyframe nearest each equal byte boundary
-    cuts = [0.0]
+    # Cut points as (time, 1-based sample number) of the chosen keyframes.
+    cuts = [(0.0, 1)]
     for p in range(1, nparts):
         target = size * p / nparts
         best = min(keys, key=lambda k: abs(offs[k - 1] - target))
-        cuts.append(times[best - 1])
-    cuts.append(None)
+        cuts.append((times[best - 1], best))
+    cuts.append((None, len(times) + 1))
     for f in os.listdir(outdir):
         if f.startswith(base + "-part") and f.endswith(".mp4"):
             os.remove(os.path.join(outdir, f))
     names = []
     for i in range(nparts):
-        a, b = cuts[i], cuts[i + 1]
+        (a, sa), (b, sb) = cuts[i], cuts[i + 1]
         out = os.path.join(outdir, f"{base}-part{i}.mp4")
-        cmd = [FFMPEG, "-v", "error", "-y", "-ss", f"{a:.6f}", "-i", src]
-        if b is not None:
-            cmd += ["-t", f"{b - a:.6f}"]
-        cmd += ["-c", "copy", "-avoid_negative_ts", "make_zero", "-movflags", "+faststart", out]
+        n = sb - sa
+        vdur = n / fps
+        if i == 0:
+            cmd = [FFMPEG, "-v", "error", "-y", "-i", src, "-frames:v", str(n), "-t", f"{vdur:.6f}",
+                   "-c", "copy", "-movflags", "+faststart", out]
+        else:
+            # -ss on the input lands exactly on the chosen keyframe; -copyts keeps
+            # the ORIGINAL timestamps on both streams, so the B-frame decode
+            # delay never turns into an audio/video offset at a join, and an
+            # exact COUNT of video packets (decode order = sample order) means
+            # no frame is duplicated or dropped.
+            cmd = [FFMPEG, "-v", "error", "-y", "-ss", f"{a:.6f}", "-i", src, "-copyts", "-avoid_negative_ts", "disabled",
+                   "-frames:v", str(n)]
+            if b is not None:
+                cmd += ["-to", f"{b:.6f}"]
+            cmd += ["-c", "copy", "-movflags", "+faststart", out]
         subprocess.run(cmd, check=True)
-        names.append(os.path.basename(out))
-        print(f"  {names[-1]:32s} {a:8.3f} → {b if b is not None else total:8.3f} s  {os.path.getsize(out) / 1e6:6.1f} MB")
+        names.append((os.path.basename(out), a, vdur))
+        print(f"  {names[-1][0]:32s} {a:8.3f} → {b if b is not None else total:8.3f} s  frames {sa}–{sb - 1}  {os.path.getsize(out) / 1e6:6.1f} MB")
+
+    # The master's audio track, untouched (a few MB), so the rejoin takes its
+    # video from the parts and its audio from here — bit-identical to the master.
+    audio = os.path.join(outdir, f"{base}-audio.mp4")
+    subprocess.run([FFMPEG, "-v", "error", "-y", "-i", src, "-vn", "-c:a", "copy", "-movflags", "+faststart", audio], check=True)
+    print(f"  {os.path.basename(audio):32s} audio track only  {os.path.getsize(audio) / 1e6:6.1f} MB")
+
     with open(os.path.join(outdir, f"{base}.concat.txt"), "w") as f:
-        for n_ in names:
+        for i, (n_, a, d) in enumerate(names):
             f.write(f"file '{n_}'\n")
-    print(f"{nparts} parts; rejoin: ffmpeg -f concat -safe 0 -i {base}.concat.txt -c copy {base}-4k.mp4")
+            if i:
+                f.write(f"inpoint {a:.6f}\n")
+            f.write(f"duration {d:.6f}\n")
+    print(f"{nparts} parts; rejoin (frame- and sample-exact):\n  ffmpeg -f concat -safe 0 -i {base}.concat.txt -i {base}-audio.mp4 -map 0:v -map 1:a -c copy {base}-4k.mp4")
 
 
 if __name__ == "__main__":
