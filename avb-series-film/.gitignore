@@ -10,3 +10,5 @@ scripts/_timeline.json
 # 4K masters exceed GitHub's per-file limit; they ship as stream-copied parts in out/parts/
 out/motu-avb-reel-4k.mp4
 out/motu-avb-film-4k.mp4
+# 512 px wash plates derived from the stills by scripts/scan-higgsfield.mjs — regenerable
+public/higgsfield/bg/
