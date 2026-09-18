@@ -8,7 +8,7 @@ export type HfClip = { id: string; file: string; w: number; h: number; ar: numbe
 export const HF_STILLS: HfStill[] = [
  {
   "id": "hero-rack",
-  "file": "img-01-hero-rack.png",
+  "file": "img-01-hero-rack.jpg",
   "bg": "bg/img-01-hero-rack.jpg",
   "w": 2752,
   "h": 1536,
@@ -16,7 +16,7 @@ export const HF_STILLS: HfStill[] = [
  },
  {
   "id": "16a-mixroom",
-  "file": "img-02-16a-mixroom.png",
+  "file": "img-02-16a-mixroom.jpg",
   "bg": "bg/img-02-16a-mixroom.jpg",
   "w": 2752,
   "h": 1536,
@@ -24,7 +24,7 @@ export const HF_STILLS: HfStill[] = [
  },
  {
   "id": "16a-modular",
-  "file": "img-03-16a-modular.png",
+  "file": "img-03-16a-modular.jpg",
   "bg": "bg/img-03-16a-modular.jpg",
   "w": 2752,
   "h": 1536,
@@ -32,7 +32,7 @@ export const HF_STILLS: HfStill[] = [
  },
  {
   "id": "848-desk",
-  "file": "img-04-848-desk.png",
+  "file": "img-04-848-desk.jpg",
   "bg": "bg/img-04-848-desk.jpg",
   "w": 2752,
   "h": 1536,
@@ -40,7 +40,7 @@ export const HF_STILLS: HfStill[] = [
  },
  {
   "id": "848-podcast",
-  "file": "img-05-848-podcast.png",
+  "file": "img-05-848-podcast.jpg",
   "bg": "bg/img-05-848-podcast.jpg",
   "w": 2752,
   "h": 1536,
@@ -48,7 +48,7 @@ export const HF_STILLS: HfStill[] = [
  },
  {
   "id": "848-atmos",
-  "file": "img-06-848-atmos.png",
+  "file": "img-06-848-atmos.jpg",
   "bg": "bg/img-06-848-atmos.jpg",
   "w": 2752,
   "h": 1536,
@@ -56,7 +56,7 @@ export const HF_STILLS: HfStill[] = [
  },
  {
   "id": "10pre-tracking",
-  "file": "img-07-10pre-tracking.png",
+  "file": "img-07-10pre-tracking.jpg",
   "bg": "bg/img-07-10pre-tracking.jpg",
   "w": 2752,
   "h": 1536,
@@ -64,7 +64,7 @@ export const HF_STILLS: HfStill[] = [
  },
  {
   "id": "10pre-stage",
-  "file": "img-08-10pre-stage.png",
+  "file": "img-08-10pre-stage.jpg",
   "bg": "bg/img-08-10pre-stage.jpg",
   "w": 2752,
   "h": 1536,
@@ -72,7 +72,7 @@ export const HF_STILLS: HfStill[] = [
  },
  {
   "id": "switch-foh",
-  "file": "img-09-switch-foh.png",
+  "file": "img-09-switch-foh.jpg",
   "bg": "bg/img-09-switch-foh.jpg",
   "w": 2752,
   "h": 1536,
@@ -80,7 +80,7 @@ export const HF_STILLS: HfStill[] = [
  },
  {
   "id": "auditorium",
-  "file": "img-10-auditorium.png",
+  "file": "img-10-auditorium.jpg",
   "bg": "bg/img-10-auditorium.jpg",
   "w": 2752,
   "h": 1536,
@@ -88,7 +88,7 @@ export const HF_STILLS: HfStill[] = [
  },
  {
   "id": "hero-rack-9x16",
-  "file": "img-21-hero-rack-9x16.png",
+  "file": "img-21-hero-rack-9x16.jpg",
   "bg": "bg/img-21-hero-rack-9x16.jpg",
   "w": 1536,
   "h": 2752,
@@ -96,7 +96,7 @@ export const HF_STILLS: HfStill[] = [
  },
  {
   "id": "16a-mixroom-9x16",
-  "file": "img-22-16a-mixroom-9x16.png",
+  "file": "img-22-16a-mixroom-9x16.jpg",
   "bg": "bg/img-22-16a-mixroom-9x16.jpg",
   "w": 1536,
   "h": 2752,
@@ -104,7 +104,7 @@ export const HF_STILLS: HfStill[] = [
  },
  {
   "id": "848-desk-9x16",
-  "file": "img-23-848-desk-9x16.png",
+  "file": "img-23-848-desk-9x16.jpg",
   "bg": "bg/img-23-848-desk-9x16.jpg",
   "w": 1536,
   "h": 2752,
@@ -112,7 +112,7 @@ export const HF_STILLS: HfStill[] = [
  },
  {
   "id": "10pre-tracking-9x16",
-  "file": "img-24-10pre-tracking-9x16.png",
+  "file": "img-24-10pre-tracking-9x16.jpg",
   "bg": "bg/img-24-10pre-tracking-9x16.jpg",
   "w": 1536,
   "h": 2752,
@@ -120,7 +120,7 @@ export const HF_STILLS: HfStill[] = [
  },
  {
   "id": "10pre-stage-9x16",
-  "file": "img-25-10pre-stage-9x16.png",
+  "file": "img-25-10pre-stage-9x16.jpg",
   "bg": "bg/img-25-10pre-stage-9x16.jpg",
   "w": 1536,
   "h": 2752,
@@ -128,7 +128,7 @@ export const HF_STILLS: HfStill[] = [
  },
  {
   "id": "switch-foh-9x16",
-  "file": "img-26-switch-foh-9x16.png",
+  "file": "img-26-switch-foh-9x16.jpg",
   "bg": "bg/img-26-switch-foh-9x16.jpg",
   "w": 1536,
   "h": 2752,
