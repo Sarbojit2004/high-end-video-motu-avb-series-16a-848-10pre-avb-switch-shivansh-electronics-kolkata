@@ -197,3 +197,21 @@ The reel places 28 of them and the film 71 — CueMix Pro's screens are clubbed
 into drifting mosaics (mixer, EQ, dynamics, patchbay, routing, iPad), the panel
 plans are tracked laterally, and the detail crops sit under the line they prove.
 Run `node --experimental-strip-types scripts/validate-plan.mjs` for the count.
+
+---
+
+## What the generated material cost
+
+Totalled from the table above, at the per-generation rates quoted there.
+
+| | Count | Rate | Credits |
+|---|---|---|---|
+| Workflow stills, 16:9 @ 2K (Nano Banana Pro) | 10 scenes + 3 regenerated for panel accuracy | 2 | 26 |
+| Workflow stills, 9:16 @ 2K (Nano Banana Pro) | 6 native portrait variants | 2 | 12 |
+| B-roll, 1080p 5 s silent (Kling 3.0 pro) | 8 landscape + 2 portrait | 7.5 | 75 |
+| | | **Total** | **113** |
+
+Everything was generated at HD/2K and upscaled inside the 4K composition rather
+than paid for at 4K, which is what keeps the figure this low: the same coverage
+generated natively at 4K would have cost several times as much and bought
+nothing, because every generated frame is under a camera move anyway.
