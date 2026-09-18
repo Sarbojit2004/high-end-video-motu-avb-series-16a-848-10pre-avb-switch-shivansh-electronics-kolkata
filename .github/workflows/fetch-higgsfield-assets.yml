@@ -57,4 +57,7 @@ jobs:
           git add -A
           if git diff --cached --quiet; then echo "nothing new"; exit 0; fi
           git commit -m "assets: fetch Higgsfield generations listed in manifest"
+          # The branch may have moved on while the downloads ran; rebase the
+          # single asset commit onto it before pushing.
+          git pull --rebase origin "${{ github.ref_name }}"
           git push origin "HEAD:${{ github.ref_name }}"
