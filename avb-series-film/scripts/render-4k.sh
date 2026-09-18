@@ -15,7 +15,7 @@ node --experimental-strip-types scripts/validate-plan.mjs 2>/dev/null || { echo 
 
 render_reel() {
   echo "═══ REEL 2160x3840 · 2700 frames ═══"
-  npx remotion render Reel out/motu-avb-reel-4k.mp4 --concurrency="$CONC" --codec=h264 --video-bitrate=18M --pixel-format=yuv420p --log=error \
+  npx remotion render Reel out/motu-avb-reel-4k.mp4 --concurrency="$CONC" --codec=h264 --video-bitrate=16M --pixel-format=yuv420p --log=error \
     2>&1 | grep -vE "memory|docker|CGroup|meminfo|Node:" | tail -3
 }
 
@@ -24,7 +24,7 @@ render_film() {
   rm -f out/film-chunk-*.mp4
   for r in "0-2999" "3000-5999" "6000-8999"; do
     echo "--- frames $r"
-    npx remotion render Film "out/film-chunk-${r%%-*}.mp4" --frames="$r" --concurrency="$CONC" --codec=h264 --video-bitrate=24M --pixel-format=yuv420p --log=error \
+    npx remotion render Film "out/film-chunk-${r%%-*}.mp4" --frames="$r" --concurrency="$CONC" --codec=h264 --video-bitrate=14M --pixel-format=yuv420p --log=error \
       2>&1 | grep -vE "memory|docker|CGroup|meminfo|Node:" | tail -2
     [ -s "out/film-chunk-${r%%-*}.mp4" ] || { echo "chunk $r failed"; return 1; }
   done

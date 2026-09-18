@@ -85,9 +85,95 @@ export const HF_STILLS: HfStill[] = [
   "w": 2752,
   "h": 1536,
   "ar": 1.792
+ },
+ {
+  "id": "hero-rack-9x16",
+  "file": "img-21-hero-rack-9x16.png",
+  "bg": "bg/img-21-hero-rack-9x16.jpg",
+  "w": 1536,
+  "h": 2752,
+  "ar": 0.558
+ },
+ {
+  "id": "16a-mixroom-9x16",
+  "file": "img-22-16a-mixroom-9x16.png",
+  "bg": "bg/img-22-16a-mixroom-9x16.jpg",
+  "w": 1536,
+  "h": 2752,
+  "ar": 0.558
+ },
+ {
+  "id": "848-desk-9x16",
+  "file": "img-23-848-desk-9x16.png",
+  "bg": "bg/img-23-848-desk-9x16.jpg",
+  "w": 1536,
+  "h": 2752,
+  "ar": 0.558
+ },
+ {
+  "id": "10pre-tracking-9x16",
+  "file": "img-24-10pre-tracking-9x16.png",
+  "bg": "bg/img-24-10pre-tracking-9x16.jpg",
+  "w": 1536,
+  "h": 2752,
+  "ar": 0.558
+ },
+ {
+  "id": "switch-foh-9x16",
+  "file": "img-26-switch-foh-9x16.png",
+  "bg": "bg/img-26-switch-foh-9x16.jpg",
+  "w": 1536,
+  "h": 2752,
+  "ar": 0.558
  }
 ];
-export const HF_CLIPS: HfClip[] = [];
+export const HF_CLIPS: HfClip[] = [
+ {
+  "id": "hero-rack",
+  "file": "clip-31-hero-rack.mp4",
+  "w": 1928,
+  "h": 1076,
+  "ar": 1.792,
+  "seconds": 5.04,
+  "fps": 24
+ },
+ {
+  "id": "16a-mixroom",
+  "file": "clip-32-16a-mixroom.mp4",
+  "w": 1928,
+  "h": 1076,
+  "ar": 1.792,
+  "seconds": 5.04,
+  "fps": 24
+ },
+ {
+  "id": "848-desk",
+  "file": "clip-33-848-desk.mp4",
+  "w": 1928,
+  "h": 1076,
+  "ar": 1.792,
+  "seconds": 5.04,
+  "fps": 24
+ },
+ {
+  "id": "switch-foh",
+  "file": "clip-34-switch-foh.mp4",
+  "w": 1928,
+  "h": 1076,
+  "ar": 1.792,
+  "seconds": 5.04,
+  "fps": 24
+ },
+ {
+  "id": "16a-modular",
+  "file": "clip-35-16a-modular.mp4",
+  "w": 1928,
+  "h": 1076,
+  "ar": 1.792,
+  "seconds": 5.04,
+  "fps": 24
+ }
+];
 
 /** A still by id; portrait variants carry the same id with a "-9x16" suffix. */
 export const still = (id: string): HfStill | undefined => HF_STILLS.find((s) => s.id === id);

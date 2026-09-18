@@ -174,7 +174,7 @@ replace the file and re-render.
 
 139 filenames in the repository root are 119 distinct images (byte-identical
 duplicates collapsed; the Moog photograph and the blank grey PNG excluded).
-The reel places 29 of them and the film 71 — CueMix Pro's screens are clubbed
+The reel places 28 of them and the film 71 — CueMix Pro's screens are clubbed
 into drifting mosaics (mixer, EQ, dynamics, patchbay, routing, iPad), the panel
 plans are tracked laterally, and the detail crops sit under the line they prove.
 Run `node --experimental-strip-types scripts/validate-plan.mjs` for the count.

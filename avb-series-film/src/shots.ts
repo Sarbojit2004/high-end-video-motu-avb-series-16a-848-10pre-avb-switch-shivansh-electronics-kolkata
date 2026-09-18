@@ -83,7 +83,6 @@ export const REEL_PINS: Pin[] = [
   { seg: "s10pre", find: "The 10pre.", shot: V("10pre-tracking", "10pre-tracking") },
   { seg: "s10pre", find: "10 mic preamps", shot: P("motu-10pre-newly-added-1-png") },
   { seg: "s10pre", find: "Minus 129", shot: B("motu-10pre-13-jpg") },
-  { seg: "s10pre", find: "Inserts on 1", shot: B("motu-10pre-11-jpg") },
   { seg: "s10pre", find: "Track the whole band", shot: S("10pre-tracking") },
 
   { seg: "sswitch", find: "Then the AVB Switch", shot: B("motu-avb-switch-1-jpg") },
