@@ -11,7 +11,7 @@ render from. 139 product filenames in the repository root are
 
 Coverage of every image was not a requirement for this build; the software
 screens are clubbed into mosaics and the product photography is chosen for the
-line it proves. Generated material: 15 Higgsfield stills and 5 B-roll clips.
+line it proves. Generated material: 16 Higgsfield stills and 10 B-roll clips.
 
 ## Real images placed
 
@@ -156,6 +156,7 @@ line it proves. Generated material: 15 Higgsfield stills and 5 B-roll clips.
 - `img-22-16a-mixroom-9x16.png` 1536×2752
 - `img-23-848-desk-9x16.png` 1536×2752
 - `img-24-10pre-tracking-9x16.png` 1536×2752
+- `img-25-10pre-stage-9x16.png` 1536×2752
 - `img-26-switch-foh-9x16.png` 1536×2752
 
 ## Generated B-roll
@@ -165,3 +166,8 @@ line it proves. Generated material: 15 Higgsfield stills and 5 B-roll clips.
 - `clip-33-848-desk.mp4` 1928×1076 · 5.04s
 - `clip-34-switch-foh.mp4` 1928×1076 · 5.04s
 - `clip-35-16a-modular.mp4` 1928×1076 · 5.04s
+- `clip-36-848-podcast.mp4` 1928×1076 · 5.04s
+- `clip-37-10pre-tracking.mp4` 1928×1076 · 5.04s
+- `clip-38-10pre-stage.mp4` 1928×1076 · 5.04s
+- `clip-41-hero-rack-9x16.mp4` 1076×1928 · 5.04s
+- `clip-42-10pre-tracking-9x16.mp4` 1076×1928 · 5.04s

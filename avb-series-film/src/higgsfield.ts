@@ -119,6 +119,14 @@ export const HF_STILLS: HfStill[] = [
   "ar": 0.558
  },
  {
+  "id": "10pre-stage-9x16",
+  "file": "img-25-10pre-stage-9x16.png",
+  "bg": "bg/img-25-10pre-stage-9x16.jpg",
+  "w": 1536,
+  "h": 2752,
+  "ar": 0.558
+ },
+ {
   "id": "switch-foh-9x16",
   "file": "img-26-switch-foh-9x16.png",
   "bg": "bg/img-26-switch-foh-9x16.jpg",
@@ -170,6 +178,51 @@ export const HF_CLIPS: HfClip[] = [
   "w": 1928,
   "h": 1076,
   "ar": 1.792,
+  "seconds": 5.04,
+  "fps": 24
+ },
+ {
+  "id": "848-podcast",
+  "file": "clip-36-848-podcast.mp4",
+  "w": 1928,
+  "h": 1076,
+  "ar": 1.792,
+  "seconds": 5.04,
+  "fps": 24
+ },
+ {
+  "id": "10pre-tracking",
+  "file": "clip-37-10pre-tracking.mp4",
+  "w": 1928,
+  "h": 1076,
+  "ar": 1.792,
+  "seconds": 5.04,
+  "fps": 24
+ },
+ {
+  "id": "10pre-stage",
+  "file": "clip-38-10pre-stage.mp4",
+  "w": 1928,
+  "h": 1076,
+  "ar": 1.792,
+  "seconds": 5.04,
+  "fps": 24
+ },
+ {
+  "id": "hero-rack-9x16",
+  "file": "clip-41-hero-rack-9x16.mp4",
+  "w": 1076,
+  "h": 1928,
+  "ar": 0.558,
+  "seconds": 5.04,
+  "fps": 24
+ },
+ {
+  "id": "10pre-tracking-9x16",
+  "file": "clip-42-10pre-tracking-9x16.mp4",
+  "w": 1076,
+  "h": 1928,
+  "ar": 0.558,
   "seconds": 5.04,
   "fps": 24
  }
