@@ -170,6 +170,25 @@ replace the file and re-render.
 
 ---
 
+## Separated audio deliverables
+
+Requested so the recorded narration can be balanced against them without
+losing sync. Both files per film are **48 kHz / 16-bit stereo, exactly the
+film's runtime, starting at frame 0** — they drop onto a timeline with no offset.
+
+| File | Contents |
+|---|---|
+| `out/audio/motu-avb-reel-music-bed.wav` · `…-film-music-bed.wav` | the continuous bed, music only, −23 LUFS |
+| `out/audio/motu-avb-reel-transition-sfx.wav` · `…-film-transition-sfx.wav` | **transition SFX only, music fully silent** — every cue at the exact frame it fires in the render (80 cues in the reel, 164 in the film) |
+| `out/audio/motu-avb-*-sfx-plan.json` | the cue sheet itself: `{at, frame, cue}` per cue |
+
+They are produced by `scripts/sfx-plan.mjs` (which derives the cue sheet from
+`src/sfx.ts` — the same function `Film.tsx` renders from) and
+`scripts/deliver-audio.py` (which places the same mastered cue files the render
+embeds). `npm run audio:deliver` regenerates them.
+
+---
+
 ## Real photography coverage
 
 139 filenames in the repository root are 119 distinct images (byte-identical

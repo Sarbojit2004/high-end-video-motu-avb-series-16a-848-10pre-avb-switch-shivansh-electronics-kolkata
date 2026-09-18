@@ -1,0 +1,828 @@
+{
+ "film": "film",
+ "runtime": 300,
+ "fps": 30,
+ "outroAt": 292.6,
+ "cues": [
+  {
+   "at": 0,
+   "frame": 0,
+   "cue": "air-pass"
+  },
+  {
+   "at": 2.55,
+   "frame": 77,
+   "cue": "riser-short"
+  },
+  {
+   "at": 2.94,
+   "frame": 88,
+   "cue": "air-pass"
+  },
+  {
+   "at": 4.815,
+   "frame": 144,
+   "cue": "riser-short"
+  },
+  {
+   "at": 6.315,
+   "frame": 189,
+   "cue": "impact-soft"
+  },
+  {
+   "at": 8.94,
+   "frame": 268,
+   "cue": "gate-snap"
+  },
+  {
+   "at": 11.19,
+   "frame": 336,
+   "cue": "impact-soft"
+  },
+  {
+   "at": 11.29,
+   "frame": 339,
+   "cue": "tick-glass"
+  },
+  {
+   "at": 13.265,
+   "frame": 398,
+   "cue": "impact-soft"
+  },
+  {
+   "at": 14.865,
+   "frame": 446,
+   "cue": "tick-glass"
+  },
+  {
+   "at": 16.115,
+   "frame": 483,
+   "cue": "slide-air"
+  },
+  {
+   "at": 19.725,
+   "frame": 592,
+   "cue": "riser-short"
+  },
+  {
+   "at": 20.115,
+   "frame": 603,
+   "cue": "riser-short"
+  },
+  {
+   "at": 24.24,
+   "frame": 727,
+   "cue": "impact-soft"
+  },
+  {
+   "at": 24.34,
+   "frame": 730,
+   "cue": "tick-glass"
+  },
+  {
+   "at": 27.815,
+   "frame": 834,
+   "cue": "gate-snap"
+  },
+  {
+   "at": 30.065,
+   "frame": 902,
+   "cue": "impact-soft"
+  },
+  {
+   "at": 33.065,
+   "frame": 992,
+   "cue": "impact-soft"
+  },
+  {
+   "at": 36.065,
+   "frame": 1082,
+   "cue": "air-pass"
+  },
+  {
+   "at": 39.065,
+   "frame": 1172,
+   "cue": "riser-short"
+  },
+  {
+   "at": 39.165,
+   "frame": 1175,
+   "cue": "tick-glass"
+  },
+  {
+   "at": 41.515,
+   "frame": 1245,
+   "cue": "impact-soft"
+  },
+  {
+   "at": 45.64,
+   "frame": 1369,
+   "cue": "gate-snap"
+  },
+  {
+   "at": 50.515,
+   "frame": 1515,
+   "cue": "impact-soft"
+  },
+  {
+   "at": 53.99,
+   "frame": 1620,
+   "cue": "tick-glass"
+  },
+  {
+   "at": 56.34,
+   "frame": 1690,
+   "cue": "impact-soft"
+  },
+  {
+   "at": 59.715,
+   "frame": 1791,
+   "cue": "air-pass"
+  },
+  {
+   "at": 59.815,
+   "frame": 1794,
+   "cue": "tick-glass"
+  },
+  {
+   "at": 63.69,
+   "frame": 1911,
+   "cue": "slide-air"
+  },
+  {
+   "at": 67.3,
+   "frame": 2019,
+   "cue": "riser-short"
+  },
+  {
+   "at": 67.69,
+   "frame": 2031,
+   "cue": "impact-soft"
+  },
+  {
+   "at": 68.0833,
+   "frame": 2042,
+   "cue": "count-blip"
+  },
+  {
+   "at": 68.2167,
+   "frame": 2047,
+   "cue": "count-blip"
+  },
+  {
+   "at": 68.35,
+   "frame": 2051,
+   "cue": "count-blip"
+  },
+  {
+   "at": 68.4833,
+   "frame": 2055,
+   "cue": "count-blip"
+  },
+  {
+   "at": 68.6167,
+   "frame": 2059,
+   "cue": "count-blip"
+  },
+  {
+   "at": 68.75,
+   "frame": 2063,
+   "cue": "count-blip"
+  },
+  {
+   "at": 68.8833,
+   "frame": 2067,
+   "cue": "count-blip"
+  },
+  {
+   "at": 69.0167,
+   "frame": 2071,
+   "cue": "count-blip"
+  },
+  {
+   "at": 69.19,
+   "frame": 2076,
+   "cue": "gate-snap"
+  },
+  {
+   "at": 71.44,
+   "frame": 2143,
+   "cue": "impact-soft"
+  },
+  {
+   "at": 73.69,
+   "frame": 2211,
+   "cue": "impact-soft"
+  },
+  {
+   "at": 73.79,
+   "frame": 2214,
+   "cue": "tick-glass"
+  },
+  {
+   "at": 77.265,
+   "frame": 2318,
+   "cue": "air-pass"
+  },
+  {
+   "at": 77.365,
+   "frame": 2321,
+   "cue": "tick-glass"
+  },
+  {
+   "at": 79.715,
+   "frame": 2391,
+   "cue": "riser-short"
+  },
+  {
+   "at": 83.09,
+   "frame": 2493,
+   "cue": "impact-soft"
+  },
+  {
+   "at": 83.19,
+   "frame": 2496,
+   "cue": "tick-glass"
+  },
+  {
+   "at": 87.04,
+   "frame": 2611,
+   "cue": "gate-snap"
+  },
+  {
+   "at": 89.29,
+   "frame": 2679,
+   "cue": "impact-soft"
+  },
+  {
+   "at": 89.39,
+   "frame": 2682,
+   "cue": "tick-glass"
+  },
+  {
+   "at": 92.49,
+   "frame": 2775,
+   "cue": "impact-soft"
+  },
+  {
+   "at": 92.59,
+   "frame": 2778,
+   "cue": "tick-glass"
+  },
+  {
+   "at": 95.69,
+   "frame": 2871,
+   "cue": "air-pass"
+  },
+  {
+   "at": 100.94,
+   "frame": 3028,
+   "cue": "riser-short"
+  },
+  {
+   "at": 101.04,
+   "frame": 3031,
+   "cue": "tick-glass"
+  },
+  {
+   "at": 103.765,
+   "frame": 3113,
+   "cue": "impact-soft"
+  },
+  {
+   "at": 103.865,
+   "frame": 3116,
+   "cue": "tick-glass"
+  },
+  {
+   "at": 107.365,
+   "frame": 3221,
+   "cue": "gate-snap"
+  },
+  {
+   "at": 110.975,
+   "frame": 3329,
+   "cue": "riser-short"
+  },
+  {
+   "at": 111.365,
+   "frame": 3341,
+   "cue": "impact-soft"
+  },
+  {
+   "at": 111.7583,
+   "frame": 3353,
+   "cue": "count-blip"
+  },
+  {
+   "at": 111.8917,
+   "frame": 3357,
+   "cue": "count-blip"
+  },
+  {
+   "at": 112.025,
+   "frame": 3361,
+   "cue": "count-blip"
+  },
+  {
+   "at": 112.1583,
+   "frame": 3365,
+   "cue": "count-blip"
+  },
+  {
+   "at": 112.2917,
+   "frame": 3369,
+   "cue": "count-blip"
+  },
+  {
+   "at": 112.425,
+   "frame": 3373,
+   "cue": "count-blip"
+  },
+  {
+   "at": 113.34,
+   "frame": 3400,
+   "cue": "tick-glass"
+  },
+  {
+   "at": 114.565,
+   "frame": 3437,
+   "cue": "impact-soft"
+  },
+  {
+   "at": 118.315,
+   "frame": 3549,
+   "cue": "air-pass"
+  },
+  {
+   "at": 122.065,
+   "frame": 3662,
+   "cue": "riser-short"
+  },
+  {
+   "at": 125.165,
+   "frame": 3755,
+   "cue": "tick-glass"
+  },
+  {
+   "at": 127.89,
+   "frame": 3837,
+   "cue": "impact-soft"
+  },
+  {
+   "at": 131.265,
+   "frame": 3938,
+   "cue": "gate-snap"
+  },
+  {
+   "at": 131.365,
+   "frame": 3941,
+   "cue": "tick-glass"
+  },
+  {
+   "at": 133.715,
+   "frame": 4011,
+   "cue": "impact-soft"
+  },
+  {
+   "at": 135.215,
+   "frame": 4056,
+   "cue": "impact-soft"
+  },
+  {
+   "at": 137.465,
+   "frame": 4124,
+   "cue": "air-pass"
+  },
+  {
+   "at": 140.84,
+   "frame": 4225,
+   "cue": "riser-short"
+  },
+  {
+   "at": 140.94,
+   "frame": 4228,
+   "cue": "tick-glass"
+  },
+  {
+   "at": 144.79,
+   "frame": 4344,
+   "cue": "impact-soft"
+  },
+  {
+   "at": 147.04,
+   "frame": 4411,
+   "cue": "gate-snap"
+  },
+  {
+   "at": 149.665,
+   "frame": 4490,
+   "cue": "impact-soft"
+  },
+  {
+   "at": 149.765,
+   "frame": 4493,
+   "cue": "tick-glass"
+  },
+  {
+   "at": 154.74,
+   "frame": 4642,
+   "cue": "impact-soft"
+  },
+  {
+   "at": 154.84,
+   "frame": 4645,
+   "cue": "tick-glass"
+  },
+  {
+   "at": 156.09,
+   "frame": 4683,
+   "cue": "gate-snap"
+  },
+  {
+   "at": 159.7,
+   "frame": 4791,
+   "cue": "riser-short"
+  },
+  {
+   "at": 160.09,
+   "frame": 4803,
+   "cue": "riser-short"
+  },
+  {
+   "at": 160.4833,
+   "frame": 4815,
+   "cue": "count-blip"
+  },
+  {
+   "at": 160.6167,
+   "frame": 4819,
+   "cue": "count-blip"
+  },
+  {
+   "at": 160.75,
+   "frame": 4823,
+   "cue": "count-blip"
+  },
+  {
+   "at": 160.8833,
+   "frame": 4827,
+   "cue": "count-blip"
+  },
+  {
+   "at": 161.0167,
+   "frame": 4831,
+   "cue": "count-blip"
+  },
+  {
+   "at": 161.315,
+   "frame": 4839,
+   "cue": "tick-glass"
+  },
+  {
+   "at": 162.165,
+   "frame": 4865,
+   "cue": "impact-soft"
+  },
+  {
+   "at": 163.29,
+   "frame": 4899,
+   "cue": "gate-snap"
+  },
+  {
+   "at": 165.54,
+   "frame": 4966,
+   "cue": "impact-soft"
+  },
+  {
+   "at": 165.64,
+   "frame": 4969,
+   "cue": "tick-glass"
+  },
+  {
+   "at": 169.865,
+   "frame": 5096,
+   "cue": "impact-soft"
+  },
+  {
+   "at": 176.24,
+   "frame": 5287,
+   "cue": "air-pass"
+  },
+  {
+   "at": 176.34,
+   "frame": 5290,
+   "cue": "tick-glass"
+  },
+  {
+   "at": 179.065,
+   "frame": 5372,
+   "cue": "riser-short"
+  },
+  {
+   "at": 182.815,
+   "frame": 5484,
+   "cue": "impact-soft"
+  },
+  {
+   "at": 187.04,
+   "frame": 5611,
+   "cue": "tick-glass"
+  },
+  {
+   "at": 189.015,
+   "frame": 5670,
+   "cue": "gate-snap"
+  },
+  {
+   "at": 189.115,
+   "frame": 5673,
+   "cue": "tick-glass"
+  },
+  {
+   "at": 192.965,
+   "frame": 5789,
+   "cue": "impact-soft"
+  },
+  {
+   "at": 196.34,
+   "frame": 5890,
+   "cue": "impact-soft"
+  },
+  {
+   "at": 196.44,
+   "frame": 5893,
+   "cue": "tick-glass"
+  },
+  {
+   "at": 198.815,
+   "frame": 5964,
+   "cue": "chime-lift"
+  },
+  {
+   "at": 202.425,
+   "frame": 6073,
+   "cue": "riser-short"
+  },
+  {
+   "at": 202.815,
+   "frame": 6084,
+   "cue": "riser-short"
+  },
+  {
+   "at": 202.915,
+   "frame": 6087,
+   "cue": "tick-glass"
+  },
+  {
+   "at": 203.275,
+   "frame": 6098,
+   "cue": "net-lock"
+  },
+  {
+   "at": 203.575,
+   "frame": 6107,
+   "cue": "net-lock"
+  },
+  {
+   "at": 203.875,
+   "frame": 6116,
+   "cue": "net-lock"
+  },
+  {
+   "at": 204.14,
+   "frame": 6124,
+   "cue": "impact-soft"
+  },
+  {
+   "at": 204.175,
+   "frame": 6125,
+   "cue": "net-lock"
+  },
+  {
+   "at": 207.14,
+   "frame": 6214,
+   "cue": "gate-snap"
+  },
+  {
+   "at": 209.765,
+   "frame": 6293,
+   "cue": "impact-soft"
+  },
+  {
+   "at": 209.865,
+   "frame": 6296,
+   "cue": "tick-glass"
+  },
+  {
+   "at": 212.59,
+   "frame": 6378,
+   "cue": "impact-soft"
+  },
+  {
+   "at": 215.965,
+   "frame": 6479,
+   "cue": "air-pass"
+  },
+  {
+   "at": 218.59,
+   "frame": 6558,
+   "cue": "riser-short"
+  },
+  {
+   "at": 220.94,
+   "frame": 6628,
+   "cue": "tick-glass"
+  },
+  {
+   "at": 222.54,
+   "frame": 6676,
+   "cue": "impact-soft"
+  },
+  {
+   "at": 222.64,
+   "frame": 6679,
+   "cue": "tick-glass"
+  },
+  {
+   "at": 225.74,
+   "frame": 6772,
+   "cue": "gate-snap"
+  },
+  {
+   "at": 227.715,
+   "frame": 6831,
+   "cue": "tick-glass"
+  },
+  {
+   "at": 231.19,
+   "frame": 6936,
+   "cue": "impact-soft"
+  },
+  {
+   "at": 234.94,
+   "frame": 7048,
+   "cue": "impact-soft"
+  },
+  {
+   "at": 236.54,
+   "frame": 7096,
+   "cue": "tick-glass"
+  },
+  {
+   "at": 238.89,
+   "frame": 7167,
+   "cue": "air-pass"
+  },
+  {
+   "at": 240.765,
+   "frame": 7223,
+   "cue": "riser-short"
+  },
+  {
+   "at": 243.39,
+   "frame": 7302,
+   "cue": "impact-soft"
+  },
+  {
+   "at": 246.115,
+   "frame": 7383,
+   "cue": "tick-glass"
+  },
+  {
+   "at": 247.74,
+   "frame": 7432,
+   "cue": "chime-lift"
+  },
+  {
+   "at": 250.05,
+   "frame": 7501,
+   "cue": "riser-short"
+  },
+  {
+   "at": 250.44,
+   "frame": 7513,
+   "cue": "impact-soft"
+  },
+  {
+   "at": 252.79,
+   "frame": 7584,
+   "cue": "tick-glass"
+  },
+  {
+   "at": 254.015,
+   "frame": 7620,
+   "cue": "impact-soft"
+  },
+  {
+   "at": 255.89,
+   "frame": 7677,
+   "cue": "air-pass"
+  },
+  {
+   "at": 259.64,
+   "frame": 7789,
+   "cue": "riser-short"
+  },
+  {
+   "at": 262.265,
+   "frame": 7868,
+   "cue": "impact-soft"
+  },
+  {
+   "at": 262.365,
+   "frame": 7871,
+   "cue": "tick-glass"
+  },
+  {
+   "at": 266.215,
+   "frame": 7986,
+   "cue": "gate-snap"
+  },
+  {
+   "at": 268.19,
+   "frame": 8046,
+   "cue": "tick-glass"
+  },
+  {
+   "at": 270.915,
+   "frame": 8127,
+   "cue": "impact-soft"
+  },
+  {
+   "at": 271.015,
+   "frame": 8130,
+   "cue": "tick-glass"
+  },
+  {
+   "at": 275.265,
+   "frame": 8258,
+   "cue": "gate-snap"
+  },
+  {
+   "at": 276.875,
+   "frame": 8306,
+   "cue": "riser-short"
+  },
+  {
+   "at": 277.265,
+   "frame": 8318,
+   "cue": "air-pass"
+  },
+  {
+   "at": 277.5917,
+   "frame": 8328,
+   "cue": "count-blip"
+  },
+  {
+   "at": 277.925,
+   "frame": 8338,
+   "cue": "count-blip"
+  },
+  {
+   "at": 278.2583,
+   "frame": 8348,
+   "cue": "count-blip"
+  },
+  {
+   "at": 279.24,
+   "frame": 8377,
+   "cue": "tick-glass"
+  },
+  {
+   "at": 282.34,
+   "frame": 8470,
+   "cue": "riser-short"
+  },
+  {
+   "at": 283.565,
+   "frame": 8507,
+   "cue": "tick-glass"
+  },
+  {
+   "at": 285.165,
+   "frame": 8555,
+   "cue": "impact-soft"
+  },
+  {
+   "at": 285.265,
+   "frame": 8558,
+   "cue": "tick-glass"
+  },
+  {
+   "at": 287.24,
+   "frame": 8617,
+   "cue": "gate-snap"
+  },
+  {
+   "at": 289.59,
+   "frame": 8688,
+   "cue": "tick-glass"
+  },
+  {
+   "at": 292.4,
+   "frame": 8772,
+   "cue": "outro-bloom"
+  }
+ ]
+}

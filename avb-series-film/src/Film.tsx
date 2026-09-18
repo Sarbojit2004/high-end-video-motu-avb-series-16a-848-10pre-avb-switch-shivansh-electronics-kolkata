@@ -2,10 +2,11 @@ import React from "react";
 import { AbsoluteFill, Audio, Sequence, interpolate, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
 import { ACCENT, FONT, GROUND, TYPE_OPACITY, sec, safeW, type Canvas, type ProductKey } from "./theme.ts";
 import type { TimedSegment } from "./script.ts";
-import { buildShots, type Pin, type Shot } from "./shots.ts";
+import { buildShots, type Pin } from "./shots.ts";
 import { Caption } from "./components/Caption.tsx";
 import { BleedShot, MosaicBleed, PanelBleed, SplitBleed, StillShot, VideoShot } from "./components/Staged.tsx";
-import { TRANS, TRANS_CUE, TransitionIn, transitionFor, type TransitionKind } from "./components/Transitions.tsx";
+import { TRANS, TransitionIn } from "./components/Transitions.tsx";
+import { buildSfxPlan, placeShots, type Placed } from "./sfx.ts";
 import {
   ChapterTitle, IoLadder, LadderCompare, LatencyTrace, NetworkGraph, ProductTag, ProgressRule, ScaleMeter, SpecChips,
 } from "./components/Demonstratives.tsx";
@@ -40,14 +41,6 @@ export type FilmProps = {
   vo: string;
   title: string;
 };
-
-type Placed = Shot & { trans: TransitionKind };
-
-const place = (shots: Shot[]): Placed[] =>
-  shots.map((s, i) => {
-    const firstOfSeg = i === 0 || shots[i - 1].segment !== s.segment;
-    return { ...s, trans: transitionFor(s.seed, firstOfSeg, i === 0) };
-  });
 
 const Stage: React.FC<{ shot: Placed; f: number; dur: number; canvas: Canvas }> = ({ shot, f, dur, canvas }) => {
   const p = dur > 0 ? Math.min(1, Math.max(0, f / dur)) : 0;
@@ -93,7 +86,7 @@ const CHIPS: Record<string, string[]> = {
 
 export const Film: React.FC<FilmProps> = ({ canvas, segments, pins, outroAt, bed, vo }) => {
   const S = canvas.scale;
-  const shots = React.useMemo(() => place(buildShots(segments, pins, canvas, outroAt)), [segments, pins, canvas, outroAt]);
+  const shots = React.useMemo(() => placeShots(buildShots(segments, pins, canvas, outroAt)), [segments, pins, canvas, outroAt]);
   const outroFrom = sec(outroAt);
   const sw = safeW(canvas);
 
@@ -109,23 +102,8 @@ export const Film: React.FC<FilmProps> = ({ canvas, segments, pins, outroAt, bed
   const T_DR = capStart("platform", "125 dB") - 0.15;
   const T_RTL = capStart("platform", "2 ms") - 0.15;
 
-  // ── SFX plan, derived rather than typed ──────────────────────────────────
-  type Cue = { at: number; cue: string };
-  const sfx: Cue[] = [];
-  for (const s of shots) sfx.push({ at: Math.max(0, s.start - 0.06), cue: TRANS_CUE[s.trans] });
-  for (const seg of segments) {
-    sfx.push({ at: Math.max(0, seg.speakAt - 0.45), cue: "riser-short" });
-    for (const c of seg.captions) if (c.beat) sfx.push({ at: c.start + 0.04, cue: "tick-glass" });
-    if (seg.product === "p16a" || seg.product === "p848" || seg.product === "p10pre") {
-      const n = { p16a: 16, p848: 12, p10pre: 10 }[seg.product];
-      for (let i = 0; i < n; i += 2) sfx.push({ at: seg.speakAt + (10 + i * 2) / canvas.fps, cue: "count-blip" });
-    }
-    if (seg.product === "pswitch") for (let i = 0; i < 4; i++) sfx.push({ at: seg.speakAt + (12 + i * 9) / canvas.fps, cue: "net-lock" });
-  }
-  const close = segments.find((s) => s.id === "close");
-  if (close) for (let i = 0; i < 3; i++) sfx.push({ at: close.speakAt + (8 + i * 10) / canvas.fps, cue: "count-blip" });
-  sfx.push({ at: outroAt - 0.2, cue: "outro-bloom" });
-  sfx.sort((a, b) => a.at - b.at);
+  // ── SFX plan — the same derivation scripts/sfx-plan.mjs prints to a file ──
+  const sfx = React.useMemo(() => buildSfxPlan(segments, shots, outroAt, canvas.fps), [segments, shots, outroAt, canvas.fps]);
 
   const TopBlock: React.FC = () => {
     const frame = useCurrentFrame();
