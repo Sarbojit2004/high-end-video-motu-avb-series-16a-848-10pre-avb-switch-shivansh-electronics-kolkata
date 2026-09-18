@@ -12,3 +12,5 @@ out/motu-avb-reel-4k.mp4
 out/motu-avb-film-4k.mp4
 # 512 px wash plates derived from the stills by scripts/scan-higgsfield.mjs — regenerable
 public/higgsfield/bg/
+!out/preview-reel-480p.mp4
+!out/preview-film-480p.mp4
