@@ -296,7 +296,7 @@ export const NetworkGraph: React.FC<{ f: number; width: number; s?: number; prod
           return <div key={i} style={{ width: 26 * s, height: 30 * s, borderRadius: 4 * s, border: `${3 * s}px solid ${accent.glow}`, background: i < 4 ? `${accent.glow}${on > 0.5 ? "EE" : "22"}` : "transparent" }} />;
         })}
       </div>
-      <div style={{ position: "absolute", left: cx * width, top: H * 0.22 - 100 * s, transform: "translateX(-50%)", fontSize: 30 * s, letterSpacing: 5 * s, color: accent.glow, textShadow: HARD(3 * s), whiteSpace: "nowrap" }}>AVB SWITCH · 1 CLOCK</div>
+      <div style={{ position: "absolute", left: cx * width, top: H * 0.22 - 100 * s, transform: "translateX(-50%)", fontSize: 30 * s, letterSpacing: 5 * s, color: accent.glow, textShadow: HARD(3 * s), whiteSpace: "nowrap" }}>5 AVB PORTS · IEEE 802.1AS</div>
       {/* units */}
       {nodes.map((n, i) => {
         const inn = spring({ frame: f - 22 - i * 9, fps, config: { damping: 200, mass: 0.5 }, durationInFrames: 14 });

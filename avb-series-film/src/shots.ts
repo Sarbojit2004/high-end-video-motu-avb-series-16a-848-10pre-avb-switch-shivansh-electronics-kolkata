@@ -169,7 +169,7 @@ export const FILM_PINS: Pin[] = [
 
   { seg: "sswitch", find: "", shot: V("10pre-stage", "10pre-stage") },
   { seg: "sswitch", find: "Now the cable", shot: B("motu-avb-switch-3-png") },
-  { seg: "sswitch", find: "Every unit has 2", shot: B("motu-848-27-jpg") },
+  { seg: "sswitch", find: "Every unit has 2", shot: B("motu-848-18-jpg") },
   { seg: "sswitch", find: "Daisy-chain", shot: B("motu-16a-5-jpg") },
   { seg: "sswitch", find: "Or add the MOTU AVB Switch", shot: B("motu-avb-switch-1-jpg") },
   { seg: "sswitch", find: "5 AVB ports", shot: B("motu-avb-switch-3-jpg") },

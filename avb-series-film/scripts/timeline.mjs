@@ -2,10 +2,10 @@
 // Prints both timelines and writes scripts/_timeline.json for gen_audio.py.
 // Run: node --experimental-strip-types scripts/timeline.mjs
 import { writeFileSync } from "node:fs";
-import { REEL_TL, FILM_TL, WPM } from "../src/script.ts";
+import { REEL_TL, FILM_TL, REEL_WPM, FILM_WPM } from "../src/script.ts";
 
 const show = (name, tl, runtime) => {
-  console.log(`\n== ${name}: ${tl.words} spoken words, narration ends ${tl.total.toFixed(2)} s of ${runtime} s, effective ${(tl.words / (tl.total / 60)).toFixed(1)} wpm (written ${WPM})`);
+  console.log(`\n== ${name}: ${tl.words} spoken words, narration ends ${tl.total.toFixed(2)} s of ${runtime} s, effective ${(tl.words / (tl.total / 60)).toFixed(1)} wpm (written ${tl === REEL_TL ? REEL_WPM : FILM_WPM})`);
   for (const s of tl.segments) {
     console.log(`  ${s.id.padEnd(9)} ${s.start.toFixed(1).padStart(6)} → ${s.end.toFixed(1).padStart(6)}  hold ${(s.hold ?? 0).toFixed(1)}  ${String(s.words).padStart(3)} w  ${s.captions.length} lines`);
   }

@@ -1,12 +1,85 @@
 [
- {"url": "https://d8j0ntlcm91z4.cloudfront.net/user_38HrvKOOtPO8XbBYIfwrYWYySAd/hf_20260918_120455_a8ee56d5-6c27-4c22-977d-ef02d4933706.png", "dest": "avb-series-film/public/higgsfield/img-01-hero-rack.png"},
- {"url": "https://d8j0ntlcm91z4.cloudfront.net/user_38HrvKOOtPO8XbBYIfwrYWYySAd/hf_20260918_120456_89bca85c-874c-4a88-b83a-8efe6f1271a2.png", "dest": "avb-series-film/public/higgsfield/img-02-16a-mixroom.png"},
- {"url": "https://d8j0ntlcm91z4.cloudfront.net/user_38HrvKOOtPO8XbBYIfwrYWYySAd/hf_20260918_120456_57144398-2397-46e6-a77a-3d112b0b79c9.png", "dest": "avb-series-film/public/higgsfield/img-03-16a-modular.png"},
- {"url": "https://d8j0ntlcm91z4.cloudfront.net/user_38HrvKOOtPO8XbBYIfwrYWYySAd/hf_20260918_120455_55cf1d32-1636-48bc-ac42-1cc20831cef9.png", "dest": "avb-series-film/public/higgsfield/img-04-848-desk.png"},
- {"url": "https://d8j0ntlcm91z4.cloudfront.net/user_38HrvKOOtPO8XbBYIfwrYWYySAd/hf_20260918_120456_9ad4ee95-54e3-427b-8e49-37c389c44d7b.png", "dest": "avb-series-film/public/higgsfield/img-05-848-podcast.png"},
- {"url": "https://d8j0ntlcm91z4.cloudfront.net/user_38HrvKOOtPO8XbBYIfwrYWYySAd/hf_20260918_120456_bb6f76d2-a9ee-4af4-a02e-f91dbb0302a3.png", "dest": "avb-series-film/public/higgsfield/img-06-848-atmos.png"},
- {"url": "https://d8j0ntlcm91z4.cloudfront.net/user_38HrvKOOtPO8XbBYIfwrYWYySAd/hf_20260918_120455_3317132e-a905-45db-935a-25aa3ed697e2.png", "dest": "avb-series-film/public/higgsfield/img-07-10pre-tracking.png"},
- {"url": "https://d8j0ntlcm91z4.cloudfront.net/user_38HrvKOOtPO8XbBYIfwrYWYySAd/hf_20260918_120455_d9652fa6-7223-493a-a340-7ed8ea023aae.png", "dest": "avb-series-film/public/higgsfield/img-08-10pre-stage.png"},
- {"url": "https://d8j0ntlcm91z4.cloudfront.net/user_38HrvKOOtPO8XbBYIfwrYWYySAd/hf_20260918_120456_671d1602-3f38-4eb3-ae5c-bc5f82a53dba.png", "dest": "avb-series-film/public/higgsfield/img-09-switch-foh.png"},
- {"url": "https://d8j0ntlcm91z4.cloudfront.net/user_38HrvKOOtPO8XbBYIfwrYWYySAd/hf_20260918_120456_ac5264c4-92b9-4a78-9a0a-c7c6749ae76b.png", "dest": "avb-series-film/public/higgsfield/img-10-auditorium.png"}
+ {
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_38HrvKOOtPO8XbBYIfwrYWYySAd/hf_20260918_120455_a8ee56d5-6c27-4c22-977d-ef02d4933706.png",
+  "dest": "avb-series-film/public/higgsfield/img-01-hero-rack.png"
+ },
+ {
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_38HrvKOOtPO8XbBYIfwrYWYySAd/hf_20260918_120456_89bca85c-874c-4a88-b83a-8efe6f1271a2.png",
+  "dest": "avb-series-film/public/higgsfield/img-02-16a-mixroom.png"
+ },
+ {
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_38HrvKOOtPO8XbBYIfwrYWYySAd/hf_20260918_120456_57144398-2397-46e6-a77a-3d112b0b79c9.png",
+  "dest": "avb-series-film/public/higgsfield/img-03-16a-modular.png"
+ },
+ {
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_38HrvKOOtPO8XbBYIfwrYWYySAd/hf_20260918_120455_55cf1d32-1636-48bc-ac42-1cc20831cef9.png",
+  "dest": "avb-series-film/public/higgsfield/img-04-848-desk.png"
+ },
+ {
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_38HrvKOOtPO8XbBYIfwrYWYySAd/hf_20260918_120456_bb6f76d2-a9ee-4af4-a02e-f91dbb0302a3.png",
+  "dest": "avb-series-film/public/higgsfield/img-06-848-atmos.png"
+ },
+ {
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_38HrvKOOtPO8XbBYIfwrYWYySAd/hf_20260918_120456_671d1602-3f38-4eb3-ae5c-bc5f82a53dba.png",
+  "dest": "avb-series-film/public/higgsfield/img-09-switch-foh.png"
+ },
+ {
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_38HrvKOOtPO8XbBYIfwrYWYySAd/hf_20260918_120456_ac5264c4-92b9-4a78-9a0a-c7c6749ae76b.png",
+  "dest": "avb-series-film/public/higgsfield/img-10-auditorium.png"
+ },
+ {
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_38HrvKOOtPO8XbBYIfwrYWYySAd/hf_20260918_123036_079dbaea-e3b8-4dc6-82bf-0b35e85f6575.png",
+  "dest": "avb-series-film/public/higgsfield/img-05-848-podcast.png",
+  "overwrite": true
+ },
+ {
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_38HrvKOOtPO8XbBYIfwrYWYySAd/hf_20260918_123036_8c8ee578-b841-431d-8970-c056e8e78e9d.png",
+  "dest": "avb-series-film/public/higgsfield/img-07-10pre-tracking.png",
+  "overwrite": true
+ },
+ {
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_38HrvKOOtPO8XbBYIfwrYWYySAd/hf_20260918_123036_ccb16f8e-a19a-4895-af69-4bc5e233c9ca.png",
+  "dest": "avb-series-film/public/higgsfield/img-08-10pre-stage.png",
+  "overwrite": true
+ },
+ {
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_38HrvKOOtPO8XbBYIfwrYWYySAd/hf_20260918_123037_256b8b75-4a57-4cd5-985e-c2f40f19bf0e.png",
+  "dest": "avb-series-film/public/higgsfield/img-21-hero-rack-9x16.png"
+ },
+ {
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_38HrvKOOtPO8XbBYIfwrYWYySAd/hf_20260918_123036_ad368f27-c931-4bfb-9088-a1d90ed9d114.png",
+  "dest": "avb-series-film/public/higgsfield/img-22-16a-mixroom-9x16.png"
+ },
+ {
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_38HrvKOOtPO8XbBYIfwrYWYySAd/hf_20260918_123036_34b4a704-ed0f-40d5-ab5d-67adef34fb87.png",
+  "dest": "avb-series-film/public/higgsfield/img-23-848-desk-9x16.png"
+ },
+ {
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_38HrvKOOtPO8XbBYIfwrYWYySAd/hf_20260918_123036_409e16ed-6c90-4977-9c4c-178dc1517e58.png",
+  "dest": "avb-series-film/public/higgsfield/img-24-10pre-tracking-9x16.png"
+ },
+ {
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_38HrvKOOtPO8XbBYIfwrYWYySAd/hf_20260918_123037_09bedc49-3657-4475-853a-dd9c9ae7ee5d.png",
+  "dest": "avb-series-film/public/higgsfield/img-26-switch-foh-9x16.png"
+ },
+ {
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_38HrvKOOtPO8XbBYIfwrYWYySAd/hf_20260918_123122_73e82a5e-01d2-4963-8917-60a58bcd2415.mp4",
+  "dest": "avb-series-film/public/higgsfield/clip-31-hero-rack.mp4"
+ },
+ {
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_38HrvKOOtPO8XbBYIfwrYWYySAd/hf_20260918_123047_f58d4be8-4220-47c5-8cce-1827c84e8fb3.mp4",
+  "dest": "avb-series-film/public/higgsfield/clip-32-16a-mixroom.mp4"
+ },
+ {
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_38HrvKOOtPO8XbBYIfwrYWYySAd/hf_20260918_123123_59e50a96-7a6e-4bf5-8355-69cc9d233cca.mp4",
+  "dest": "avb-series-film/public/higgsfield/clip-33-848-desk.mp4"
+ },
+ {
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_38HrvKOOtPO8XbBYIfwrYWYySAd/hf_20260918_123124_8827ce98-b9eb-4572-a02b-d528006afb98.mp4",
+  "dest": "avb-series-film/public/higgsfield/clip-34-switch-foh.mp4"
+ },
+ {
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_38HrvKOOtPO8XbBYIfwrYWYySAd/hf_20260918_123122_0eba6e70-ac5f-4496-892f-16c55bb6945b.mp4",
+  "dest": "avb-series-film/public/higgsfield/clip-35-16a-modular.mp4"
+ }
 ]

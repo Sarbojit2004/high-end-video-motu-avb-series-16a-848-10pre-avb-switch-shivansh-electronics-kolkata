@@ -12,8 +12,13 @@
 
 import type { ProductKey } from "./theme.ts";
 
-/** Words per minute the scripts are written to. */
-export const WPM = 165;
+/** Words per minute each script is written to. The film carries fewer beats per
+ *  word than the reel, so it is written a shade slower to land the same ~153 wpm
+ *  effective narration rate the client found easy to read on the M-Series reel. */
+export const REEL_WPM = 162;
+export const FILM_WPM = 160;
+/** @deprecated use REEL_WPM / FILM_WPM */
+export const WPM = REEL_WPM;
 /** Gap held after each segment so the reader can breathe and the edit can cut. */
 export const SEGMENT_GAP = 0.4;
 /** Extra beat after a caption that ends a thought. */
@@ -106,7 +111,6 @@ export const REEL_SEGMENTS: Segment[] = [
       { t: "The 10pre.", e: "10pre", sw: 3 },
       { t: "10 mic preamps. 8 rear, 2 front.", e: "10", sw: 8 },
       { t: "Minus 129 dBu of noise.", e: "129", sw: 8 },
-      { t: "Inserts on 1 and 2.", e: "Inserts", sw: 5 },
       { t: "Track the whole band in 1 pass.", e: "whole band", sw: 7, beat: true },
 
     ],
@@ -163,7 +167,7 @@ export const FILM_SEGMENTS: Segment[] = [
     label: "One Engine",
     chapter: "THE PLATFORM",
     env: "dark",
-    hold: 5.0,
+    hold: 4.0,
     captions: [
       { t: "MOTU AVB Series.", e: "AVB", sw: 5 },
       { t: "3 rack interfaces and 1 switch.", e: "1 switch", sw: 6 },
@@ -188,7 +192,7 @@ export const FILM_SEGMENTS: Segment[] = [
     label: "MOTU 16A",
     chapter: "THE MATRIX",
     env: "light",
-    hold: 5.0,
+    hold: 4.0,
     captions: [
       { t: "The 16A.", e: "16A", sw: 4 },
       { t: "16 balanced line inputs.", e: "16", sw: 6 },
@@ -213,7 +217,7 @@ export const FILM_SEGMENTS: Segment[] = [
     label: "MOTU 848",
     chapter: "THE COMMAND CENTRE",
     env: "dark",
-    hold: 5.0,
+    hold: 4.0,
     captions: [
       { t: "The 848.", e: "848", sw: 5 },
       { t: "The command centre.", e: "command centre", sw: 3, beat: true },
@@ -239,7 +243,7 @@ export const FILM_SEGMENTS: Segment[] = [
     label: "MOTU 10pre",
     chapter: "THE SOURCE",
     env: "light",
-    hold: 5.0,
+    hold: 4.0,
     captions: [
       { t: "The 10pre.", e: "10pre", sw: 3 },
       { t: "The source.", e: "source", sw: 2, beat: true },
@@ -263,7 +267,7 @@ export const FILM_SEGMENTS: Segment[] = [
     label: "MOTU AVB Switch",
     chapter: "THE NETWORK",
     env: "dark",
-    hold: 5.0,
+    hold: 4.0,
     captions: [
       { t: "Now the cable.", e: "cable", sw: 3, beat: true },
       { t: "Every unit has 2 Gigabit AVB ports.", e: "2", sw: 8 },
@@ -291,7 +295,7 @@ export const FILM_SEGMENTS: Segment[] = [
     label: "CueMix Pro",
     chapter: "ONE SOFTWARE",
     env: "dark",
-    hold: 4.0,
+    hold: 2.7,
     captions: [
       { t: "1 software for all 3.", e: "1 software", sw: 6 },
       { t: "CueMix Pro.", e: "CueMix Pro", sw: 3, beat: true },
@@ -310,7 +314,7 @@ export const FILM_SEGMENTS: Segment[] = [
     label: "MOTU AVB Series",
     chapter: "CHOOSE THE FRONT PANEL",
     env: "dark",
-    hold: 3.0,
+    hold: 2.0,
     captions: [
       { t: "Choose by the front panel.", e: "front panel", sw: 5 },
       { t: "16 line inputs. 4 preamps. Or 10.", e: "Or 10", sw: 8, beat: true },
@@ -348,6 +352,7 @@ export type TimedSegment = Omit<Segment, "captions"> & {
 export const buildTimeline = (
   segs: Segment[],
   lead = 0,
+  wpm = REEL_WPM,
 ): { segments: TimedSegment[]; total: number; words: number } => {
   let t = lead;
   let allWords = 0;
@@ -359,7 +364,7 @@ export const buildTimeline = (
     const captions = seg.captions.map((c, i) => {
       const w = spokenWords(c);
       words += w;
-      const dur = (w / WPM) * 60 + (c.beat ? BEAT : 0);
+      const dur = (w / wpm) * 60 + (c.beat ? BEAT : 0);
       const cap: TimedCaption = { ...c, i, start: t, end: t + dur };
       t += dur;
       return cap;
@@ -373,6 +378,5 @@ export const buildTimeline = (
 };
 
 /** The reel opens on the first word. */
-export const REEL_TL = buildTimeline(REEL_SEGMENTS, 0);
-/** The film has a 1.2 s sting before its picture-only hold. */
-export const FILM_TL = buildTimeline(FILM_SEGMENTS, 0);
+export const REEL_TL = buildTimeline(REEL_SEGMENTS, 0, REEL_WPM);
+export const FILM_TL = buildTimeline(FILM_SEGMENTS, 0, FILM_WPM);
