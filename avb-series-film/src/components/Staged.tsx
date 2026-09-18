@@ -158,13 +158,14 @@ export const BleedShot: React.FC<StageProps & { asset: Asset }> = ({ asset, canv
   const kind = move ?? moveFor(seed);
   const canvasAr = canvas.width / canvas.height;
   const coverable = !asset.alpha && asset.ar / canvasAr > 0.72 && asset.ar / canvasAr < 1.45;
-  const filt = env === "dark" ? "brightness(0.98) contrast(1.06) saturate(1.05)" : "contrast(1.05) saturate(1.03)";
-
+  // No CSS filter on any full-frame layer: with a software GL rasteriser a
+  // filter forces an offscreen pass over 8.3 million pixels on every frame.
+  // The wash grade is baked into the 512 px plate by prep-assets.mjs instead.
   if (coverable) {
     return (
       <div style={{ position: "absolute", inset: 0, overflow: "hidden", background: GROUND.darkSink }}>
         <CoverPlate kind={kind} p={p} f={f} seed={seed} canvas={canvas}>
-          <Img src={src(asset)} style={{ width: "100%", height: "100%", objectFit: "cover", filter: filt }} />
+          <Img src={src(asset)} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
         </CoverPlate>
         <Grade accent={accent.glow} env={env} portrait={canvas.portrait} />
       </div>
@@ -190,7 +191,6 @@ export const BleedShot: React.FC<StageProps & { asset: Asset }> = ({ asset, canv
         style={{
           position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover",
           transform: `translate(${cam.x * 0.28}px, ${cam.y * 0.28}px) scale(${washScale})`,
-          filter: env === "dark" ? "brightness(0.26) saturate(0.55) contrast(1.05)" : "brightness(0.40) saturate(0.5) contrast(1.02)",
           willChange: "transform",
         }}
       />
@@ -208,7 +208,7 @@ export const BleedShot: React.FC<StageProps & { asset: Asset }> = ({ asset, canv
           background: asset.alpha ? "transparent" : undefined,
         }}
       >
-        <Img src={src(asset)} style={{ width: "100%", height: "100%", objectFit: asset.alpha ? "contain" : "cover", filter: filt }} />
+        <Img src={src(asset)} style={{ width: "100%", height: "100%", objectFit: asset.alpha ? "contain" : "cover" }} />
       </div>
       <Grade accent={accent.glow} env={env} portrait={canvas.portrait} />
     </div>
@@ -222,13 +222,12 @@ export const StillShot: React.FC<StageProps & { file: string; ar: number; bgFile
   const canvasAr = canvas.width / canvas.height;
   const coverable = ar / canvasAr > 0.72 && ar / canvasAr < 1.45;
   const url = staticFile(`higgsfield/${file}`);
-  const filt = "contrast(1.05) saturate(1.04)";
 
   if (coverable) {
     return (
       <div style={{ position: "absolute", inset: 0, overflow: "hidden", background: GROUND.darkSink }}>
         <CoverPlate kind={kind} p={p} f={f} seed={seed} canvas={canvas}>
-          <Img src={url} style={{ width: "100%", height: "100%", objectFit: "cover", filter: filt }} />
+          <Img src={url} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
         </CoverPlate>
         <Grade accent={accent.glow} env={env} portrait={canvas.portrait} />
       </div>
@@ -250,7 +249,6 @@ export const StillShot: React.FC<StageProps & { file: string; ar: number; bgFile
         style={{
           position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover",
           transform: `translate(${cam.x * 0.28}px, ${cam.y * 0.28}px) scale(${1.3 + (cam.scale - 1) * 0.35})`,
-          filter: "brightness(0.30) saturate(0.6) contrast(1.05)",
           willChange: "transform",
         }}
       />
@@ -267,7 +265,7 @@ export const StillShot: React.FC<StageProps & { file: string; ar: number; bgFile
           willChange: "transform",
         }}
       >
-        <Img src={url} style={{ width: "100%", height: "100%", objectFit: "cover", filter: filt }} />
+        <Img src={url} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
       </div>
       <Grade accent={accent.glow} env={env} portrait={canvas.portrait} />
     </div>
@@ -285,7 +283,7 @@ export const VideoShot: React.FC<StageProps & { file: string; ar: number; startF
   const scale = interpolate(e, [0, 1], [1.0, 1.06]);
   const url = staticFile(`higgsfield/${file}`);
   const vid = (
-    <OffthreadVideo src={url} startFrom={startFrom} muted style={{ width: "100%", height: "100%", objectFit: "cover", filter: "contrast(1.04) saturate(1.04)" }} />
+    <OffthreadVideo src={url} startFrom={startFrom} muted style={{ width: "100%", height: "100%", objectFit: "cover" }} />
   );
   if (coverable) {
     return (
@@ -303,9 +301,11 @@ export const VideoShot: React.FC<StageProps & { file: string; ar: number; startF
   const dx = interpolate(e, [0, 1], [-(bandW - canvas.width) / 2, (bandW - canvas.width) / 2]) * (seed % 2 ? 1 : -1);
   return (
     <div style={{ position: "absolute", inset: 0, overflow: "hidden", background: GROUND.darkSink }}>
-      <div style={{ position: "absolute", inset: 0, transform: `scale(1.4)`, filter: "brightness(0.30) saturate(0.6)" }}>
+      <div style={{ position: "absolute", inset: 0, transform: `scale(1.4)` }}>
         <OffthreadVideo src={url} startFrom={startFrom} muted style={{ width: "100%", height: "100%", objectFit: "cover" }} />
       </div>
+      {/* the wash is darkened with a flat overlay rather than a filter — same look, no offscreen pass */}
+      <div style={{ position: "absolute", inset: 0, background: "rgba(4,4,6,0.72)" }} />
       <div
         style={{
           position: "absolute",
@@ -365,7 +365,7 @@ export const SplitBleed: React.FC<StageProps & { asset: Asset; second: Asset }> 
     return (
       <div key={a.slug + i} style={{ position: "absolute", inset: 0, clipPath: i === 0 ? "polygon(0 0, 100% 0, 0 100%)" : "polygon(100% 0, 100% 100%, 0 100%)" }}>
         <div style={{ position: "absolute", inset: "-6%", transform: `translateX(${dx}px) scale(${sc})`, willChange: "transform", background: a.alpha ? GROUND.darkLift : undefined }}>
-          <Img src={src(a)} style={{ width: "100%", height: "100%", objectFit: a.alpha ? "contain" : "cover", filter: env === "dark" ? "brightness(0.9) contrast(1.1)" : "contrast(1.07)" }} />
+          <Img src={src(a)} style={{ width: "100%", height: "100%", objectFit: a.alpha ? "contain" : "cover" }} />
         </div>
       </div>
     );
@@ -446,10 +446,11 @@ export const MosaicBleed: React.FC<StageProps & { assets: Asset[]; labels?: bool
                   objectFit: a.ar > 3.0 || a.alpha ? "contain" : "cover",
                   background: a.alpha ? GROUND.darkLift : "transparent",
                   transform: `translateY(${drift}px) scale(${zoom})`,
-                  filter: env === "dark" ? "brightness(0.78) contrast(1.12)" : "brightness(0.82) contrast(1.1)",
                   willChange: "transform",
                 }}
               />
+              {/* graded down with a flat overlay rather than a filter */}
+              <div style={{ position: "absolute", inset: 0, background: "rgba(4,4,6,0.22)" }} />
               {labels ? (
                 <>
                   <div style={{ position: "absolute", left: 110, top: 0, bottom: 0, width: 14, background: acc.glow }} />
