@@ -8,11 +8,15 @@
 name: fetch-higgsfield-assets
 
 on:
+  push:
+    paths:
+      - "avb-series-film/higgsfield-manifest.json"
+      - ".github/workflows/fetch-higgsfield-assets.yml"
   workflow_dispatch:
     inputs:
       manifest:
         description: "Path to a JSON manifest: [{\"url\": \"https://...\", \"dest\": \"path/in/repo\"}]"
-        required: true
+        required: false
         default: "avb-series-film/higgsfield-manifest.json"
 
 permissions:
@@ -29,7 +33,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          MANIFEST="${{ github.event.inputs.manifest }}"
+          MANIFEST="${{ github.event.inputs.manifest || 'avb-series-film/higgsfield-manifest.json' }}"
           test -f "$MANIFEST"
           n=$(jq length "$MANIFEST")
           echo "$n entries"
