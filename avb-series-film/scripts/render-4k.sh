@@ -17,7 +17,7 @@ node --experimental-strip-types scripts/validate-plan.mjs 2>/dev/null || { echo 
 render_reel() {
   echo "═══ REEL 2160x3840 · 2700 frames ═══"
   npx remotion render Reel out/motu-avb-reel-4k.mp4 --concurrency="$CONC" --codec=h264 --crf=17 --pixel-format=yuv420p \
-    2>&1 | grep -aE "Rendered [0-9]+/[0-9]+|Error|error" | awk 'NR%200==0 || /rror/'
+    2>&1 | tr '\r' '\n' | grep --line-buffered -aoE "Rendered [0-9]+/[0-9]+|.*[Ee]rror.*" | awk '{ if (++n % 150 == 0 || /rror/) { print strftime("%H:%M:%S"), $0; fflush() } }'
 }
 
 render_film() {
@@ -26,7 +26,7 @@ render_film() {
   for r in "0-2999" "3000-5999" "6000-8999"; do
     echo "--- frames $r"
     npx remotion render Film "out/film-chunk-${r%%-*}.mp4" --frames="$r" --concurrency="$CONC" --codec=h264 --crf=17 --pixel-format=yuv420p \
-      2>&1 | grep -aE "Rendered [0-9]+/[0-9]+|Error|error" | awk 'NR%200==0 || /rror/'
+      2>&1 | tr '\r' '\n' | grep --line-buffered -aoE "Rendered [0-9]+/[0-9]+|.*[Ee]rror.*" | awk '{ if (++n % 150 == 0 || /rror/) { print strftime("%H:%M:%S"), $0; fflush() } }'
     [ -s "out/film-chunk-${r%%-*}.mp4" ] || { echo "chunk $r failed"; return 1; }
   done
   printf "file 'film-chunk-0.mp4'\nfile 'film-chunk-3000.mp4'\nfile 'film-chunk-6000.mp4'\n" > out/film-concat.txt
