@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# Renders both 4K masters, then packages anything over GitHub's file limit.
+# Renders both 4K masters at CRF 17 (quality-targeted, no bitrate cap), then
+# splits anything over GitHub's file limit by stream copy — never re-encoded.
 # Run from avb-series-film/:  bash scripts/render-4k.sh [reel|film|all]
 #
 # The film is rendered in three frame-range chunks and stream-copy joined, so a
@@ -15,8 +16,8 @@ node --experimental-strip-types scripts/validate-plan.mjs 2>/dev/null || { echo 
 
 render_reel() {
   echo "═══ REEL 2160x3840 · 2700 frames ═══"
-  npx remotion render Reel out/motu-avb-reel-4k.mp4 --concurrency="$CONC" --codec=h264 --video-bitrate=16M --pixel-format=yuv420p --log=error \
-    2>&1 | grep -vE "memory|docker|CGroup|meminfo|Node:" | tail -3
+  npx remotion render Reel out/motu-avb-reel-4k.mp4 --concurrency="$CONC" --codec=h264 --crf=17 --pixel-format=yuv420p \
+    2>&1 | grep -aE "Rendered [0-9]+/[0-9]+|Error|error" | awk 'NR%200==0 || /rror/'
 }
 
 render_film() {
@@ -24,8 +25,8 @@ render_film() {
   rm -f out/film-chunk-*.mp4
   for r in "0-2999" "3000-5999" "6000-8999"; do
     echo "--- frames $r"
-    npx remotion render Film "out/film-chunk-${r%%-*}.mp4" --frames="$r" --concurrency="$CONC" --codec=h264 --video-bitrate=14M --pixel-format=yuv420p --log=error \
-      2>&1 | grep -vE "memory|docker|CGroup|meminfo|Node:" | tail -2
+    npx remotion render Film "out/film-chunk-${r%%-*}.mp4" --frames="$r" --concurrency="$CONC" --codec=h264 --crf=17 --pixel-format=yuv420p \
+      2>&1 | grep -aE "Rendered [0-9]+/[0-9]+|Error|error" | awk 'NR%200==0 || /rror/'
     [ -s "out/film-chunk-${r%%-*}.mp4" ] || { echo "chunk $r failed"; return 1; }
   done
   printf "file 'film-chunk-0.mp4'\nfile 'film-chunk-3000.mp4'\nfile 'film-chunk-6000.mp4'\n" > out/film-concat.txt
@@ -47,9 +48,8 @@ package() {
   else
     echo "  $((size/1024/1024)) MB — under the limit, ships whole"
   fi
-  # A 1080p review copy (portrait 1080x1920, landscape 1920x1080) that always fits in the repo.
-  ffmpeg -v error -y -i "$f" -vf "scale=iw/2:ih/2" -c:v libx264 -preset medium -crf 20 -pix_fmt yuv420p -c:a aac -b:a 192k "out/${base}-1080p.mp4"
-  ls -la "out/${base}-1080p.mp4"
+  # No downscaled or re-encoded copies: the client asked for the 4K masters
+  # exactly as rendered — split into parts by stream copy only if needed.
 }
 
 case "$WHAT" in
