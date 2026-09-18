@@ -407,7 +407,13 @@ export const MosaicBleed: React.FC<StageProps & { assets: Asset[]; labels?: bool
   const list = assets.slice(0, n);
   // Portrait: one column up to three (cells at ~1.69:1, the photography is
   // ~1.65). Landscape: a row of up to three, then two rows.
-  const cols = canvas.portrait ? (n <= 3 ? 1 : 2) : n <= 3 ? n : 3;
+  // Portrait: one column up to FOUR — four full-width rows give cells of
+  // 2.25:1, which is almost exactly the 2.2:1 of the product photography, so
+  // the lineup shows whole units rather than crops of their middles. A 2x2
+  // grid on a 9:16 frame makes portrait cells and crops every landscape
+  // photograph to a sliver of meter. Landscape: 2x2 for four (16:9 cells),
+  // a row for up to three, three columns for five or six.
+  const cols = canvas.portrait ? (n <= 4 ? 1 : 2) : n <= 3 ? n : n === 4 ? 2 : 3;
   const rows = Math.ceil(n / cols);
   const e = ease(p);
   const planeScale = interpolate(e, [0, 1], [1.045, 1.0]);

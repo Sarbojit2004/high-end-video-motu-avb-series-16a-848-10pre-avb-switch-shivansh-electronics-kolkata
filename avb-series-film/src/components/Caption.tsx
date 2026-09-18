@@ -37,7 +37,9 @@ type Props = {
 /** Splits a caption into lead-in / key word / tail around its emphasis. */
 export const splitCaption = (t: string, e?: string) => {
   const words = t.trim().split(/\s+/).filter(Boolean);
-  const norm = (x: string) => x.replace(/[^\w.,+-]/g, "").toLowerCase();
+  // Punctuation is stripped from BOTH sides of the comparison, so "AVB." still
+  // matches an emphasis of "AVB" and "7.1.4" still matches itself.
+  const norm = (x: string) => x.replace(/[^\w+-]/g, "").toLowerCase();
 
   if (e) {
     const target = e.split(/\s+/).filter(Boolean);
